@@ -34,37 +34,20 @@
     <div class="strip d-flex justify-content-between px-4 py-1 bg-light">
         <p class="font-rale font-size-12 text-black-50 m-0"></p>
         <div class="font-rale font-size-14">
-            <a href="<?php echo SITEURL; ?>logout.php" class="px-3 border-right border-left text-dark">Logout</a>
+            <a href="login-page.php" class="px-3 border-right border-left text-dark">Login</a>
+            <a href="signUp-page.php" class="px-3 border-right border-left text-dark">Sign Up</a>
             <a href="#" class="px-3 border-right text-dark">Whishlist (0)</a>
         </div>
     </div>
 
     <!-- Primary Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark color-second-bg">
-        <a class="navbar-brand" href="home-page.php">PetYou</a>
+        <a class="navbar-brand" href="index.php">PetYou</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav m-auto font-rubik">
-                <li class="nav-item active">
-                    <a class="nav-link" href="home-page.php">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">PRODUCT <i class="fas fa-chevron-down"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">ABOUT US </a>
-                </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link" href="#">ADOPTION</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">CATEGORY <i class="fas fa-chevron-down"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Coming Soon</a>
-                </li>-->
             </ul>
             <form action="#" class="font-size-14 font-rale">
                 <a href="cart.php" class="py-2 rounded-pill color-primary-bg">

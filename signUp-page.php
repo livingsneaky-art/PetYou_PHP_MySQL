@@ -1,7 +1,7 @@
 <?php
     ob_start();
     // include header.php file
-    include ('header.php');
+    include ('header-outsider.php');
 ?>
     <form action="" method="POST" class="form">
         <div>
@@ -45,7 +45,7 @@
             }else {
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
                     //SQL QUERY TO INSERT TO DB
-                    $sql = "INSERT INTO admin(fName, lName, uName, password)
+                    $sql = "INSERT INTO user(fName, lName, uName, password)
                     VALUES('$firstName', '$lastName', '$username', '$pwd');";
                 }
 
@@ -55,10 +55,10 @@
                 //TO CHECK IF QUEY IS EXECUTED
                 if ($res == TRUE){
                     $_SESSION['add'] = "<h2 class='success'>OPERATION SUCCESSFUL</h2>";
-                    header("location:".SITEURL."admin/manage.admin.php");
+                    header("location:".SITEURL."login-page.php");
                 } else {
                     $_SESSION['add'] = "<h2 class='failed'>OPERATION FAILED</h2>";
-                    header("location:".SITEURL."admin/manage.admin.php");
+                    header("location:".SITEURL."signUp-page.php");
                 }
 
             }

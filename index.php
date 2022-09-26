@@ -65,7 +65,7 @@
     }            
     ob_start();
     // include header.php file
-    include ('header.php');
+    include ('header-outsider.php');
 ?>
 
 <?php
