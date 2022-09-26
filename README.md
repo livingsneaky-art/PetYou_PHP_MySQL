@@ -30,11 +30,11 @@ Refer to `documentation.
 
 
 ## Contributors
- - 
+ - LLAMIDO, RYAN B.
  - 
  - 
  - 
 
 ## Project Status
-Ongoing - 24/09/2022
+Ongoing - 26/09/2022
 
