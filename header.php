@@ -31,14 +31,15 @@
     <div class="strip d-flex justify-content-between px-4 py-1 bg-light">
         <p class="font-rale font-size-12 text-black-50 m-0"></p>
         <div class="font-rale font-size-14">
-            <a href="#" class="px-3 border-right border-left text-dark">Login</a>
+            <a href="login-page.php" class="px-3 border-right border-left text-dark">Login</a>
+            <a href="signUp-page.php" class="px-3 border-right border-left text-dark">Sign Up</a>
             <a href="#" class="px-3 border-right text-dark">Whishlist (0)</a>
         </div>
     </div>
 
     <!-- Primary Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark color-second-bg">
-        <a class="navbar-brand" href="#">PetYou</a>
+        <a class="navbar-brand" href="index.php">PetYou</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
