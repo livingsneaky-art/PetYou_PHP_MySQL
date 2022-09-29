@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@200;400&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+/* miscellaneous styling */
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.logo {
+    font-family: 'Parisienne', cursive;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+    height: 24px;
+}
+
+button {
+    border: 1px solid black;
+}
+
+.nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav ul li{
+    list-style-type: none;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.button {
+    background-color: white;
+    padding: .5em .8em;
+    border-radius: 2em;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+.button:hover{
+    background-color: black;
+    color: white;
+}
+
+.btn-blue {
+    background-color: lightseagreen;
+}
+
+.btn-red {
+    background-color: red;
+}
+
+.btn-green {
+    background-color: green;
+}
+
+.btn{
+    color: white;
+    padding: .5em .8em;
+    transition: background-color 0.5s ease;
+}
+
+.btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.success {
+    color: green;
+}
+
+.failed {
+    color: red;
+}
+
+/* header styling */
+
+header{
+    background-color: white;
+    
+}
+
+header .nav {
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main {
+    height: 100%;
+    margin: 0 auto;
+    background-color: #F7DAD9;
+    padding-bottom: 3em;
+}
+
+/* index page styling */
+
+.welcome {
+    width: 75%;
+    height: 550px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5em;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.welcome .button{
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.welcome img {
+    width: 600px;
+}
+
+/* footer styling */
+
+footer {
+    background-color: #5D534A;
+    color: white;
+}
+
+.footer-wrapper{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+
+.footer-menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5em;
+    margin-bottom: 3em;
+    color: white;
+}
+
+.footer-menu .nav ul li a{
+    color: white;
+    font-size: 24px;
+}
+
+/* for manage page styling */
+
+.container {
+    padding: 1em;
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.container h1, h2{
+    margin-bottom: 20px;
+}
+
+
+/* tables styling */
+
+.tbl-full{
+    width: 100%;
+    margin-top: 20px;
+    height: 100%;
+}
+
+table {
+    background-color: rgba(252, 252, 252, 0.815);
+    border-radius: 1em;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    
+}
+
+table tr th{
+    border-bottom: 1px solid black;
+    
+}
+
+.tbl-full .button {
+    width: 150px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.btn-st {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2em;
+}
+
+/* login styling */
+.login-wrapper {
+    width: 400px;
+    height: 400px;
+    background-color: #FFF5DA;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 3em;
+}
+
+.login-wrapper form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-wrapper button{
+    margin-top: 2em;
+}
+
+/* front end styling */
+
+.contents {
+    width: 80%;
+    background-color: #a0e7e5b9;
+    border-radius: 1em;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 2em;
+    padding-bottom: 3em;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.grid-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 3em;
+}
+.grid-container img {
+    width: 200px;
+    height: 300px;
+}
+
+.grid-container .desc {
+    font-size: 16px;
+    text-align: center;
+    width: 200px;
+    height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+}
+
+.grid-container p{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.grid-container h3{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.grid-container .button-book{
+    width: 120px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 1em;
+    padding: .5em .8em;
+    cursor: pointer;
+}
+
+.center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#menus {
+    margin-top: 80px;
+    background-color: #b4f8c9b9;
+}
+
+#extras {
+    margin-top: 80px;
+}
+
+/* booking styling */
+
+.form-container {
+    display: flex;
+    margin-top: 2em;
+}
+
+.form-container h2 {
+    margin-top: 1em;
+}
+
+.form-container .input {
+    padding: 1em;
+}
+
+.form-container .form-overlay {
+    background-color: beige;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 1em;
+    padding: 2em;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.input input{
+    width: 210px;
+    margin-left: -20px ;
+}
+
+.input {
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.input .grid-container {
+    margin-top: -20px;
+}
+
+.input .grid-container h3{
+    width: 200px;
+    height: 30px;
+    text-overflow: ellipsis;
+    padding-bottom: 3em;
+}
+
+.form-back{
+    background-color:#F7DAD9; 
+    height:100%; 
+    padding-top:1em;
+    padding-bottom:1em;
+}
+
+

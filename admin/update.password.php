@@ -1,7 +1,7 @@
 <?php
     ob_start();
     // include header.php file
-    include ('header.php');
+    include ('partials/header.php');
 ?>
     <!---main section--->
     <div class="main" style="height:100vh;">
@@ -44,7 +44,7 @@
         $confirmpass = md5($_POST['confirmpass']);
 
         //get data from DB
-        $sql = "SELECT * FROM admin 
+        $sql = "SELECT * FROM user 
             WHERE id = $id
             AND password='$currentpass';";
 
@@ -59,7 +59,7 @@
                 //check if password matches
                 if ($newpass == $confirmpass){
                     //SQL query to cahnge password
-                    $sql2 = "UPDATE admin
+                    $sql2 = "UPDATE user
                         SET password = '$newpass'
                         WHERE id = $id;";
 
@@ -85,5 +85,5 @@
 
 
 <?php
-    include ('footer.php');
+    include ('partials/footer.php');
 ?>

@@ -17,11 +17,13 @@
         )");
 
         
-        $conn->query("CREATE TABLE events(
+        $conn->query("CREATE TABLE product(
              id INT NOT NULL AUTO_INCREMENT,
             title VARCHAR(100) NOT NULL,
-            image_name VARCHAR(255) NOT NULL,
-            CONSTRAINT pk_events PRIMARY KEY(id)
+            description VARCHAR(255) NOT NULL,
+            price DECIMAL(11, 2) NOT NULL,
+            image VARCHAR(255) NOT NULL,
+            CONSTRAINT pk_product PRIMARY KEY(id)
         )");
        
 
@@ -40,7 +42,7 @@
 
         $conn->query("CREATE TABLE cart(
             id INT NOT NULL,
-            eventID INT,
+            cartID INT,
             customer_name VARCHAR(200) NOT NULL,
             customer_contact_no VARCHAR(11) NOT NULL,
             customer_email VARCHAR(200) NOT NULL,

@@ -1,14 +1,13 @@
 <?php
 
     include('../configs/constants.php');
-    include('login.check.php');
     
 
     //Getting the id of admin to be deleted
     $id = $_GET['id'];
 
     //creating sql command to delete admin
-    $sql = "DELETE FROM admin WHERE id=$id;";
+    $sql = "DELETE FROM user WHERE id=$id;";
 
     //to execute the query
     $res = $conn->query($sql);

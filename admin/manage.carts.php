@@ -1,12 +1,12 @@
 <?php
     ob_start();
     // include header.php file
-    include ('header.php');
+    include ('partials/header.php');
 ?>
   <!---main section--->
   <div class="main" style="min-height:100vh;">
         <div class="container">
-            <h2>MANAGE BOOKINGS</h2>
+            <h2>MANAGE CARTS</h2>
 
             <?php
 
@@ -31,7 +31,7 @@
     width: 100%;">
                 <tr>
                     <th>ID</th>
-                    <th>Event ID</th>
+                    <th>Cart ID</th>
                     <th>Customer Name</th>
                     <th>Customer Contact Number</th>
                     <th>Customer Email</th>
@@ -44,7 +44,7 @@
 
                 <?php
                     //TO GET DATA
-                    $sql = "SELECT * FROM bookings;";
+                    $sql = "SELECT * FROM cart;";
                     //CATCHER
                     $res = mysqli_query($conn, $sql);
 
@@ -56,7 +56,7 @@
                             //Loop through data
                             while($rows = mysqli_fetch_assoc($res)){
                                 $id = $rows['id'];
-                                $event = $rows['eventID'];
+                                $event = $rows['cartID'];
                                 $customer_name = $rows['customer_name'];
                                 $customer_contact_no = $rows['customer_contact_no'];
                                 $customer_email = $rows['customer_email'];
@@ -102,5 +102,5 @@
     </div>
 
 <?php
-    include ('footer.php');
+    include ('partials/footer.php');
 ?>

@@ -62,7 +62,7 @@
 
         $_SESSION['user'] = $username;
 
-        header("location:".SITEURL."home-page.php");
+        header("location:".SITEURL."admin/admin.php");
     } else {
         $_SESSION['login'] = "<h5 class='failed'>USERNAME OR PASSWORD DID NOT MATCH</h5>";
         header("location:".SITEURL."login-page.php");

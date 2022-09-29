@@ -1,13 +1,12 @@
 <?php
     ob_start();
     // include header.php file
-    include ('header.php');
+    include ('partials/header.php');
 ?>
  <!---main section--->
- <div class="main" style="height:100%;">
+ <div class="main" style="height:100%; padding-bottom:15em;">
         <div class="container">
-            <h2>MANAGE EVENTS</h2>
-
+            <h2>MANAGE PRODUCTS</h2>
             <?php
                 if (isset($_SESSION['add'])){
                     echo $_SESSION['add'];
@@ -34,19 +33,21 @@
                     unset($_SESSION['upload']);
                 }
             ?>
+            <a href="add.product.php" class="button">ADD PRODUCTS</a>
 
-            <a href="add.events.php" class="button">ADD EVENT</a>
+            
 
-            <table class="tbl-full" style="height:auto;">
+            <table class="tbl-full">
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
+                    <th>Description</th>
+                    <th>Price</th>
                     <th>Image</th>
-                
                 </tr>
                 <?php
                     //TO GET DATA
-                    $sql = "SELECT * FROM events;";
+                    $sql = "SELECT * FROM product;";
                     //CATCHER
                     $res = $conn->query($sql);
 
@@ -59,17 +60,22 @@
                             while($rows = $res->fetch_assoc()){
                                 $id = $rows['id'];
                                 $title = $rows['title'];
-                                $image = $rows['image_name'];
+                                $description = $rows['description'];
+                                $price = $rows['price'];
+                                $image = $rows['image'];
 
                                 ?>
 
                                 <tr>
                                     <td><?php echo $id; ?></td>
                                     <td><?php echo $title; ?></td>
-                                    <td><img src="<?php echo SITEURL; ?>images/events/<?php echo $image; ?>" alt="" width="100px"></td>
-                                    <td>
-                                        <a href="<?php echo SITEURL; ?>admin/update.products.php?id=<?php echo $id; ?>" class="btn-green btn">Update Events</a>
-                                        <a href="<?php echo SITEURL; ?>admin/delete.products.php?id=<?php echo $id; ?>&image=<?php echo $image; ?>" class="btn-red btn">Delete Events</a>
+                                    <td><?php echo $description; ?></td>
+                                    <td><?php echo $price; ?></td>
+                                    <td><img src="<?php echo SITEURL; ?>images/product/<?php echo $image; ?>" alt="" width="100px"></td>
+                                    <td class="btn-st">
+                                        <div><a href="<?php echo SITEURL; ?>admin/update.products.php?id=<?php echo $id; ?>&image=<?php echo $image; ?>" class="btn-green btn">Update</a></div>
+                                        <div><a href="<?php echo SITEURL; ?>admin/delete.products.php?id=<?php echo $id; ?>&image=<?php echo $image; ?>" class="btn-red btn">Delete</a></div>
+                                        
                                     </td>
                                 </tr>
 
@@ -84,7 +90,6 @@
             </table>
         </div>
     </div>
-
 <?php
-    include ('footer.php');
+    include ('partials/footer.php');
 ?>

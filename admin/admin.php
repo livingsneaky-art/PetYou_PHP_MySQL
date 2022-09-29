@@ -1,7 +1,7 @@
 <?php
-    ob_start();
+   ob_start();
     // include header.php file
-    include ('header.php');
+    include ('partials/header.php');
 ?>
 <div class="main" style="height:64vh;">
 <div class="container admin">
@@ -16,5 +16,5 @@
 </div>
 
 <?php
-    include ('footer.php');
+    include ('partials/footer.php');
 ?>

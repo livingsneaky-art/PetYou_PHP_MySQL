@@ -1,7 +1,7 @@
 <?php
     ob_start();
     // include header.php file
-    include ('header.php');
+    include ('partials/header.php');
 ?>
  <!---main section--->
  <div class="main" style="height:100vh;">
@@ -52,7 +52,7 @@
 
                 <?php
                     //TO GET DATA
-                    $sql = "SELECT * FROM admin;";
+                    $sql = "SELECT * FROM user;";
                     //CATCHER
                     $res = $conn->query($sql);
 
@@ -96,5 +96,5 @@
         
     </div>
 <?php
-    include ('footer.php');
+    include ('partials/footer.php');
 ?>

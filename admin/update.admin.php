@@ -1,7 +1,7 @@
 <?php
     ob_start();
     // include header.php file
-    include ('header.php');
+    include ('partials/header.php');
 ?>
     <div class="main" style="height:100vh;">
 
@@ -12,7 +12,7 @@
         //Get id of admin to be edit
         $id = $_GET['id'];
         //SQL query to get data
-        $sql = "SELECT * FROM admin WHERE id = $id;";
+        $sql = "SELECT * FROM user WHERE id = $id;";
 
         //To execute the query
         $res = $conn->query($sql);
@@ -59,7 +59,7 @@ $lName = $_POST['lName'];
 $uName = $_POST['uName'];
 
 //SQL query to to update admin
-$sql = "UPDATE admin
+$sql = "UPDATE user
     SET fName = '$fName',
     lName = '$lName',
     uName = '$uName'
@@ -80,5 +80,5 @@ if ($res == TRUE){
 ?>
 
 <?php
-    include ('footer.php');
+    include ('partials/footer.php');
 ?>
