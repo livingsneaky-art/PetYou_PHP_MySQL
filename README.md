@@ -31,9 +31,11 @@ Refer to `documentation.
 
 ## Contributors
  - LLAMIDO, RYAN B.
- - 
- - 
- - 
+ - CODOY
+ - BARING
+ - NARVASA
+ - CUTANDA
+
 
 ## Project Status
 Ongoing - 26/09/2022
