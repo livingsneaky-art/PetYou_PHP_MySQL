@@ -59,10 +59,15 @@
     $count = mysqli_num_rows($res);
 
     if ($count == 1){
-
-        $_SESSION['user'] = $username;
-
-        header("location:".SITEURL."admin/admin.php");
+        if($_SESSION['user_type'] == 'admin'){
+            $_SESSION['login'] = "<div class='success'>Login Successful</div>";
+            $_SESSION['user'] = $username;
+            header('location:'.SITEURL.'admin/admin.php');
+        }else{
+            $_SESSION['login'] = "<div class='success'>Login Successful</div>";
+            $_SESSION['user'] = $username;
+            header('location:'.SITEURL.'home-page.php');
+        }
     } else {
         $_SESSION['login'] = "<h5 class='failed'>USERNAME OR PASSWORD DID NOT MATCH</h5>";
         header("location:".SITEURL."login-page.php");

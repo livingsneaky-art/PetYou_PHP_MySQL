@@ -34,9 +34,6 @@
             CONSTRAINT pk_product PRIMARY KEY(id)
         )");
 
-        
-       
-
         $conn->query("CREATE TABLE payment_details(
              id INT NOT NULL AUTO_INCREMENT,
             products_total DECIMAL(11, 2),
