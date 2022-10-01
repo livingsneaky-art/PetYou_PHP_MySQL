@@ -1,7 +1,7 @@
 <?php
 
     include('../configs/constants.php');
-    include('login.check.php');
+    //include('login.check.php');
 
     //Getting the id of admin to be deleted
     $product_id = $_GET['product_id'];
@@ -41,7 +41,6 @@
 
     $sql_pay = "UPDATE payment_details 
             SET
-            extras_total = ?,
             products_total = ?,
             total = ?,
             balance = ?,
@@ -50,7 +49,7 @@
 
 
     $stmt_pay = $conn->prepare($sql_pay);
-    $stmt_pay->bind_param("iiiiii", $extras_total, $product_total, $total, $total, $min, $payment_id);
+    $stmt_pay->bind_param("iiiii", $product_total, $total, $total, $min, $payment_id);
     $res = $stmt_pay->execute();
 
     if ($res == TRUE){
