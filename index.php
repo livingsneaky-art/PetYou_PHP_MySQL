@@ -48,15 +48,15 @@
 
         $conn->query("CREATE TABLE cart(
             id INT NOT NULL,
-            cartID INT,
+            deliveryID INT,
             customer_name VARCHAR(200) NOT NULL,
             customer_contact_no VARCHAR(11) NOT NULL,
             customer_email VARCHAR(200) NOT NULL,
             status enum('Confirmed', 'Cancelled'),
-            event_status enum('To Be Held', 'Finished'),
+            delivery_status enum('To Be Held', 'Finished'),
             transaction_status enum('Processing', 'Successful', 'Failed'),
             receiptID INT,
-            CONSTRAINT pk_bookings PRIMARY KEY(id)
+            CONSTRAINT pk_cart PRIMARY KEY(id)
         )");
 
         $conn->query("CREATE TABLE product_carts(

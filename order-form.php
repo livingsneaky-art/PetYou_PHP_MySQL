@@ -7,14 +7,13 @@ if(isset($_POST['submit'])){
     $customer_name = mysqli_real_escape_string($conn, $_POST['customer_name']);
     $customer_number = mysqli_real_escape_string($conn ,$_POST['customer_number']);
     $customer_email = mysqli_real_escape_string($conn, $_POST['customer_email']);
-    $event_type = mysqli_real_escape_string($conn, $_POST['event']);
-    $start = mysqli_real_escape_string($conn, $_POST['event_start']);
-    $end = mysqli_real_escape_string($conn, $_POST['event_end']);
-    $address = mysqli_real_escape_string($conn, $_POST['event_address']);
-    $menu_qty = $_POST['menu_qty'];
-    $extra_qty = $_POST['extra_qty'];
-    $booking_id = rand(000, 999);
-    $event_id = rand(000, 999);
+    $delivery_type = mysqli_real_escape_string($conn, $_POST['delivery']);
+    $start = mysqli_real_escape_string($conn, $_POST['delivery_start']);
+    $end = mysqli_real_escape_string($conn, $_POST['delivery_end']);
+    $address = mysqli_real_escape_string($conn, $_POST['delivery_address']);
+    $product_qty = $_POST['product_qty'];
+    $cart_id = rand(000, 999);
+    $delivery_id = rand(000, 999);
     $payment_id = rand(000, 999);
     
     //no empty values to be inserted in database
@@ -30,159 +29,118 @@ if(isset($_POST['submit'])){
         die();
     }
 
-    if(empty($_POST['menu']) && empty($_POST['extra'])){
-        $_SESSION['menu'] = "<p class='failed'>PLEASE PICK YOUR MENU OR EXTRAS</p>";
+    if(empty($_POST['product']) ){
+        $_SESSION['product'] = "<p class='failed'>PLEASE PICK YOUR product</p>";
 
         die();
     }
 
 
-     ////for storing event details to event_details table
-    $query = "INSERT INTO event_details
+     ////for storing delivery details to delivery_details table
+    $query = "INSERT INTO delivery_details
         SET id = ?,
         startTime = ?,
         endTime = ?,
-        eventAddress = ?,
-        event_type = (
+        deliveryAddress = ?,
+        delivery_type = (
             SELECT id 
-            FROM events
+            FROM type_delivery
             WHERE id = ?);";
 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("isssi", $event_id, $start, $end, $address, $event_type);
-    $res_event = $stmt->execute();
+    $stmt->bind_param("isssi", $delivery_id, $start, $end, $address, $delivery_type);
+    $res_delivery = $stmt->execute();
 
-    if (!$res_event){
+    if (!$res_delivery){
         echo $conn->error;
     }
 
-    //create booking record
-    $query_2 = "INSERT INTO bookings
+    //create cart record
+    $query_2 = "INSERT INTO cart
         SET id = ?,
         customer_name = ?,
         customer_contact_no = ?,
         customer_email = ?,
-        eventID = (
+        deliveryID = (
             SELECT id
-            FROM event_details
+            FROM delivery_details
             WHERE id = ?);";
 
     $stmt_2 = $conn->prepare($query_2);
-    $stmt_2->bind_param("isssi", $booking_id, $customer_name, $customer_number, $customer_email, $event_id);
+    $stmt_2->bind_param("isssi", $cart_id, $customer_name, $customer_number, $customer_email, $delivery_id);
     $res_book = $stmt_2->execute();
     
     if (!$res_book){
         echo $conn->error;
     }
     
-    //create menu record
-    if (!empty($_POST['menu'])){
-        $menus = $_POST['menu'];
+    //create product record
+    if (!empty($_POST['product'])){
+        $products = $_POST['product'];
         
-        $menu_query = "INSERT INTO menus_bookings
+        $product_query = "INSERT INTO product_carts
             SET
             quantity = ?,
-            bookingID = (
+            cartID = (
                 SELECT id
-                FROM bookings
+                FROM cart
                 WHERE id = ?),
             type = (
                 SELECT id
-                FROM menus_types
+                FROM product
                 WHERE id = ?);";
 
-        $menu_stmt = $conn->prepare($menu_query);
-        $menu_stmt->bind_param("iii", $m_qty, $booking_id, $menu);
+        $product_stmt = $conn->prepare($product_query);
+        $product_stmt->bind_param("iii", $p_qty, $cart_id, $product);
  
-        foreach ($menus as $menu){
-            $m_qty = $menu_qty[$menu];
-            $res_menu = $menu_stmt->execute();
+        foreach ($products as $product){
+            $p_qty = $product_qty[$product];
+            $res_product = $product_stmt->execute();
         }
 
-        if(!$res_menu){
+        if(!$res_product){
             echo $conn->error;
         }
     }
     
-
-    ///create extras record
-    if (!empty($_POST['extra'])){
-        $extras = $_POST['extra'];
-
-        $extras_query = "INSERT INTO extras_bookings
-            SET
-            quantity = ?,
-            bookingID = (
-                SELECT id
-                FROM bookings
-                WHERE id = ?),
-            type = (
-                SELECT id
-                FROM extras_types
-                WHERE id = ?);";
-
-        $extras_stmt = $conn->prepare($extras_query);
-        $extras_stmt->bind_param("iii", $e_qty, $booking_id, $extra);
-
-        foreach ($extras as $extra){
-            $e_qty = $extra_qty[$extra];
-            $res_extras = $extras_stmt->execute();
-        }
-
-    
-         if(!$res_extras){
-             echo $conn->error;
-         }
-    }
+    //create payment record
 
     //calculate fees
-    $menu_sql = "SELECT SUM(mt.price * mb.quantity) as 'menu total'
-    FROM menus_types mt, menus_bookings mb
+    $product_sql = "SELECT SUM(mt.price * mb.quantity) as 'product total'
+    FROM products_types mt, products_carts mb
     WHERE mt.id = mb.type
-    AND mb.bookingID = ?;";
+    AND mb.cartID = ?;";
 
-    $stmt_menu = $conn->prepare($menu_sql);
-    $stmt_menu->bind_param("i", $booking_id);
-    $stmt_menu->execute();
-    $result_menu = $stmt_menu->get_result();
-    $row_menu = $result_menu->fetch_assoc();
-    $menu_total = $row_menu['menu total'];
+    $stmt_product = $conn->prepare($product_sql);
+    $stmt_product->bind_param("i", $cart_id);
+    $stmt_product->execute();
+    $result_product = $stmt_product->get_result();
+    $row_product = $result_product->fetch_assoc();
+    $product_total = $row_product['product total'];
 
-    $extras_sql = "SELECT SUM(et.price * eb.quantity) as 'extras total'
-    FROM extras_types et, extras_bookings eb
-    WHERE et.id = eb.type
-    AND eb.bookingID = ?;";
 
-    $stmt_extras = $conn->prepare($extras_sql);
-    $stmt_extras->bind_param("i", $booking_id);
-    $stmt_extras->execute();
-    $result_extras = $stmt_extras->get_result();
-    $row_extras = $result_extras->fetch_assoc();
-    $extras_total = $row_extras['extras total'];
-
-    $total = $menu_total + $extras_total;
+    $total = $product_total;
     $min = $total * .50;
 
     //create payment details
     $query_pay = "INSERT INTO payment_details
         SET id = ?,
-        extras_total = ?,
-        menus_total = ?,
+        products_total = ?,
         total = ?,
         balance = ?,
         minPayment = ?;
       ";
 
     $stmt_pay = $conn->prepare($query_pay);
-    $stmt_pay->bind_param("iiiiii", $payment_id, $extras_total, $menu_total, $total, $total, $min);
+    $stmt_pay->bind_param("iiiii", $payment_id, $product_total, $total, $balance, $min);
     $res_pay = $stmt_pay->execute();
 
     if(!$res_pay){
         echo $conn->error;
     } 
 
-    //add receipt to booking record
-    $query_booking = "UPDATE bookings
+    //add receipt to cart record
+    $query_cart = "UPDATE carts
         SET receiptID = (
             SELECT id 
             FROM payment_details
@@ -190,18 +148,18 @@ if(isset($_POST['submit'])){
         WHERE id = ?;
       ";
 
-    $stmt_bookings = $conn->prepare($query_booking);
-    $stmt_bookings->bind_param("ii", $payment_id, $booking_id);
-    $res_bookings = $stmt_bookings->execute();
+    $stmt_carts = $conn->prepare($query_cart);
+    $stmt_carts->bind_param("ii", $payment_id, $cart_id);
+    $res_carts = $stmt_carts->execute();
 
-    if ($res_bookings){
+    if ($res_carts){
         
-       echo "<h2 class='success'>BOOKED SUCCESSFULLY. Your Code: $booking_id.</h2>";
+       echo "<h2 class='success'>BOOKED SUCCESSFULLY. Your Code: $cart_id.</h2>";
 
        echo "<a class='btn btn-blue' href='payment.php'>Check your order.</a>" ;
         
     } else {
-        echo "<h2 class='failed'>BOOKING FAILED</h2>";
+        echo "<h2 class='failed'>cart FAILED</h2>";
     }
 }
 ?>

@@ -11,8 +11,8 @@ include ('header.php');
                 <h2>Your Order</h2>
                 <div>
                 
-                    <label for="booking">Enter Code</label>
-                    <input type="text" name="booking">
+                    <label for="cart">Enter Code</label>
+                    <input type="text" name="cart">
               
                    <button class="button" type="submit" name="submit" >Submit</button> 
                    
@@ -20,13 +20,13 @@ include ('header.php');
                 
             <?php
                 if(isset($_POST['submit'])){
-                    $booking = mysqli_real_escape_string($conn, $_POST['booking']);
+                    $cart = mysqli_real_escape_string($conn, $_POST['cart']);
 
-                    if($booking){
+                    if($cart){
                     
-                        $order = "SELECT * FROM bookings WHERE id = ?;";
+                        $order = "SELECT * FROM carts WHERE id = ?;";
                         $stmt_order = $conn->prepare($order);
-                        $stmt_order->bind_param("i", $booking);
+                        $stmt_order->bind_param("i", $cart);
                         $stmt_order->execute();
 
                         $res_order = $stmt_order->get_result();
@@ -37,7 +37,7 @@ include ('header.php');
                               
                         } else {
                             while($rows_order = $res_order->fetch_assoc()){
-                                $event = $rows_order['eventID'];
+                                $delivery = $rows_order['deliveryID'];
                                 $customer_name = $rows_order['customer_name'];
                                 $customer_contact_no = $rows_order['customer_contact_no'];
                                 $customer_email = $rows_order['customer_email'];  
@@ -57,34 +57,34 @@ include ('header.php');
                                     <p><?php echo $customer_email; ?></p>
                             </div>
                             <?php
-                                $event_query = "SELECT * FROM event_details WHERE id = ?;";
+                                $delivery_query = "SELECT * FROM delivery_details WHERE id = ?;";
     
-                                $event_stmt = $conn->prepare($event_query);
-                                $event_stmt->bind_param("i", $event);
-                                $event_stmt->execute();
-                                $res_event = $event_stmt->get_result();
-                                $row_event = $res_event->fetch_assoc();
+                                $delivery_stmt = $conn->prepare($delivery_query);
+                                $delivery_stmt->bind_param("i", $delivery);
+                                $delivery_stmt->execute();
+                                $res_delivery = $delivery_stmt->get_result();
+                                $row_delivery = $res_delivery->fetch_assoc();
                                 
-                                $id = $row_event['id'];
-                                $event_get = $row_event['event_type'];
-                                $start = $row_event['startTime'];
-                                $end = $row_event['endTime'];
-                                $eventAddress = $row_event['eventAddress'];
+                                $id = $row_delivery['id'];
+                                $delivery_get = $row_delivery['delivery_type'];
+                                $start = $row_delivery['startTime'];
+                                $end = $row_delivery['endTime'];
+                                $deliveryAddress = $row_delivery['deliveryAddress'];
                 
-                                $sql_2 = "SELECT * FROM events WHERE id = ?;";
+                                $sql_2 = "SELECT * FROM type_delivery WHERE id = ?;";
                 
                                 $stmt_2 = $conn->prepare($sql_2);
-                                $stmt_2->bind_param("i", $event_get);
+                                $stmt_2->bind_param("i", $delivery_get);
                                 $stmt_2->execute();
                                 $res_2 = $stmt_2->get_result();
                                 $row_2 = $res_2->fetch_assoc();
-                                $event_id = $row_2['id'];
-                                $event_title = $row_2['title'];
+                                $delivery_id = $row_2['id'];
+                                $delivery_title = $row_2['title'];
                         ?>
                         <br>
                         <div>
-                                <h4>Event Type:</h4>
-                                <p><?php echo $event_title; ?></p>
+                                <h4>delivery Type:</h4>
+                                <p><?php echo $delivery_title; ?></p>
                         </div>
                         <div>
                                 <h4>Time Start:</h4>
@@ -98,13 +98,13 @@ include ('header.php');
                         </div>
                         <div>
                                 <h4>Address:</h4>
-                                <p><?php echo $eventAddress; ?></p> 
+                                <p><?php echo $deliveryAddress; ?></p> 
                         </div>
     
                         <table class="tbl-full" style="height:auto; table-layout: auto;
     width: 100%;">
                         <br>
-                            <h3>Menu/Extras</h3>
+                            <h3>product/Extras</h3>
                                 <tr>
                                     <th>Title</th>
                                     <th>Description</th>
@@ -113,75 +113,43 @@ include ('header.php');
                                 </tr>
                                 <?php
                                     //TO GET DATA
-                                    $query_menu = "SELECT mt.id, mt.title, mt.description, mt.price, mb.quantity FROM menus_types mt, menus_bookings mb
+                                    $query_product = "SELECT mt.id, mt.title, mt.description, mt.price, mb.quantity FROM products_types mt, products_carts mb
                                     WHERE mt.id = mb.type
-                                    AND mb.bookingID = ?;";  
+                                    AND mb.cartID = ?;";  
                                     
-                                    $stmt_menu = $conn->prepare($query_menu);
-                                    $stmt_menu->bind_param("i", $booking);
-                                    $stmt_menu->execute();
-                                    $res_menu = $stmt_menu->get_result();
+                                    $stmt_product = $conn->prepare($query_product);
+                                    $stmt_product->bind_param("i", $cart);
+                                    $stmt_product->execute();
+                                    $res_product = $stmt_product->get_result();
                                 
                                             //Loop through data
-                                        while($rows_menu = $res_menu->fetch_assoc()){
-                                            $menu_id = $rows_menu['id'];
-                                            $menu_title = $rows_menu['title'];
-                                            $menu_desc = $rows_menu['description'];
-                                            $menu_price = $rows_menu['price'];
-                                            $menu_qty = $rows_menu['quantity'];
+                                        while($rows_product = $res_product->fetch_assoc()){
+                                            $product_id = $rows_product['id'];
+                                            $product_title = $rows_product['title'];
+                                            $product_desc = $rows_product['description'];
+                                            $product_price = $rows_product['price'];
+                                            $product_qty = $rows_product['quantity'];
                                             ?>
     
                                             <tr>
-                                                <td><?php echo $menu_title; ?></td>
-                                                <td><?php echo $menu_desc; ?></td>
-                                                <td><?php echo $menu_price; ?></td>
-                                                <td><?php echo $menu_qty; ?></td>
+                                                <td><?php echo $product_title; ?></td>
+                                                <td><?php echo $product_desc; ?></td>
+                                                <td><?php echo $product_price; ?></td>
+                                                <td><?php echo $product_qty; ?></td>
                                                 
                                             </tr>
     
                                             <?php
                                             }
                                 ?>
-                                <?php
-                                    //TO GET DATA
-                                    $query_extras = "SELECT et.id, et.title, et.description, et.price, eb.quantity FROM extras_types et, extras_bookings eb
-                                    WHERE et.id = eb.type
-                                    AND eb.bookingID = ?;";   
-                                    
-                                    $stmt_extras = $conn->prepare($query_extras);
-                                    $stmt_extras->bind_param("i", $booking);
-                                    $stmt_extras->execute();
-                                    $res_menu = $stmt_menu->get_result();
-                                    $res_extras = $stmt_extras->get_result();
-                                
-                                            //Loop through data
-                                        while($row_extras = $res_extras->fetch_assoc()){
-                                            $extras_id = $row_extras['id'];
-                                            $extras_title = $row_extras['title'];
-                                            $extras_desc = $row_extras['description'];
-                                            $extras_price = $row_extras['price'];
-                                            $extras_qty = $row_extras['quantity'];
-                                            ?>
-    
-                                            <tr>
-                                                <td><?php echo $extras_title; ?></td>
-                                                <td><?php echo $extras_desc; ?></td>
-                                                <td><?php echo $extras_price; ?></td>
-                                                <td><?php echo $extras_qty; ?></td>
-                                            
-                                            </tr>
-    
-                                            <?php
-                                            }
-                                ?>
+                               
                             </table>
                             <table class="tbl-full" style="height:auto; table-layout: auto;
     width: 100%;">
                                 <tr>
                                     
                                     <th>Total</th>
-                                    <th>Menu Total</th>
-                                    <th>Extras Total</th>
+                                    <th>product Total</th>
                                     <th>Minimum Payment</th>
                                     <th>Paid</th>
                                     <th>Balance</th>
@@ -194,8 +162,8 @@ include ('header.php');
                                     $sql = "SELECT * FROM payment_details
                                     WHERE id = (
                                         SELECT receiptID
-                                        FROM bookings
-                                        WHERE id = $booking);";
+                                        FROM carts
+                                        WHERE id = $cart);";
                                     //CATCHER
                                     $res = mysqli_query($conn, $sql);
     
@@ -207,8 +175,7 @@ include ('header.php');
                                             //Loop through data
                                             while($rows = mysqli_fetch_assoc($res)){
                                                 $id = $rows['id'];
-                                                $extras = $rows['extras_total'];
-                                                $menu = $rows['menus_total'];
+                                                $product = $rows['products_total'];
                                                 $min = $rows['minPayment'];
                                                 $paid = $rows['paid'];
                                                 $balance = $rows['balance'];
@@ -220,8 +187,7 @@ include ('header.php');
                                                 <tr>
                                                     
                                                     <td><?php echo $total; ?></td>
-                                                    <td><?php echo $menu; ?></td>
-                                                    <td><?php echo $extras; ?></td>
+                                                    <td><?php echo $product; ?></td>
                                                     <td><?php echo $min; ?></td>
                                                     <td><?php echo $paid; ?></td>
                                                     <td><?php echo $balance; ?></td>
@@ -230,8 +196,8 @@ include ('header.php');
                                         }
                                     }
                                     //TO GET DATA
-                                    $sql = "SELECT * FROM bookings
-                                    WHERE id =  $booking;";
+                                    $sql = "SELECT * FROM carts
+                                    WHERE id =  $cart;";
                                     //CATCHER
                                     $res = mysqli_query($conn, $sql);
     
@@ -285,7 +251,7 @@ include ('header.php');
                                 <li>Enter amount.</li>
                                 <li>Enter your name and given code as Message.</li>
                                 <li>Example:</li>
-                                <img src="./images/pay.jpg" style="width:400px;">
+                                <img src="/images/pay.jpg" style="width:400px;">
                             </ul>
                         </div>
                         <br>
