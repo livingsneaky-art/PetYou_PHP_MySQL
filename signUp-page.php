@@ -45,8 +45,8 @@
             }else {
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
                     //SQL QUERY TO INSERT TO DB
-                    $sql = "INSERT INTO user(fName, lName, uName, password)
-                    VALUES('$firstName', '$lastName', '$username', '$pwd');";
+                    $sql = "INSERT INTO user(fName, lName, uName, password, user_type)
+                    VALUES('$firstName', '$lastName', '$username', '$pwd', 'Customer');";
                 }
 
                 //EXECUTING QUERY AND SAVING TO DB
