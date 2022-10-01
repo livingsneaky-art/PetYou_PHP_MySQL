@@ -47,7 +47,7 @@
                 </tr>
                 <?php
                     //TO GET DATA
-                    $sql = "SELECT * FROM events;";
+                    $sql = "SELECT * FROM type_delivery;";
                     //CATCHER
                     $res = $conn->query($sql);
 
@@ -67,10 +67,10 @@
                                 <tr>
                                     <td><?php echo $id; ?></td>
                                     <td><?php echo $title; ?></td>
-                                    <td><img src="<?php echo SITEURL; ?>images/events/<?php echo $image; ?>" alt="" width="100px"></td>
+                                    <td><img src="<?php echo SITEURL; ?>images/delivery/<?php echo $image; ?>" alt="" width="100px"></td>
                                     <td>
-                                        <a href="<?php echo SITEURL; ?>admin/update.events.php?id=<?php echo $id; ?>" class="btn-green btn">Update Events</a>
-                                        <a href="<?php echo SITEURL; ?>admin/delete.events.php?id=<?php echo $id; ?>&image=<?php echo $image; ?>" class="btn-red btn">Delete Events</a>
+                                        <a href="<?php echo SITEURL; ?>admin/update.delivery.php?id=<?php echo $id; ?>" class="btn-green btn">Update Events</a>
+                                        <a href="<?php echo SITEURL; ?>admin/delete.delivery.php?id=<?php echo $id; ?>&image=<?php echo $image; ?>" class="btn-red btn">Delete Events</a>
                                     </td>
                                 </tr>
 
