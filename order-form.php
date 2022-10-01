@@ -107,7 +107,7 @@ if(isset($_POST['submit'])){
 
     //calculate fees
     $product_sql = "SELECT SUM(mt.price * mb.quantity) as 'product total'
-    FROM products_types mt, products_carts mb
+    FROM product mt, product_carts mb
     WHERE mt.id = mb.type
     AND mb.cartID = ?;";
 
@@ -132,7 +132,7 @@ if(isset($_POST['submit'])){
       ";
 
     $stmt_pay = $conn->prepare($query_pay);
-    $stmt_pay->bind_param("iiiii", $payment_id, $product_total, $total, $balance, $min);
+    $stmt_pay->bind_param("iiiii", $payment_id, $product_total, $total, $total, $min);
     $res_pay = $stmt_pay->execute();
 
     if(!$res_pay){
@@ -140,7 +140,7 @@ if(isset($_POST['submit'])){
     } 
 
     //add receipt to cart record
-    $query_cart = "UPDATE carts
+    $query_cart = "UPDATE cart
         SET receiptID = (
             SELECT id 
             FROM payment_details

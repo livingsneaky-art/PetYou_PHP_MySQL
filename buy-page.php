@@ -26,9 +26,9 @@ include ('header.php');
                     echo $_SESSION['contacts'];
                     unset($_SESSION['contacts']);
                 }
-                if (isset($_SESSION['event'])){
-                    echo $_SESSION['event'];
-                    unset($_SESSION['event']);
+                if (isset($_SESSION['delivery'])){
+                    echo $_SESSION['delivery'];
+                    unset($_SESSION['delivery']);
                 }
                 if (isset($_SESSION['menu'])){
                     echo $_SESSION['menu'];
@@ -62,7 +62,7 @@ include ('header.php');
                 </div>
                 <div class="input">
                     
-                    Event Details
+                    delivery Details
 
                     <select name="delivery" id="">
                         <?php
@@ -85,10 +85,10 @@ include ('header.php');
                         ?>
                     </select>
                     Time Start:
-                    <input type="datetime-local" name="event_start">
+                    <input type="datetime-local" name="delivery_start">
                     Time End:
-                    <input type="datetime-local" name="event_end">
-                    <input type="text" name="event_address" placeholder="Address">                    
+                    <input type="datetime-local" name="delivery_end">
+                    <input type="text" name="delivery_address" placeholder="Address">                    
                      
                 </div>
 

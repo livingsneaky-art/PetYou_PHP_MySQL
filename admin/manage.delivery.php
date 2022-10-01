@@ -7,7 +7,7 @@
     <!---main section--->
     <div class="main" style="height:100%;">
         <div class="container">
-            <h2>MANAGE EVENTS</h2>
+            <h2>MANAGE DELIVERY</h2>
 
             <?php
                 if (isset($_SESSION['add'])){
@@ -36,7 +36,7 @@
                 }
             ?>
 
-            <a href="add.events.php" class="button">ADD EVENT</a>
+            <a href="add.delivery.php" class="button">ADD DELIVERY</a>
 
             <table class="tbl-full" style="height:auto;">
                 <tr>
@@ -69,8 +69,8 @@
                                     <td><?php echo $title; ?></td>
                                     <td><img src="<?php echo SITEURL; ?>images/delivery/<?php echo $image; ?>" alt="" width="100px"></td>
                                     <td>
-                                        <a href="<?php echo SITEURL; ?>admin/update.delivery.php?id=<?php echo $id; ?>" class="btn-green btn">Update Events</a>
-                                        <a href="<?php echo SITEURL; ?>admin/delete.delivery.php?id=<?php echo $id; ?>&image=<?php echo $image; ?>" class="btn-red btn">Delete Events</a>
+                                        <a href="<?php echo SITEURL; ?>admin/update.delivery.php?id=<?php echo $id; ?>" class="btn-green btn">Update Delivery</a>
+                                        <a href="<?php echo SITEURL; ?>admin/delete.delivery.php?id=<?php echo $id; ?>&image=<?php echo $image; ?>" class="btn-red btn">Delete Delivery</a>
                                     </td>
                                 </tr>
 

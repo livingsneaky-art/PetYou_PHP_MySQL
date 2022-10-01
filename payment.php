@@ -24,7 +24,7 @@ include ('header.php');
 
                     if($cart){
                     
-                        $order = "SELECT * FROM carts WHERE id = ?;";
+                        $order = "SELECT * FROM cart WHERE id = ?;";
                         $stmt_order = $conn->prepare($order);
                         $stmt_order->bind_param("i", $cart);
                         $stmt_order->execute();
@@ -113,7 +113,7 @@ include ('header.php');
                                 </tr>
                                 <?php
                                     //TO GET DATA
-                                    $query_product = "SELECT mt.id, mt.title, mt.description, mt.price, mb.quantity FROM products_types mt, products_carts mb
+                                    $query_product = "SELECT mt.id, mt.title, mt.description, mt.price, mb.quantity FROM product mt, product_carts mb
                                     WHERE mt.id = mb.type
                                     AND mb.cartID = ?;";  
                                     
@@ -162,7 +162,7 @@ include ('header.php');
                                     $sql = "SELECT * FROM payment_details
                                     WHERE id = (
                                         SELECT receiptID
-                                        FROM carts
+                                        FROM cart
                                         WHERE id = $cart);";
                                     //CATCHER
                                     $res = mysqli_query($conn, $sql);
@@ -251,7 +251,7 @@ include ('header.php');
                                 <li>Enter amount.</li>
                                 <li>Enter your name and given code as Message.</li>
                                 <li>Example:</li>
-                                <img src="/images/pay.jpg" style="width:400px;">
+                                <img src="images/pay.jpg" style="width:400px;">
                             </ul>
                         </div>
                         <br>

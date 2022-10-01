@@ -20,9 +20,9 @@
                     unset($_SESSION['delete']);
                 }
 
-                if (isset($_SESSION['update-event'])){
-                    echo $_SESSION['update-event'];
-                    unset($_SESSION['update-event']);
+                if (isset($_SESSION['update-delivery'])){
+                    echo $_SESSION['update-delivery'];
+                    unset($_SESSION['update-delivery']);
                 }
 
             ?>
@@ -37,7 +37,7 @@
                     <th>Customer Email</th>
                     <th>Status</th>
                     
-                    <th>Event Status</th>
+                    <th>delivery Status</th>
                     <th>Transaction Status</th>
                    
                 </tr>
@@ -56,13 +56,13 @@
                             //Loop through data
                             while($rows = mysqli_fetch_assoc($res)){
                                 $id = $rows['id'];
-                                $event = $rows['cartID'];
+                                $delivery = $rows['deliveryID'];
                                 $customer_name = $rows['customer_name'];
                                 $customer_contact_no = $rows['customer_contact_no'];
                                 $customer_email = $rows['customer_email'];
                                 $receipt = $rows['receiptID'];
                                 $status = $rows['status'];
-                                $event_status = $rows['event_status'];
+                                $delivery_status = $rows['delivery_status'];
                                 $transaction = $rows['transaction_status'];
                                 
 
@@ -70,15 +70,15 @@
 
                                 <tr>
                                     <td><?php echo $id; ?></td>
-                                    <td><?php echo $event; ?></td>
+                                    <td><?php echo $delivery; ?></td>
                                     <td><?php echo $customer_name; ?></td>
                                     <td><?php echo $customer_contact_no; ?></td>
                                     <td><?php echo $customer_email; ?></td>
                                     <td><?php echo $status; ?></td>
-                                    <td><?php echo $event_status; ?></td>
+                                    <td><?php echo $delivery_status; ?></td>
                                     <td><?php echo $transaction; ?></td>
                                     
-                                   <td><?php //echo $event_status; ?>
+                                   <td><?php //echo $delivery_status; ?>
                                     <td><?php //echo $transaction; ?>
                                     
                                     <td class="btn-st">
