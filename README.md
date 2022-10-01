@@ -3,7 +3,8 @@ A fully dynamic functional ecommerce, pet food inventory system created with HTM
 
 ## Features
 #### For admin
- - Manage customer
+ - Manage admin
+ - Manage cart
  - Manage products
  - Manage pets
  - Issue customer adoption ticket (pending)
