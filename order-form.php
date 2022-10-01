@@ -39,6 +39,7 @@ if(isset($_POST['submit'])){
      ////for storing delivery details to delivery_details table
     $query = "INSERT INTO delivery_details
         SET id = ?,
+        deliveryID = ?,
         startTime = ?,
         endTime = ?,
         deliveryAddress = ?,
@@ -48,7 +49,7 @@ if(isset($_POST['submit'])){
             WHERE id = ?);";
 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("isssi", $delivery_id, $start, $end, $address, $delivery_type);
+    $stmt->bind_param("iisssi",$delivery_id, $delivery_id, $start, $end, $address, $delivery_type);
     $res_delivery = $stmt->execute();
 
     if (!$res_delivery){
