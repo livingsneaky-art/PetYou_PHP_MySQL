@@ -33,11 +33,11 @@ Refer to `documentation.
 ## Contributors
  - LLAMIDO, RYAN B.
  - CODOY
- - BARING
+ - BARING, LENEL JOHN N.
  - NARVASA
  - CUTANDA
 
 
 ## Project Status
-Ongoing - 04/10/2022
+Ongoing - 06/10/2022
 
