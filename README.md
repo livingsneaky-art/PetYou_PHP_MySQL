@@ -31,11 +31,11 @@ Refer to `documentation.
 
 
 ## Contributors
- - LLAMIDO, RYAN B.
- - CODOY
  - BARING, LENEL JOHN N.
- - NARVASA
+ - CODOY
  - CUTANDA
+ - LLAMIDO, RYAN B.
+ - NARVASA
 
 
 ## Project Status
