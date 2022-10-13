@@ -12,6 +12,11 @@
             fName VARCHAR(100) NOT NULL,
             lName VARCHAR(100) NOT NULL,
             uName VARCHAR(100) NOT NULL,
+            customer_contact_no VARCHAR(100) NOT NULL,
+            customer_email VARCHAR(100) NOT NULL,
+            deliveryAddress VARCHAR(100) NOT NULL,
+            startTime VARCHAR(200) NOT NULL,
+            endTime VARCHAR(200) NOT NULL,
             password VARCHAR(100) NOT NULL,
             user_type enum('Admin', 'Customer'),
             CONSTRAINT pk_user PRIMARY KEY(id)

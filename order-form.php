@@ -8,8 +8,8 @@ if(isset($_POST['submit'])){
     $customer_number = mysqli_real_escape_string($conn ,$_POST['customer_number']);
     $customer_email = mysqli_real_escape_string($conn, $_POST['customer_email']);
     $delivery_type = mysqli_real_escape_string($conn, $_POST['delivery']);
-    $start = mysqli_real_escape_string($conn, $_POST['delivery_start']);
-    $end = mysqli_real_escape_string($conn, $_POST['delivery_end']);
+    //$start = mysqli_real_escape_string($conn, $_POST['delivery_start']);
+    //$end = mysqli_real_escape_string($conn, $_POST['delivery_end']);
     $address = mysqli_real_escape_string($conn, $_POST['delivery_address']);
     $product_qty = $_POST['product_qty'];
     $cart_id = rand(000, 999);
@@ -40,8 +40,6 @@ if(isset($_POST['submit'])){
     $query = "INSERT INTO delivery_details
         SET id = ?,
         deliveryID = ?,
-        startTime = ?,
-        endTime = ?,
         deliveryAddress = ?,
         delivery_type = (
             SELECT id 
@@ -49,7 +47,7 @@ if(isset($_POST['submit'])){
             WHERE id = ?);";
 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("iisssi",$delivery_id, $delivery_id, $start, $end, $address, $delivery_type);
+    $stmt->bind_param("iisi",$delivery_id, $delivery_id, $address, $delivery_type);
     $res_delivery = $stmt->execute();
 
     if (!$res_delivery){

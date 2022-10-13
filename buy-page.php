@@ -8,7 +8,30 @@ include ('header.php');
     <br>
         <center>
 
-        <?php 
+<?php 
+    $id = $_SESSION['id'];
+    $sql = "SELECT * FROM user WHERE id = $id";
+    $res = $conn->query($sql) or die(mysqli_error($conn));
+    if($res == TRUE){
+        $count = mysqli_num_rows($res);
+
+        if($count == 1){
+            $row = mysqli_fetch_assoc($res);
+            $fName = $row['fName'];
+            $lName = $row['lName'];
+            $customer_number = $row['customer_contact_no'];
+            $customer_email = $row['customer_email'];
+            //$delivery_start = $row['delivery_start'];
+            //$delivery_end = $row['delivery_end'];
+            $Address = $row['deliveryAddress'];
+        }
+    }
+    //$_POST['fName'] = $fName;
+    //$_POST['lName'] = $lName;
+    $_POST['customer_name'] = $fName.$lName;
+    $_POST['customer_number'] = $customer_number;
+    $_POST['customer_email'] = $customer_email;
+    $_POST['delivery_address'] = $Address;
 
     include('order-form.php');
 
@@ -39,27 +62,7 @@ include ('header.php');
                     unset($_SESSION['book']);
                 }
             ?>
-                <h2> Order Form</h2>
-                <div class="input">
-                    <div>
-                        <label for="customer_name">Full Name</label>
-                    </div>
-                    <div>
-                        <input type="text" name="customer_name">
-                    </div>
-                    <div>
-                        <label for="customer_number">Contact Number</label>
-                    </div>
-                    <div>
-                        <input type="text" name="customer_number">
-                    </div>
-                    <div>
-                        <label for="customer_email">Email Address</label>
-                    </div>
-                    <div>
-                        <input type="email" name="customer_email">
-                    </div>
-                </div>
+                
                 <div class="input">
                     
                     delivery Details
@@ -84,11 +87,7 @@ include ('header.php');
                             } 
                         ?>
                     </select>
-                    Time Start:
-                    <input type="datetime-local" name="delivery_start">
-                    Time End:
-                    <input type="datetime-local" name="delivery_end">
-                    <input type="text" name="delivery_address" placeholder="Address">                    
+                                   
                      
                 </div>
 

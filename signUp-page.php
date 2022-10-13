@@ -13,6 +13,18 @@
                 <input type="text" name="last-name" required>  
         </div>
         <div>
+                <label for="customer_number">Contact Number</label>
+                <input type="text" name="customer_number" required>  
+        </div>
+        <div>
+                <label for="customer_email">Email Address</label>
+                <input type="text" name="customer_email" required>  
+        </div>
+        <div>
+                <label for="Address">Address</label>
+                <input type="text" name="Address" required>  
+        </div>
+        <div>
                 <label for="username">Username</label>
                 <input type="text" name="username" required>  
         </div>
@@ -31,6 +43,9 @@
         //GET DATA FROM FORM
         $firstName = trim($_POST['first-name']);
         $lastName = trim($_POST['last-name']);
+        $customer_number = trim($_POST['customer_number']);
+        $customer_email = trim($_POST['customer_email']);
+        $Address = trim($_POST['Address']);
         $username = trim($_POST['username']);
         $pwd = trim(md5($_POST['password']));
 
@@ -45,8 +60,8 @@
             }else {
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
                     //SQL QUERY TO INSERT TO DB
-                    $sql = "INSERT INTO user(fName, lName, uName, password, user_type)
-                    VALUES('$firstName', '$lastName', '$username', '$pwd', 'Customer');";
+                    $sql = "INSERT INTO user(fName, lName, customer_contact_no, customer_email, deliveryAddress, uName, password, user_type)
+                    VALUES('$firstName', '$lastName', '$customer_number', '$customer_email', '$Address', '$username', '$pwd', 'Customer');";
                 }
 
                 //EXECUTING QUERY AND SAVING TO DB
