@@ -8,7 +8,7 @@
 
         $conn->select_db('petyous');
         $conn->query("CREATE TABLE user(
-            id INT NOT NULL AUTO_INCREMENT,
+            userID INT NOT NULL AUTO_INCREMENT,
             fName VARCHAR(100) NOT NULL,
             lName VARCHAR(100) NOT NULL,
             uName VARCHAR(100) NOT NULL,
@@ -19,8 +19,10 @@
             endTime VARCHAR(200) NOT NULL,
             password VARCHAR(100) NOT NULL,
             user_type enum('Admin', 'Customer'),
-            CONSTRAINT pk_user PRIMARY KEY(id)
+            CONSTRAINT pk_user PRIMARY KEY(userID)
         )");
+
+        
 
         $conn->query("CREATE TABLE type_delivery(    
             id INT NOT NULL AUTO_INCREMENT,
@@ -31,12 +33,12 @@
 
 
         $conn->query("CREATE TABLE product(
-             id INT NOT NULL AUTO_INCREMENT,
+            productID INT NOT NULL AUTO_INCREMENT,
             title VARCHAR(100) NOT NULL,
             description VARCHAR(255) NOT NULL,
             price DECIMAL(11, 2) NOT NULL,
             image VARCHAR(255) NOT NULL,
-            CONSTRAINT pk_product PRIMARY KEY(id)
+            CONSTRAINT pk_product PRIMARY KEY(productID)
         )");
 
         $conn->query("CREATE TABLE payment_details(
@@ -69,8 +71,17 @@
             cartID INT NOT NULL,
             quantity INT NOT NULL,
             CONSTRAINT fk_cart_product FOREIGN KEY(cartID) REFERENCES cart(id),
-            CONSTRAINT fk_type_product FOREIGN KEY(type) REFERENCES product(id)
-        )");                
+            CONSTRAINT fk_type_product FOREIGN KEY(type) REFERENCES product(productID)
+        )");            
+        
+        $conn->query("CREATE TABLE bridge(    
+            bridge_id INT NOT NULL AUTO_INCREMENT,
+            userID INT NOT NULL,
+            productID INT NOT NULL,
+            CONSTRAINT fk_user_bridge FOREIGN KEY(userID) REFERENCES user(userID),
+            CONSTRAINT fk_product_bridge FOREIGN KEY(productID) REFERENCES product(productID),
+            CONSTRAINT pk_bridge PRIMARY KEY(bridge_id)
+        )");    
 
         $conn->query("CREATE TABLE delivery_details(
             id INT NOT NULL,

@@ -55,10 +55,11 @@
     //execute the the query
     $res = $conn->query($sql) or die(mysqli_error($conn));
     if($row = $res->fetch_assoc()){
-        $_SESSION['id'] = $row['id'];
+        $_SESSION['id'] = $row['userID'];
         $_SESSION['fName'] = $row['fName'];
         $_SESSION['user_type'] = $row['user_type'];
     }
+
     //execute the the query
 
     $count = mysqli_num_rows($res);

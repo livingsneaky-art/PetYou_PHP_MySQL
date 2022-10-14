@@ -58,7 +58,7 @@
                         if ($count > 0){
                             //Loop through data
                             while($rows = $res->fetch_assoc()){
-                                $id = $rows['id'];
+                                $id = $rows['productID'];
                                 $title = $rows['title'];
                                 $description = $rows['description'];
                                 $price = $rows['price'];

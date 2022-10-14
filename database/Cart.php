@@ -12,7 +12,7 @@ class Cart
     }
 
     // insert into cart table
-    public  function insertIntoCart($params = null, $table = "cart"){
+    public  function insertIntoCart($params = null, $table = "bridge"){
         if ($this->db->con != null){
             if ($params != null){
                 // "Insert into cart(user_id) values (0)"
@@ -35,8 +35,8 @@ class Cart
     public  function addToCart($userid, $itemid){
         if (isset($userid) && isset($itemid)){
             $params = array(
-                "id" => $userid,
-                "id" => $itemid
+                "userID" => $userid,
+                "productID" => $itemid
             );
 
             // insert data into cart
@@ -49,9 +49,9 @@ class Cart
     }
 
     // delete cart item using cart item id
-    public function deleteCart($item_id = null, $table = 'cart'){
+    public function deleteCart($item_id = null, $table = 'bridge'){
         if($item_id != null){
-            $result = $this->db->con->query("DELETE FROM {$table} WHERE item_id={$item_id}");
+            $result = $this->db->con->query("DELETE FROM {$table} WHERE productID={$item_id}");
             if($result){
                 header("Location:" . $_SERVER['PHP_SELF']);
             }
@@ -71,7 +71,7 @@ class Cart
     }
 
     // get item_it of shopping cart list
-    public function getCartId($cartArray = null, $key = "id"){
+    public function getCartId($cartArray = null, $key = "productID"){
         if ($cartArray != null){
             $cart_id = array_map(function ($value) use($key){
                 return $value[$key];
@@ -81,10 +81,10 @@ class Cart
     }
 
     // Save for later
-    public function saveForLater($item_id = null, $saveTable = "wishlist", $fromTable = "cart"){
+    public function saveForLater($item_id = null, $saveTable = "wishlist", $fromTable = "bridge"){
         if ($item_id != null){
-            $query = "INSERT INTO {$saveTable} SELECT * FROM {$fromTable} WHERE item_id={$item_id};";
-            $query .= "DELETE FROM {$fromTable} WHERE item_id={$item_id};";
+            $query = "INSERT INTO {$saveTable} SELECT * FROM {$fromTable} WHERE productID={$item_id};";
+            $query .= "DELETE FROM {$fromTable} WHERE productID={$item_id};";
 
             // execute multiple query
             $result = $this->db->con->multi_query($query);

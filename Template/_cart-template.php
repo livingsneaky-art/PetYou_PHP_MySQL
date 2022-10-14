@@ -2,12 +2,12 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         if (isset($_POST['delete-cart-submit'])){
-            $deletedrecord = $Cart->deleteCart($_POST['item_id']);
+            $deletedrecord = $Cart->deleteCart($_POST['productID']);
         }
 
         // save for later
         if (isset($_POST['wishlist-submit'])){
-            $Cart->saveForLater($_POST['item_id']);
+            $Cart->saveForLater($_POST['productID']);
         }
     }
 ?>
@@ -20,18 +20,18 @@
         <div class="row">
             <div class="col-sm-9">
                 <?php
-                    foreach ($product->getData('cart') as $item) :
-                        $cart = $product->getProduct($item['item_id']);
+                    foreach ($product->getData('bridge') as $item) :
+                        $cart = $product->getProduct($item['productID']);
                         $subTotal[] = array_map(function ($item){
                 ?>
                 <!-- cart item -->
                 <div class="row border-top py-3 mt-3">
                     <div class="col-sm-2">
-                        <img src="<?php echo $item['item_image'] ?? "./assets/products/1.png" ?>" style="height: 120px;" alt="cart1" class="img-fluid">
+                        <img src="<?php echo SITEURL; ?>images/product/<?php echo $item['image']; ?>" alt="" style="height: 120px;" class="img-fluid">
                     </div>
                     <div class="col-sm-8">
-                        <h5 class="font-baloo font-size-20"><?php echo $item['item_name'] ?? "Unknown"; ?></h5>
-                        <small>by <?php echo $item['item_brand'] ?? "Brand"; ?></small>
+                        <h5 class="font-baloo font-size-20"><?php echo $item['description'] ?? "Unknown"; ?></h5>
+                        <small>by <?php echo $item['title'] ?? "Brand"; ?></small>
                         <!-- product rating -->
                         <div class="d-flex">
                             <div class="rating text-warning font-size-12">
@@ -48,18 +48,18 @@
                         <!-- product qty -->
                         <div class="qty d-flex pt-2">
                             <div class="d-flex font-rale w-25">
-                                <button class="qty-up border bg-light" data-id="<?php echo $item['item_id'] ?? '0'; ?>"><i class="fas fa-angle-up"></i></button>
-                                <input type="text" data-id="<?php echo $item['item_id'] ?? '0'; ?>" class="qty_input border px-2 w-100 bg-light" disabled value="1" placeholder="1">
-                                <button data-id="<?php echo $item['item_id'] ?? '0'; ?>" class="qty-down border bg-light"><i class="fas fa-angle-down"></i></button>
+                                <button class="qty-up border bg-light" data-id="<?php echo $item['productID'] ?? '0'; ?>"><i class="fas fa-angle-up"></i></button>
+                                <input type="text" data-id="<?php echo $item['productID'] ?? '0'; ?>" class="qty_input border px-2 w-100 bg-light" disabled value="1" placeholder="1">
+                                <button data-id="<?php echo $item['productID'] ?? '0'; ?>" class="qty-down border bg-light"><i class="fas fa-angle-down"></i></button>
                             </div>
 
                             <form method="post">
-                                <input type="hidden" value="<?php echo $item['item_id'] ?? 0; ?>" name="item_id">
+                                <input type="hidden" value="<?php echo $item['productID'] ?? 0; ?>" name="productID">
                                 <button type="submit" name="delete-cart-submit" class="btn font-baloo text-danger px-3 border-right">Delete</button>
                             </form>
 
                             <form method="post">
-                                <input type="hidden" value="<?php echo $item['item_id'] ?? 0; ?>" name="item_id">
+                                <input type="hidden" value="<?php echo $item['productID'] ?? 0; ?>" name="productID">
                                 <button type="submit" name="wishlist-submit" class="btn font-baloo text-danger">Save for Later</button>
                             </form>
 
@@ -71,13 +71,13 @@
 
                     <div class="col-sm-2 text-right">
                         <div class="font-size-20 text-danger font-baloo">
-                            $<span class="product_price" data-id="<?php echo $item['item_id'] ?? '0'; ?>"><?php echo $item['item_price'] ?? 0; ?></span>
+                            $<span class="product_price" data-id="<?php echo $item['productID'] ?? '0'; ?>"><?php echo $item['price'] ?? 0; ?></span>
                         </div>
                     </div>
                 </div>
                 <!-- !cart item -->
                 <?php
-                            return $item['item_price'];
+                            return $item['price'];
                         }, $cart); // closing array_map function
                     endforeach;
                 ?>

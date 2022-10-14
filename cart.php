@@ -7,16 +7,16 @@ include ('header.php');
 <?php
 
     /*  include cart items if it is not empty */
-        count($product->getData('cart')) ? include ('Template/_cart-template.php') :  include ('Template/notFound/_cart_notFound.php');
+        count($product->getData('bridge')) ? include ('Template/_cart-template.php') :  include ('Template/notFound/_cart_notFound.php');
     /*  include cart items if it is not empty */
 
         /*  include top sale section */
-        count($product->getData('wishlist')) ? include ('Template/_wishilist_template.php') :  include ('Template/notFound/_wishlist_notFound.php');
+      //  count($product->getData('wishlist')) ? include ('Template/_wishilist_template.php') :  include ('Template/notFound/_wishlist_notFound.php');
         /*  include top sale section */
 
 
     /*  include top sale section */
-        include ('Template/_new-products.php');
+     //   include ('Template/_new-products.php');
     /*  include top sale section */
 
 ?>

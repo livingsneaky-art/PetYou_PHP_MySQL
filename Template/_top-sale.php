@@ -7,7 +7,7 @@
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if (isset($_POST['top_sale_submit'])){
             // call method addToCart
-            $Cart->addToCart($_POST['id'], $_POST['id']);
+            $Cart->addToCart($_SESSION['id'], $_POST['productID']);
         }
     }
 ?>
@@ -20,7 +20,7 @@
             <?php foreach ($product_shuffle as $item) { ?>
             <div class="item py-2">
                 <div class="product font-rale">
-                    <a href="<?php printf('%s?id=%s', 'product.php',  $item['id']); ?>"><img src="<?php echo SITEURL; ?>images/product/<?php echo $item['image']; ?>" alt="" width="100px" height="200px" ></a>
+                    <a href="<?php printf('%s?productID=%s', 'product.php',  $item['productID']); ?>"><img src="<?php echo SITEURL; ?>images/product/<?php echo $item['image']; ?>" alt="" width="100px" height="200px" ></a>
                     <div class="text-center">
                         <h6><?php echo  $item['description'] ?? "Unknown";  ?></h6>
                         <div class="rating text-warning font-size-12">
@@ -34,10 +34,10 @@
                             <span>$<?php echo $item['price'] ?? '0' ; ?></span>
                         </div>
                         <form method="post">
-                            <input type="hidden" name="id" value="<?php echo $item['id'] ?? '1'; ?>">
-                            <input type="hidden" name="id" value="<?php echo 1; ?>">
+                            <input type="hidden" name="productID" value="<?php echo $item['productID'] ?? '1'; ?>">
+                            
                             <?php
-                            if (in_array($item['id'], $Cart->getCartId($product->getData('cart')) ?? [])){
+                            if (in_array($item['productID'], $Cart->getCartId($product->getData('bridge')) ?? [])){
                                 echo '<button type="submit" disabled class="btn btn-success font-size-12">In the Cart</button>';
                             }else{
                                 echo '<button type="submit" name="top_sale_submit" class="btn btn-warning font-size-12">Add to Cart</button>';
