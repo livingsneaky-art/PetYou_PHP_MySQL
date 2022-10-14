@@ -35,8 +35,8 @@ class Cart
     public  function addToCart($userid, $itemid){
         if (isset($userid) && isset($itemid)){
             $params = array(
-                "user_id" => $userid,
-                "item_id" => $itemid
+                "id" => $userid,
+                "id" => $itemid
             );
 
             // insert data into cart
@@ -71,7 +71,7 @@ class Cart
     }
 
     // get item_it of shopping cart list
-    public function getCartId($cartArray = null, $key = "item_id"){
+    public function getCartId($cartArray = null, $key = "id"){
         if ($cartArray != null){
             $cart_id = array_map(function ($value) use($key){
                 return $value[$key];

@@ -1,8 +1,8 @@
 <!--   product  -->
 <?php
-    $item_id = $_GET['item_id'] ?? 1;
+    $item_id = $_GET['id'] ?? 1;
     foreach ($product->getData() as $item) :
-        if ($item['item_id'] == $item_id) :
+        if ($item['id'] == $item_id) :
 ?>
 <section id="product" class="py-3">
     <div class="container">

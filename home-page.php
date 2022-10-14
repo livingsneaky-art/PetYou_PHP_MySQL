@@ -14,15 +14,15 @@
 /*  include top sale section */
 
 /*  include special price section  */
-     include ('Template/_special-price.php');
+     //include ('Template/_special-price.php');
 /*  include special price section  */
 
 /*  include banner ads  */
-    include ('Template/_banner-ads.php');
+   // include ('Template/_banner-ads.php');
 /*  include banner ads  */
 
 /*  include new products section  */
-    include ('Template/_new-products.php');
+    //include ('Template/_new-products.php');
 /*  include new phones section  */
 
 /*  include blog area  */
