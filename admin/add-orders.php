@@ -40,7 +40,7 @@
 
                             if($count > 0){
                                 while($row = mysqli_fetch_assoc($res)){
-                                    $id = $row['id'];
+                                    $id = $row['productID'];
                                     $title = $row['title'];
                                     $image_name = $row['image'];
                                     $descritpion = $row['description'];

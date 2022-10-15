@@ -12,7 +12,7 @@
         //Get id to be edit
         $id = $_GET['id'];
         //SQL query to get data
-        $sql = "SELECT * FROM product WHERE id = $id;";
+        $sql = "SELECT * FROM product WHERE productID = $id;";
 
         //To execute the query
         $res = $conn->query($sql);
@@ -124,7 +124,7 @@ $sql = "UPDATE product
     description = '$description',
     price = '$price',
     image = '$image_name'
-    WHERE id = '$id';";
+    WHERE productID = '$id';";
 
 //to execute the query
 

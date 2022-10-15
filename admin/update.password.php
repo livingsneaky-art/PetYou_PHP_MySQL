@@ -9,9 +9,7 @@
            <h1>CHANGE PASSWORD</h1>
 
            <?php
-            if (isset($_GET['id'])){
                 $id = $_GET['id'];
-            }
             ?>
            <form action="" method="POST" class="form">
                <div>
@@ -45,7 +43,7 @@
 
         //get data from DB
         $sql = "SELECT * FROM user 
-            WHERE id = $id
+            WHERE userID = $id
             AND password='$currentpass';";
 
         //execute query
@@ -61,7 +59,7 @@
                     //SQL query to cahnge password
                     $sql2 = "UPDATE user
                         SET password = '$newpass'
-                        WHERE id = $id;";
+                        WHERE userID = $id;";
 
                     $res2 = $conn->query($sql2);
 

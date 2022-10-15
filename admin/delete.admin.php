@@ -7,7 +7,7 @@
     $id = $_GET['id'];
 
     //creating sql command to delete admin
-    $sql = "DELETE FROM user WHERE id=$id;";
+    $sql = "DELETE FROM user WHERE userID=$id;";
 
     //to execute the query
     $res = $conn->query($sql);

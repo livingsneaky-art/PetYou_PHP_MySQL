@@ -12,7 +12,7 @@
         //Get id of admin to be edit
         $id = $_GET['id'];
         //SQL query to get data
-        $sql = "SELECT * FROM user WHERE id = $id;";
+        $sql = "SELECT * FROM user WHERE userID = $id;";
 
         //To execute the query
         $res = $conn->query($sql);
@@ -63,7 +63,7 @@ $sql = "UPDATE user
     SET fName = '$fName',
     lName = '$lName',
     uName = '$uName'
-    WHERE id = '$id';";
+    WHERE userID = '$id';";
 
 //to execute the query
 $res = $conn->query($sql);

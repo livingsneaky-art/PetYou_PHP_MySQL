@@ -12,7 +12,7 @@
        
 
         //creating sql command to delete
-        $sql = "DELETE FROM product WHERE id=$id;";
+        $sql = "DELETE FROM product WHERE productID=$id;";
 
         //to execute the query
         $res = $conn->query($sql);

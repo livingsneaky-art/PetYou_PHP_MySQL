@@ -63,7 +63,7 @@
                         if ($count > 0){
                             //Loop through data
                             while($rows = $res->fetch_assoc()){
-                                $id = $rows['id'];
+                                $id = $rows['userID'];
                                 $fName = $rows['fName'];
                                 $lName = $rows['lName'];
                                 $username = $rows['uName'];
