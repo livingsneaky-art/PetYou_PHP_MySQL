@@ -1,21 +1,21 @@
 <!--   product  -->
 <?php
-    $item_id = $_GET['id'] ?? 1;
+    $item_id = $_GET['productID'] ?? 1;
     foreach ($product->getData() as $item) :
-        if ($item['id'] == $item_id) :
+        if ($item['productID'] == $item_id) :
 ?>
 <section id="product" class="py-3">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <img src="<?php echo $item['item_image'] ?? "./assets/products/1.png" ?>" alt="product" class="img-fluid">
+                <img src="<?php echo SITEURL; ?>images/product/<?php echo $item['image']; ?>" alt=""  class="img-fluid">
                 <div class="form-row pt-4 font-size-16 font-baloo">
                     <div class="col">
                         <button type="submit" class="btn btn-danger form-control">Proceed to Buy</button>
                     </div>
                     <div class="col">
                         <?php
-                        if (in_array($item['item_id'], $Cart->getCartId($product->getData('cart')) ?? [])){
+                        if (in_array($item['productID'], $Cart->getCartId($product->getData('bridge')) ?? [])){
                             echo '<button type="submit" disabled class="btn btn-success font-size-16 form-control">In the Cart</button>';
                         }else{
                             echo '<button type="submit" name="top_sale_submit" class="btn btn-warning font-size-16 form-control">Add to Cart</button>';
