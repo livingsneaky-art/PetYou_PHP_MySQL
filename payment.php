@@ -6,22 +6,12 @@ include ('header.php');
 
     <!---main section--->
     <div style="background-color:#F7DAD9; min-height:100vh; padding-top:1em; padding-bottom:1em;">
-        <div class="form-container">
-            <form action="" method="POST" class="form-overlay">
-                <h2>Your Order</h2>
-                <div>
-                
-                    <label for="cart">Enter Code</label>
-                    <input type="text" name="cart">
-              
-                   <button class="button" type="submit" name="submit" >Submit</button> 
-                   
-                </div>
+        
                 
             <?php
-                if(isset($_POST['submit'])){
-                    $cart = mysqli_real_escape_string($conn, $_POST['cart']);
-
+            //$_POST['cart_id'] = 17;
+               if(isset($_SESSION['cart_id'])){
+                    $cart =  mysqli_real_escape_string($conn, $_SESSION['cart_id']);  
                     if($cart){
                     
                         $order = "SELECT * FROM cart WHERE id = ?;";
@@ -104,7 +94,7 @@ include ('header.php');
                         <table class="tbl-full" style="height:auto; table-layout: auto;
     width: 100%;">
                         <br>
-                            <h3>product/Extras</h3>
+                            <h3>PRODUCT</h3>
                                 <tr>
                                     <th>Title</th>
                                     <th>Description</th>
@@ -113,8 +103,8 @@ include ('header.php');
                                 </tr>
                                 <?php
                                     //TO GET DATA
-                                    $query_product = "SELECT mt.id, mt.title, mt.description, mt.price, mb.quantity FROM product mt, product_carts mb
-                                    WHERE mt.id = mb.type
+                                    $query_product = "SELECT mt.productID, mt.title, mt.description, mt.price, mb.quantity FROM product mt, product_carts mb
+                                    WHERE mt.productID = mb.type
                                     AND mb.cartID = ?;";  
                                     
                                     $stmt_product = $conn->prepare($query_product);
@@ -124,7 +114,7 @@ include ('header.php');
                                 
                                             //Loop through data
                                         while($rows_product = $res_product->fetch_assoc()){
-                                            $product_id = $rows_product['id'];
+                                            $product_id = $rows_product['productID'];
                                             $product_title = $rows_product['title'];
                                             $product_desc = $rows_product['description'];
                                             $product_price = $rows_product['price'];
@@ -237,7 +227,7 @@ include ('header.php');
                             <?php
                         }
                     }
-                }
+               }
 
                             ?>
 
@@ -262,8 +252,7 @@ include ('header.php');
                             </ul>
                         </div>
                     </div>
-                </form>
-        </div>
+          
     </div>
 
 <?php

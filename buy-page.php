@@ -34,7 +34,7 @@ include ('header.php');
     $_POST['delivery_address'] = $Address;
 
     include('order-form.php');
-
+    
 ?>
 </center>
         <div class="form-container">
@@ -69,6 +69,7 @@ include ('header.php');
 
                     <select name="delivery" id="">
                         <?php
+                      
                             //to get data from database
                             $sql = "SELECT * FROM type_delivery;";
                             //execute the query

@@ -74,8 +74,8 @@ if(isset($_POST['submit'])){
     }
     
     //create product record
-    if (!empty($_POST['product'])){
-        $products = $_POST['product'];
+    if (!empty($_POST['productID'])){
+        $products = $_POST['productID'];
         
         $product_query = "INSERT INTO product_carts
             SET
@@ -85,9 +85,9 @@ if(isset($_POST['submit'])){
                 FROM cart
                 WHERE id = ?),
             type = (
-                SELECT id
+                SELECT productID
                 FROM product
-                WHERE id = ?);";
+                WHERE productID = ?);";
 
         $product_stmt = $conn->prepare($product_query);
         $product_stmt->bind_param("iii", $p_qty, $cart_id, $product);
@@ -107,7 +107,7 @@ if(isset($_POST['submit'])){
     //calculate fees
     $product_sql = "SELECT SUM(mt.price * mb.quantity) as 'product total'
     FROM product mt, product_carts mb
-    WHERE mt.id = mb.type
+    WHERE mt.productID = mb.type
     AND mb.cartID = ?;";
 
     $stmt_product = $conn->prepare($product_sql);
