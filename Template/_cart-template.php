@@ -22,12 +22,13 @@
        
             <div class="col-sm-9">
             <?php
+            $subTotal = 0;
                 $id = $_SESSION['id'];
                 $sql = "SELECT * FROM product p, bridge b WHERE p.productID = b.productID AND b.userID = $id"; 
                 $res = mysqli_query($conn, $sql);
+                $count = mysqli_num_rows($res);
                 while($row = $res->fetch_assoc()){
-                    $subTotal = 0;
-                    $subTotal += ($row['price'] );
+                    
                 ?>
                 <!-- cart item -->
                 <div class="row border-top py-3 mt-3">
@@ -78,7 +79,7 @@
                 </div>
                 <!-- !cart item -->
                 <?php 
-                   // return $subTotal;
+                    $subTotal += ($row['price'] );
                     }
                 ?>
             </div>
@@ -88,7 +89,7 @@
                 <div class="sub-total border text-center mt-2">
                     <h6 class="font-size-12 font-rale text-success py-3"><i class="fas fa-check"></i> Your order is eligible for FREE Delivery.</h6>
                     <div class="border-top py-4">
-                        <h5 class="font-baloo font-size-20">Subtotal ( <?php echo isset($subTotal) ? $subTotal : 0; ?> item):&nbsp; <span class="text-danger">$<span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $subTotal : 0; ?></span> </span> </h5>
+                        <h5 class="font-baloo font-size-20">Subtotal ( <?php echo isset($subTotal) ? $count : 0; ?> item):&nbsp; <span class="text-danger">$<span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $subTotal : 0; ?></span> </span> </h5>
                         <button type="submit" class="btn btn-warning mt-3">Proceed to Buy</button>
                     </div>
                 </div>
@@ -98,6 +99,5 @@
         <!--  !shopping cart items   -->
     </div>
 </section>
-
 
 
