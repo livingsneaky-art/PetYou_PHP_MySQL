@@ -1,32 +1,6 @@
 <!--   product  -->
 <?php
-    $id = $_SESSION['id'];
-    print_r($id);
-    $sql = "SELECT * FROM user WHERE userID=$id";
-    $res = $conn->query($sql) or die(mysqli_error($conn));;
-    if($res == TRUE){
-        $count = mysqli_num_rows($res);
-
-        if($count == 1){
-            $row = mysqli_fetch_assoc($res);
-            $fName = $row['fName'];
-            $lName = $row['lName'];
-            $customer_number = $row['customer_contact_no'];
-            $customer_email = $row['customer_email'];
-            //$delivery_start = $row['delivery_start'];
-            //$delivery_end = $row['delivery_end'];
-            $Address = $row['deliveryAddress'];
-        }
-    }
-    //$_POST['fName'] = $fName;
-    //$_POST['lName'] = $lName;
-    $_POST['customer_name'] = $fName.$lName;
-    $_POST['customer_number'] = $customer_number;
-    $_POST['customer_email'] = $customer_email;
-    $_POST['delivery_address'] = $Address;
-
-    include('order-form.php');
-
+    
     $item_id = $_GET['productID'] ?? 1;
     foreach ($product->getData() as $item) :
         if ($item['productID'] == $item_id) :
@@ -36,24 +10,13 @@
         <div class="row">
             <div class="col-sm-6">
                 <img src="<?php echo SITEURL; ?>images/product/<?php echo $item['image']; ?>" alt=""  class="img-fluid">
-                <div class="form-row pt-4 font-size-16 font-baloo">
-                    <div class="col">
-                        <button type="submit" class="btn btn-danger form-control">Proceed to Buy</button>
-                    </div>
-                    <div class="col">
-                        <?php
-                        if (in_array($item['productID'], $Cart->getCartId($product->getData('bridge')) ?? [])){
-                            echo '<button type="submit" disabled class="btn btn-success font-size-16 form-control">In the Cart</button>';
-                        }else{
-                            echo '<button type="submit" name="top_sale_submit" class="btn btn-warning font-size-16 form-control">Add to Cart</button>';
-                        }
-                        ?>
-                    </div>
+                <div style="padding-top: 50px;">
+                    
                 </div>
             </div>
             <div class="col-sm-6 py-5">
-                <h5 class="font-baloo font-size-20"><?php echo $item['item_name'] ?? "Unknown"; ?></h5>
-                <small>by <?php echo $item['item_brand'] ?? "Brand"; ?></small>
+                <h5 class="font-baloo font-size-20"><?php echo $item['title'] ?? "Unknown"; ?></h5>
+                <small>by <?php echo $item['idk'] ?? "LRK"; ?></small>
                 <div class="d-flex">
                     <div class="rating text-warning font-size-12">
                         <span><i class="fas fa-star"></i></span>
@@ -74,7 +37,7 @@
                     </tr>
                     <tr class="font-rale font-size-14">
                         <td>Deal Price:</td>
-                        <td class="font-size-20 text-danger">$<span><?php echo $item['item_price'] ?? 0; ?></span><small class="text-dark font-size-12">&nbsp;&nbsp;Inclusive of all taxes</small></td>
+                        <td class="font-size-20 text-danger">$<span><?php echo $item['price'] ?? 0; ?></span><small class="text-dark font-size-12">&nbsp;&nbsp;Inclusive of all taxes</small></td>
                     </tr>
                     <tr class="font-rale font-size-14">
                         <td>You Save:</td>
@@ -85,33 +48,6 @@
 
                 <!--    #policy -->
                 <div id="policy">
-                <div class="input">
-                    
-                    delivery Details
-
-                    <select name="delivery" id="">
-                        <?php
-                            //to get data from database
-                            $sql = "SELECT * FROM type_delivery;";
-                            //execute the query
-                            $res = mysqli_query($conn, $sql);
-                            //count rows
-                            $count = mysqli_num_rows($res);
-
-                            if($count > 0){
-                                while($row = mysqli_fetch_assoc($res)){
-                                    $title = $row['title'];
-                                    $id = $row['id'];
-                        ?>
-                            <option value="<?php echo $id; ?>"><?php echo $title; ?></option>
-                            <?php 
-                                }
-                            } 
-                        ?>
-                    </select>
-                                   
-                     
-                </div>
                     <div class="d-flex">
                         <div class="return text-center mr-5">
                             <div class="font-size-20 my-2 color-second">
@@ -138,9 +74,7 @@
 
                 <!-- order-details -->
                 <div id="order-details" class="font-rale d-flex flex-column text-dark">
-                    <small>Delivery by : Mar 29  - Apr 1</small>
-                    <small>Sold by <a href="#">Daily Electronics </a>(4.5 out of 5 | 18,198 ratings)</small>
-                    <small><i class="fas fa-map-marker-alt color-primary"></i>&nbsp;&nbsp;Deliver to Customer - 424201</small>
+                    <small>Sold by <a href="#">LRK </a>(4.5 out of 5 | 18,198 ratings)</small>
                 </div>
                 <!-- !order-details -->
 
@@ -156,18 +90,6 @@
                             </div>
                         </div>
                         <!-- !color -->
-                    </div>
-                    <div class="col-6">
-                        <!-- product qty section -->
-                        <div class="qty d-flex">
-                            <h6 class="font-baloo">Qty</h6>
-                            <div class="px-4 d-flex font-rale">
-                                <button class="qty-up border bg-light" data-id="pro1"><i class="fas fa-angle-up"></i></button>
-                                <input type="text" data-id="pro1" class="qty_input border px-2 w-50 bg-light" disabled value="1" placeholder="1">
-                                <button data-id="pro1" class="qty-down border bg-light"><i class="fas fa-angle-down"></i></button>
-                            </div>
-                        </div>
-                        <!-- !product qty section -->
                     </div>
                 </div>
 
@@ -194,8 +116,8 @@
             <div class="col-12">
                 <h6 class="font-rubik">Product Description</h6>
                 <hr>
-                <p class="font-rale font-size-14">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat inventore vero numquam error est ipsa, consequuntur temporibus debitis nobis sit, delectus officia ducimus dolorum sed corrupti. Sapiente optio sunt provident, accusantium eligendi eius reiciendis animi? Laboriosam, optio qui? Numquam, quo fuga. Maiores minus, accusantium velit numquam a aliquam vitae vel?</p>
-                <p class="font-rale font-size-14">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat inventore vero numquam error est ipsa, consequuntur temporibus debitis nobis sit, delectus officia ducimus dolorum sed corrupti. Sapiente optio sunt provident, accusantium eligendi eius reiciendis animi? Laboriosam, optio qui? Numquam, quo fuga. Maiores minus, accusantium velit numquam a aliquam vitae vel?</p>
+                
+                <p class="font-rale font-size-14"><?php echo $item['description'] ?? "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat inventore vero numquam error est ipsa, consequuntur temporibus debitis nobis sit, delectus officia ducimus dolorum sed corrupti. Sapiente optio sunt provident, accusantium eligendi eius reiciendis animi? Laboriosam, optio qui? Numquam, quo fuga. Maiores minus, accusantium velit numquam a aliquam vitae vel?"; ?></p>
             </div>
         </div>
     </div>

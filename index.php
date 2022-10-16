@@ -107,7 +107,7 @@
     /*  include banner area  */
 
     /*  include top sale section */
-        include ('Template/_top-sale.php');
+        include ('Template/_top-sale2.php');
     /*  include top sale section */
 
     /*  include special price section  */
