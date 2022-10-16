@@ -14,7 +14,7 @@ class Product
     // fetch product data using getData Method
     public function getData($table = 'product'){
         $result = $this->db->con->query("SELECT * FROM {$table}");
-
+        
         $resultArray = array();
 
         // fetch product data one by one
