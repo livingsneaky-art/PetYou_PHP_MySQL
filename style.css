@@ -85,13 +85,15 @@ button, button:focus {
     padding: 0 1rem;
 }
 #top-sale .owl-carousel .owl-nav button.owl-prev span {
-    margin-left: -4rem;
+    overflow: 2;
+    margin-left: -3.5rem;
 }
 #top-sale .owl-carousel .owl-nav button.owl-next {
     right: 0;
 }
 #top-sale .owl-carousel .owl-nav button.owl-next span {
-    margin-right: -4rem;
+    overflow: 2;
+    margin-right: -3.5rem;
 }
 
 /*   Special Price Section Template */
@@ -100,4 +102,23 @@ button, button:focus {
     margin-top: 1rem;
 }
 
+
+.home{
+    padding-top: -5rem;
+    background-color: #98C9A3;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border: 2px;
+    border-radius: 20px;
+    align-items: center;
+}
+
+.htitle{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#main-site{
+    background-color: #FFFFE9;
+}
 /*# sourceMappingURL=style.css.map */

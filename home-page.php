@@ -3,10 +3,14 @@
     // include header.php file
     include ('header.php');
 ?>
+    <img src="./assets/Banner1.png" alt="Banner1" width="100%">
+
+
+
+
 <?php
 
 /*  include banner area  */
-    include ('Template/_banner-area.php');
 /*  include banner area  */
 
 /*  include top sale section */

@@ -12,13 +12,12 @@
     }
 ?>
 <section id="top-sale">
-    <div class="container py-5">
-        <h4 class="font-rubik font-size-20">Top Sale</h4>
-        <hr>
+    <div class="container py-3 px-5 home">
+        <p class="htitle">AVAIL PRODUCTS</p>
         <!-- owl carousel -->
         <div class="owl-carousel owl-theme">
             <?php foreach ($product_shuffle as $item) { ?>
-            <div class="item py-2">
+            <div class="item py-2 mr-5">
                 <div class="product font-rale">
                     <a href="<?php printf('%s?productID=%s', 'product.php',  $item['productID']); ?>"><img src="<?php echo SITEURL; ?>images/product/<?php echo $item['image']; ?>" alt="" class="img-fluid"></a>
                     <div class="text-center">
