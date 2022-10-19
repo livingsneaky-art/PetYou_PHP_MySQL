@@ -5,11 +5,12 @@
 ?>         
  <!---main section--->
  <div class="main" style="height:100%; padding-bottom:15em;">
+        <div class="container-fluid w-100 bg-white text-center d-flex justify-content-center align-items-center" style="min-height:40vh;">
+            <h2 style="color: #BFD8BD;font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 7vw; color: #BFD8BD; text-shadow: 4px 4px 4px #000; ">PRODUCTS</h2>
+        </div>
         <div class="container-fluid w-75">
-            <h2>PRODUCTS</h2>
-            
-         
-            <div class="row">
+           
+            <div class="row mt-5">
                 <?php
                     //TO GET DATA
                     $sql = "SELECT * FROM product;";
