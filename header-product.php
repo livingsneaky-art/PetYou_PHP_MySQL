@@ -31,34 +31,48 @@
 
 <!-- start #header -->
 <header id="header">
-    
 
     <!-- Primary Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark color-second-bg">
-        <a class="navbar-brand" href="index.php">PetYou</a>
+        <a class="navbar-brand" href="home-page.php">PetYou</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav m-auto font-rubik">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.php">HOME</a>
+                <li class="nav-item ">
+                    <a class="nav-link" href="home-page.php">HOME</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="product-view.php">PRODUCT <i class="fas fa-chevron-down"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="aboutUs.php">ABOUT US </a>
                 </li>
+                <!--<li class="nav-item">
+                    <a class="nav-link" href="#">ADOPTION</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CATEGORY <i class="fas fa-chevron-down"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Coming Soon</a>
+                </li>-->
             </ul>
+            <a style="text-decoration: none; color: black; padding-right: 30px; font-weight: bold;" class='btn btn-warmomg' href='payment.php'>Check your order</a>
+            <form style="padding-right: 30px;" action="#" class="font-size-14 font-rale">
+                <a href="cart.php" class="py-2 rounded-pill color-primary-bg">
+                    <span class="font-size-16 px-2 text-white"><i class="fas fa-shopping-cart"></i></span>
+                    <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php echo count($product->getData('bridge')); ?></span>
+                </a>
+            </form>
             <div>
-                <a style="text-decoration: none; color: black; padding-right: 30px; font-weight: bold;" href="login-page.php">LOGIN</a>
+                <a style="text-decoration: none; color: black; padding-right: 30px; font-weight: bold;" href="<?php echo SITEURL; ?>profile.php">PROFILE</a>
             </div>
             <div>
-                <a style="text-decoration: none; color: black; font-weight: bold;" href="signUp-page.php">SIGN UP</a>
+                <a style="text-decoration: none; color: black; font-weight: bold;" href="<?php echo SITEURL; ?>logout.php">LOGOUT</a>
             </div>
         </div>
-        
     </nav>
     <!-- !Primary Navigation -->
 

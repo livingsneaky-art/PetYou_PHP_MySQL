@@ -31,13 +31,6 @@
 
 <!-- start #header -->
 <header id="header">
-    <div class="strip d-flex justify-content-between px-4 py-1 bg-light">
-        <p class="font-rale font-size-12 text-black-50 m-0"></p>
-        <div class="font-rale font-size-14">
-            <a href="<?php echo SITEURL; ?>logout.php" class="px-3 border-right border-left text-dark">Logout</a>
-            <a href="#" class="px-3 border-right text-dark">Whishlist (0)</a>
-        </div>
-    </div>
 
     <!-- Primary Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark color-second-bg">
@@ -51,13 +44,10 @@
                     <a class="nav-link" href="home-page.php">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">PRODUCT <i class="fas fa-chevron-down"></i></a>
+                    <a class="nav-link" href="product-view.php">PRODUCT <i class="fas fa-chevron-down"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ABOUT US </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="buy-page.php">BUY</a>
+                    <a class="nav-link" href="aboutUs.php">ABOUT US </a>
                 </li>
                 <!--<li class="nav-item">
                     <a class="nav-link" href="#">ADOPTION</a>
@@ -69,13 +59,19 @@
                     <a class="nav-link" href="#">Coming Soon</a>
                 </li>-->
             </ul>
-            <form action="#" class="font-size-14 font-rale">
-            <a class='btn btn-warmomg' href='payment.php'>Check your order.</a>
+            <a style="text-decoration: none; color: black; padding-right: 30px; font-weight: bold;" class='btn btn-warmomg' href='payment.php'>Check your order</a>
+            <form style="padding-right: 30px;" action="#" class="font-size-14 font-rale">
                 <a href="cart.php" class="py-2 rounded-pill color-primary-bg">
                     <span class="font-size-16 px-2 text-white"><i class="fas fa-shopping-cart"></i></span>
                     <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php echo count($product->getData('bridge')); ?></span>
                 </a>
             </form>
+            <div>
+                <a style="text-decoration: none; color: black; padding-right: 30px; font-weight: bold;" href="<?php echo SITEURL; ?>profile.php">PROFILE</a>
+            </div>
+            <div>
+                <a style="text-decoration: none; color: black; font-weight: bold;" href="<?php echo SITEURL; ?>logout.php">LOGOUT</a>
+            </div>
         </div>
     </nav>
     <!-- !Primary Navigation -->

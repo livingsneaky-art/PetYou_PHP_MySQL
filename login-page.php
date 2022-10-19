@@ -3,11 +3,6 @@
     // include header.php file
     // include ('header-outsider.php');
     include('./configs/constants.php');
-
-    if (isset($_SESSION['login'])){
-        echo $_SESSION['login'];
-         unset($_SESSION['login']);
-    }               
 ?>
 
 <!DOCTYPE html>
@@ -31,8 +26,7 @@
 <div class="main container-wrapper">
     <div class="container ">
         <!---------- CARD FOR FORM ----------> 
-        <div class="p-3 text-center login_petyou">PETYOU</div>
-
+        <div class="p-3 text-center login_petyou" ><a style="text-decoration: none; color: #BFD8BD;" href="index.php">PETYOU</a></div>
             <div class="mt-4 container border-0 card" style="width: 30rem;">
                 <form class="login_card_bg container border-0  round"  method = "POST">
                     <div class="row align-items-center px-3 ">
@@ -51,7 +45,7 @@
 
                         <!---------- LOGIN BUTTON ---------->
                         <div class="mt-3 text-center">
-                            <button class="mt-3 px-3 py-2 btn btn-light fw-bold">LOGIN</button>
+                            <button class="mt-3 px-3 py-2 btn btn-light fw-bold" type="submit" name="submit">LOGIN</button>
                         </div>
 
                         <div class>
@@ -63,47 +57,6 @@
             </div>
     </div>
 </div>
-
-
-
-            <!-- <div class="card container">
-                <?php
-                    if (isset($_SESSION['no-login-message'])){
-                        echo $_SESSION['no-login-message'];
-                        unset($_SESSION['no-login-message']);
-                    }
-                ?>
-                <div class="login-wrapper">
-                    <h2>
-                        Login
-                    </h2>
-
-                    <?php
-                        if (isset($_SESSION['login'])){
-                            echo $_SESSION['login'];
-                            unset($_SESSION['login']);
-                        }
-                    ?>
-                    <form action="" method="POST">
-                        <div>
-                            <label for="username">Username</label>
-                            <br>
-                            <input type="text" name="username">  
-                        </div>
-                        <br>
-                        <div>
-                            <label for="password">Password</label>
-                            <br>
-                            <input type="password" name="password">  
-                        </div>
-                        <button class="button" type="submit" name="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-
 <?php
  if(isset($_POST['submit'])){
 

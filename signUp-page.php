@@ -1,7 +1,7 @@
 <?php
     ob_start();
     // include header.php file
-    include ('header-outsider.php');
+    include('./configs/constants.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +24,13 @@
 <div class="main container-wrapper">
     <div class="container ">
         <!---------- CARD FOR FORM ----------> 
-        <div class="p-3 text-center login_petyou">PETYOU</div>
+        <div class="p-3 text-center login_petyou"><a style="text-decoration: none; color: #BFD8BD;" href="index.php">PETYOU</a></div>
+        <?php
+            if (isset($_SESSION['add'])){
+                echo $_SESSION['add'];
+                unset($_SESSION['add']);
+            }
+        ?>
 
             <div class="mt-4 container border-0 card" style="width: 32rem;">
                 <form class="login_card_bg container border-0  round"  method = "POST">
@@ -34,35 +40,51 @@
                         <div class="mt-4 row align-items-center">
                             <!---------- FIRST NAME ---------->
                             <div class="col-md-6">
-                                <label for="name" class="mt-2 form-label login_font fw-bold">FIRST NAME</label>
-                                <input type="text" class="form-control border border-secondary" id="firstName" name="firstName" required>
+                                <label for="first-name" class="mt-2 form-label login_font fw-bold">FIRST NAME</label>
+                                <input type="text" class="form-control border border-secondary" id="first-name" name="first-name" required>
                             </div>
                             <!---------- LAST NAME ---------->
                             <div class="col-md-6">
-                                <label for="name" class="mt-2 form-label login_font fw-bold">LAST NAME</label>
-                                <input type="text" class="form-control border border-secondary" id="lastName" name="lastName" required>
+                                <label for="last-name" class="mt-2 form-label login_font fw-bold">LAST NAME</label>
+                                <input type="text" class="form-control border border-secondary" id="last-name" name="last-name" required>
                             </div>
                         </div>
 
                         <!---------- CONTACT NUMBER ---------->
-                        <div class="mt-4 col ">
-                            <label for="name" class="mt-2 form-label fw-bold">CONTACT NUMBER</label>
-                            <input type="password" class="form-control border border-secondary"  id="contactNum" name="contactNum" required>
+                        <div class="mt-4  ">
+                            <label for="customer_number" class="mt-2 form-label fw-bold">CONTACT NUMBER</label>
+                            <input type="text" class="form-control border border-secondary"  id="customer_number" name="customer_number" required>
+                        </div>
+                        <!---------- CUSTOMER EMAIL ---------->
+                        <div class="mt-4  ">
+                            <label for="customer_email" class="mt-2 form-label fw-bold">CUSTOMER EMAIL</label>
+                            <input type="text" class="form-control border border-secondary"  id="customer_email" name="customer_email" required>
+                        </div>
+                        <!---------- ADDRESS---------->
+                        <div class="mt-4 ">
+                            <label for="Address" class="mt-2 form-label fw-bold">ADDRESS</label>
+                            <input type="text" class="form-control border border-secondary"  id="Address" name="Address" required>
+                        </div>
+
+                        <!---------- USERNAME ---------->
+                        <div class="mt-4 ">
+                            <label for="username" class="mt-2 form-label fw-bold">USERNAME</label>
+                            <input type="text" class="form-control border border-secondary"  id="username" name="username" required>
                         </div>
 
                         <!---------- PASSWORD ---------->
                         <div class="mt-4 ">
-                            <label for="name" class="mt-2 form-label fw-bold">PASSWORD</label>
-                            <input type="password" class="form-control border border-secondary"  id="upassword" name="password" required>
+                            <label for="password" class="mt-2 form-label fw-bold">PASSWORD</label>
+                            <input type="password" class="form-control border border-secondary"  id="password" name="password" required>
                         </div>
 
                         <!---------- LOGIN BUTTON ---------->
                         <div class="mt-3 text-center">
-                            <button class="mt-3 px-3 py-2 btn btn-light fw-bold">LOGIN</button>
+                            <button class="mt-3 px-3 py-2 btn btn-light fw-bold" type="submit" name="submit">SIGN UP</button>
                         </div>
 
                         <div class>
-                            <p class="mt-4 text-center fs-6">Don't have an account? <a href="signUp-page.php" class="fw-bold text-dark">SIGN UP HERE</a></p>
+                            <p class="mt-4 text-center fs-6">Already have an account? <a href="login-page.php" class="fw-bold text-dark">LOGIN HERE</a></p>
                         </div>
 
                     </div>
@@ -71,38 +93,6 @@
     </div>
 </div>
 
-
-    <!-- <form action="" method="POST" class="form">
-        <div>
-                <label for="first-name">First Name</label>
-                <input type="text" name="first-name" required>  
-        </div>
-        <div>
-                <label for="last-name">Last Name</label>
-                <input type="text" name="last-name" required>  
-        </div>
-        <div>
-                <label for="customer_number">Contact Number</label>
-                <input type="text" name="customer_number" required>  
-        </div>
-        <div>
-                <label for="customer_email">Email Address</label>
-                <input type="text" name="customer_email" required>  
-        </div>
-        <div>
-                <label for="Address">Address</label>
-                <input type="text" name="Address" required>  
-        </div>
-        <div>
-                <label for="username">Username</label>
-                <input type="text" name="username" required>  
-        </div>
-        <div>
-                <label for="password">Password</label>
-                <input type="password" name="password" required>  
-        </div>
-        <button class="button" type="submit" name="submit">Submit</button>
-    </form> -->
 
 <?php
     //TO ADD VALUES TO ADMIN TABLE
@@ -138,10 +128,10 @@
 
                 //TO CHECK IF QUEY IS EXECUTED
                 if ($res == TRUE){
-                    $_SESSION['add'] = "<h2 class='success'>OPERATION SUCCESSFUL</h2>";
-                    header("location:".SITEURL."login-page.php");
+                    $_SESSION['add'] = "<center><h2 class='success'>SIGN UP SUCCESSFUL</h2></center>";
+                    header("location:".SITEURL."signUp-page.php");
                 } else {
-                    $_SESSION['add'] = "<h2 class='failed'>OPERATION FAILED</h2>";
+                    $_SESSION['add'] = "<center><h2 class='failed'>SIGN UP FAILED</h2></center>";
                     header("location:".SITEURL."signUp-page.php");
                 }
 
