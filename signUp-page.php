@@ -34,58 +34,58 @@
             }
         ?>
 
+            <form action="" method="POST" class="form">
+                <!---------- NAME ---------->
+                <div class="mt-4 row align-items-center">
+                    <!---------- FIRST NAME ---------->
+                    <div class="col-md-6">
+                        <label for="first-name" class="mt-2 form-label login_font fw-bold">FIRST NAME</label>
+                        <input type="text" class="form-control border border-secondary" id="first-name" name="first-name" required>
+                    </div>
+                    <!---------- LAST NAME ---------->
+                    <div class="col-md-6">
+                        <label for="last-name" class="mt-2 form-label login_font fw-bold">LAST NAME</label>
+                        <input type="text" class="form-control border border-secondary" id="last-name" name="last-name" required>
+                    </div>
+                </div>
 
-                        <!---------- NAME ---------->
-                        <div class="mt-4 row align-items-center">
-                            <!---------- FIRST NAME ---------->
-                            <div class="col-md-6">
-                                <label for="first-name" class="mt-2 form-label login_font fw-bold">FIRST NAME</label>
-                                <input type="text" class="form-control border border-secondary" id="first-name" name="first-name" required>
-                            </div>
-                            <!---------- LAST NAME ---------->
-                            <div class="col-md-6">
-                                <label for="last-name" class="mt-2 form-label login_font fw-bold">LAST NAME</label>
-                                <input type="text" class="form-control border border-secondary" id="last-name" name="last-name" required>
-                            </div>
-                        </div>
+                <!---------- CONTACT NUMBER ---------->
+                <div class="mt-4  ">
+                    <label for="customer_number" class="mt-2 form-label fw-bold">CONTACT NUMBER</label>
+                    <input type="text" class="form-control border border-secondary"  id="customer_number" name="customer_number" required>
+                </div>
+                <!---------- CUSTOMER EMAIL ---------->
+                <div class="mt-4  ">
+                    <label for="customer_email" class="mt-2 form-label fw-bold">CUSTOMER EMAIL</label>
+                    <input type="text" class="form-control border border-secondary"  id="customer_email" name="customer_email" required>
+                </div>
+                <!---------- ADDRESS---------->
+                <div class="mt-4 ">
+                    <label for="Address" class="mt-2 form-label fw-bold">ADDRESS</label>
+                    <input type="text" class="form-control border border-secondary"  id="Address" name="Address" required>
+                </div>
 
-                        <!---------- CONTACT NUMBER ---------->
-                        <div class="mt-4  ">
-                            <label for="customer_number" class="mt-2 form-label fw-bold">CONTACT NUMBER</label>
-                            <input type="text" class="form-control border border-secondary"  id="customer_number" name="customer_number" required>
-                        </div>
-                        <!---------- CUSTOMER EMAIL ---------->
-                        <div class="mt-4  ">
-                            <label for="customer_email" class="mt-2 form-label fw-bold">CUSTOMER EMAIL</label>
-                            <input type="text" class="form-control border border-secondary"  id="customer_email" name="customer_email" required>
-                        </div>
-                        <!---------- ADDRESS---------->
-                        <div class="mt-4 ">
-                            <label for="Address" class="mt-2 form-label fw-bold">ADDRESS</label>
-                            <input type="text" class="form-control border border-secondary"  id="Address" name="Address" required>
-                        </div>
+                <!---------- USERNAME ---------->
+                <div class="mt-4 ">
+                    <label for="username" class="mt-2 form-label fw-bold">USERNAME</label>
+                    <input type="text" class="form-control border border-secondary"  id="username" name="username" required>
+                </div>
 
-                        <!---------- USERNAME ---------->
-                        <div class="mt-4 ">
-                            <label for="username" class="mt-2 form-label fw-bold">USERNAME</label>
-                            <input type="text" class="form-control border border-secondary"  id="username" name="username" required>
-                        </div>
+                <!---------- PASSWORD ---------->
+                <div class="mt-4 ">
+                    <label for="password" class="mt-2 form-label fw-bold">PASSWORD</label>
+                    <input type="password" class="form-control border border-secondary"  id="password" name="password" required>
+                </div>
 
-                        <!---------- PASSWORD ---------->
-                        <div class="mt-4 ">
-                            <label for="password" class="mt-2 form-label fw-bold">PASSWORD</label>
-                            <input type="password" class="form-control border border-secondary"  id="password" name="password" required>
-                        </div>
+                <!---------- LOGIN BUTTON ---------->
+                <div class="mt-3 text-center">
+                    <button class="mt-3 px-3 py-2 btn btn-light fw-bold" type="submit" name="submit">SIGN UP</button>
+                </div>
+            </form>
 
-                        <!---------- LOGIN BUTTON ---------->
-                        <div class="mt-3 text-center">
-                            <button class="mt-3 px-3 py-2 btn btn-light fw-bold" type="submit" name="submit">SIGN UP</button>
-                        </div>
-
-                        <div class>
-                            <p class="mt-4 text-center fs-6">Already have an account? <a href="login-page.php" class="fw-bold text-dark">LOGIN HERE</a></p>
-                        </div>
-
+            <div class>
+                <p class="mt-4 text-center fs-6">Already have an account? <a href="login-page.php" class="fw-bold text-dark">LOGIN HERE</a></p>
+            </div>
         </div>
     </div
 
