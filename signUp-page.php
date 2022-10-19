@@ -118,7 +118,7 @@
     </section>
 </center>
 <?php
-    //TO ADD VALUES TO ADMIN TABLE
+    //TO ADD VALUES TO USER TABLE
 
     if(isset($_POST['submit'])){
 
@@ -131,7 +131,7 @@
         $username = trim($_POST['username']);
         $pwd = trim(md5($_POST['password']));
 
-        $check_username = $conn->query("SELECT uName FROM admin where uName = '$username'");
+        $check_username = $conn->query("SELECT uName FROM user where uName = '$username'");
         if(empty($firstName) || empty($lastName) && empty($username) || empty($pwd)){
             $message = "You must enter user details";
             echo "<script type='text/javascript'>alert('$message');</script>";
