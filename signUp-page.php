@@ -36,7 +36,7 @@
             </center>
             <div class="container ">
                 
-                <div class="row gx-lg-5 align-items-center">
+                <div class="row gx-lg-5 align-items-center d-flex justify-content-center">
                 
                     <!---------- CARD FOR FORM ----------> 
                     
@@ -47,14 +47,13 @@
                         }
                     ?>
                     <!-- CARD FORM -->
-                    <center>
                         <div class="col-lg-6 mb-5 mb-lg-0  py-md-3" style="width:30rem;">
                             <div class="card round">
-                                <div class="card-body py-4 px-md-5  login_card_bg round">
+                                <div class="card-body py-4 px-md-5 login_card_bg round ">
                                 
                                     <form action="" method="POST">
                                         <!---------- NAME ---------->
-                                        <div class="row">
+                                        <div class="row ">
                                             <!---------- FIRST NAME ---------->
                                             <div class="col-md-6 mb-2">
                                                 <div class="form-outline">
@@ -111,7 +110,6 @@
                                 </div>     
                             </div>
                         </div> 
-                    </center>
                 </div>
             </div>
         </div>        
@@ -146,15 +144,20 @@
                     VALUES('$firstName', '$lastName', '$customer_number', '$customer_email', '$Address', '$username', '$pwd', 'Customer');";
                 }
 
+
                 //EXECUTING QUERY AND SAVING TO DB
                 $res = $conn->query($sql) or die(mysqli_error($conn));
 
-                //TO CHECK IF QUEY IS EXECUTED
+                //TO CHECK IF QUERY IS EXECUTED
                 if ($res == TRUE){
-                    $_SESSION['add'] = "<center><h2 class='success'>SIGN UP SUCCESSFUL</h2></center>";
-                    header("location:".SITEURL."signUp-page.php");
+                    // $_SESSION['add'] = "<script> alert('SIGN UP SUCCESSFUL'); </script>";
+                    // alert
+                    $_SESSION['add'] = "<script> alert('SIGN UP SUCCESSFUL'); </script>";
+                    // $_SESSION['add'] = "<center><h2 class='success'>SIGN UP SUCCESSFUL</h2></center>";
+                    header("location:".SITEURL."login-page.php");
                 } else {
-                    $_SESSION['add'] = "<center><h2 class='failed'>SIGN UP FAILED</h2></center>";
+                    $_SESSION['add'] =  "<script> alert('SIGN UP FAILED'); </script>";
+                    // $_SESSION['add'] = "<center><h2 class='failed'>SIGN UP FAILED</h2></center>";
                     header("location:".SITEURL."signUp-page.php");
                 }
 
