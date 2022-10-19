@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign Up</title>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="./css/login.css">
@@ -20,75 +20,103 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-</head>
-<body>
- 
-<div class="main login-bg container-wrapper">
-    <div class="container ">
-        <!---------- CARD FOR FORM ----------> 
-        <div class="p-3 text-center login_petyou"><a style="text-decoration: none; color: #BFD8BD;" href="index.php">PETYOU</a></div>
-        <?php
-            if (isset($_SESSION['add'])){
-                echo $_SESSION['add'];
-                unset($_SESSION['add']);
-            }
-        ?>
+</body>
+</html>
 
-            <form action="" method="POST" class="form">
-                <!---------- NAME ---------->
-                <div class="mt-4 row align-items-center">
-                    <!---------- FIRST NAME ---------->
-                    <div class="col-md-6">
-                        <label for="first-name" class="mt-2 form-label login_font fw-bold">FIRST NAME</label>
-                        <input type="text" class="form-control border border-secondary" id="first-name" name="first-name" required>
-                    </div>
-                    <!---------- LAST NAME ---------->
-                    <div class="col-md-6">
-                        <label for="last-name" class="mt-2 form-label login_font fw-bold">LAST NAME</label>
-                        <input type="text" class="form-control border border-secondary" id="last-name" name="last-name" required>
-                    </div>
+<!-- Section: Design Block -->
+<center>
+    <section class="h-100">
+    
+        <div class="px-4 py-5 px-md-5 text-center text-lg-start h-100 login-bg" style="background-color: hsl(0, 0%, 96%)">
+            <center>
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <!--<a style="text-decoration: none; color: #BFD8BD;" class="login_petyou" href="index.php">PETYOU</a>-->
+                    <h1 class="login_petyou"> PETYOU</h1>
                 </div>
+            </center>
+            <div class="container ">
+                
+                <div class="row gx-lg-5 align-items-center">
+                
+                    <!---------- CARD FOR FORM ----------> 
+                    
+                    <?php
+                        if (isset($_SESSION['add'])){
+                           echo $_SESSION['add'];
+                           unset($_SESSION['add']);
+                        }
+                    ?>
+                    <!-- CARD FORM -->
+                    <center>
+                        <div class="col-lg-6 mb-5 mb-lg-0  py-md-3" style="width:30rem;">
+                            <div class="card round">
+                                <div class="card-body py-4 px-md-5  login_card_bg round">
+                                
+                                    <form action="" method="POST">
+                                        <!---------- NAME ---------->
+                                        <div class="row">
+                                            <!---------- FIRST NAME ---------->
+                                            <div class="col-md-6 mb-2">
+                                                <div class="form-outline">
+                                                    <label for="first-name" class="form-label text-uppercase fw-bold">FIRST NAME</label>
+                                                    <input type="text" id="form3Example1"  class="form-control" id="first-name" name="first-name" required>
+                                                </div>
+                                            </div>
+                                            <!---------- LAST NAME ---------->
+                                            <div class="col-md-6 mb-2">
+                                                <div class="form-outline">
+                                                    <label for="last-name" class="form-label text-uppercase fw-bold">LAST NAME</label>
+                                                    <input type="text" id="form3Example2" class="form-control" id="last-name" name="last-name" required>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                <!---------- CONTACT NUMBER ---------->
-                <div class="mt-4  ">
-                    <label for="customer_number" class="mt-2 form-label fw-bold">CONTACT NUMBER</label>
-                    <input type="text" class="form-control border border-secondary"  id="customer_number" name="customer_number" required>
-                </div>
-                <!---------- CUSTOMER EMAIL ---------->
-                <div class="mt-4  ">
-                    <label for="customer_email" class="mt-2 form-label fw-bold">CUSTOMER EMAIL</label>
-                    <input type="text" class="form-control border border-secondary"  id="customer_email" name="customer_email" required>
-                </div>
-                <!---------- ADDRESS---------->
-                <div class="mt-4 ">
-                    <label for="Address" class="mt-2 form-label fw-bold">ADDRESS</label>
-                    <input type="text" class="form-control border border-secondary"  id="Address" name="Address" required>
-                </div>
+                                        <!---------- CONTACT NUMBER ---------->
+                                        <div class="mt-4  ">
+                                            <label for="customer_number" class="form-label text-uppercase fw-bold loginfont">CONTACT NUMBER</label>
+                                            <input type="text" id="form3Example3" class="form-control"  id="customer_number" name="customer_number" required>
+                                        </div>
+                                        <!---------- CUSTOMER EMAIL ---------->
+                                        <div class="mt-4  ">
+                                            <label for="customer_email" class="form-label text-uppercase fw-bold">CUSTOMER EMAIL</label>
+                                            <input type="text" id="form3Example3" class="form-control"  id="customer_email" name="customer_email" required>
+                                        </div>
+                                        <!---------- ADDRESS---------->
+                                        <div class="mt-4 ">
+                                            <label for="Address" class="form-label text-uppercase fw-bold">ADDRESS</label>
+                                            <input type="text" id="form3Example3" class="form-control"  id="Address" name="Address" required>
+                                        </div>
 
-                <!---------- USERNAME ---------->
-                <div class="mt-4 ">
-                    <label for="username" class="mt-2 form-label fw-bold">USERNAME</label>
-                    <input type="text" class="form-control border border-secondary"  id="username" name="username" required>
-                </div>
+                                        <!---------- USERNAME ---------->
+                                        <div class="mt-4 ">
+                                            <label for="username" class="form-label text-uppercase fw-bold">USERNAME</label>
+                                            <input type="text" id="form3Example3" class="form-control"  id="username" name="username" required>
+                                        </div>
 
-                <!---------- PASSWORD ---------->
-                <div class="mt-4 ">
-                    <label for="password" class="mt-2 form-label fw-bold">PASSWORD</label>
-                    <input type="password" class="form-control border border-secondary"  id="password" name="password" required>
-                </div>
+                                        <!---------- PASSWORD ---------->
+                                        <div class="mt-4 ">
+                                            <label for="password" class="form-label text-uppercase fw-bold">PASSWORD</label>
+                                            <input type="password" id="form3Example4" class="form-control"  id="password" name="password" required>
+                                        </div>
 
-                <!---------- LOGIN BUTTON ---------->
-                <div class="mt-3 text-center">
-                    <button class="mt-3 px-3 py-2 btn btn-light fw-bold" type="submit" name="submit">SIGN UP</button>
+                                        <!---------- LOGIN BUTTON ---------->
+                                        <div class="mt-3 text-center">
+                                            <button class="btn btn-light fw-bold btn-block mb-4" type="submit" name="submit">SIGN UP</button>
+                                        </div>
+                                        <div class="text-center">
+                                            <p>Already have an account? <a href="login-page.php" class="fw-bold text-dark text-decoration-none">LOGIN HERE</a></p>
+                                        </div>
+                                    </form>
+                                
+                                </div>     
+                            </div>
+                        </div> 
+                    </center>
                 </div>
-            </form>
-
-            <div class>
-                <p class="mt-4 text-center fs-6">Already have an account? <a href="login-page.php" class="fw-bold text-dark">LOGIN HERE</a></p>
             </div>
-        </div>
-    </div
-
+        </div>        
+    </section>
+</center>
 <?php
     //TO ADD VALUES TO ADMIN TABLE
 
@@ -132,18 +160,13 @@
 
             }
         }
-
-      
-        
     }
-
 ?>
 
  <?php
  // include footer.php file
  include ('footer.php');
 ?> 
-
 
 </body>
 </html>
