@@ -44,7 +44,7 @@
                     <a class="nav-link" href="home-page.php">HOME</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="product-view.php">PRODUCT <i class="fas fa-chevron-down"></i></a>
+                    <a class="nav-link" href="product-view.php">PRODUCT</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="aboutUs.php">ABOUT US </a>
