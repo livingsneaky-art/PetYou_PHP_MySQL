@@ -35,7 +35,7 @@ Refer to `documentation.
  - CODOY, ROE ANN
  - CUTANDA, KITHLEEN
  - LLAMIDO, RYAN B.
- - NARVASA, LOUISE
+ - NARVASA, LOISE BRENDAN
 
 
 ## Project Status

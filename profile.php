@@ -4,9 +4,15 @@
     include ('header.php');
 ?>         
 <link rel="stylesheet" type="text/css" href="css/profile.css">
-
+<div class="sidebar">
+    <h1>PETYOU</h1><br><br>
+    <img src="images/defaultUserImage.png" alt="...">
+    <ul>
+        <br><li><a href="#"><h5>Profile</h5></a></li><br>
+        <li><a href="#"><h5>Purchase History</h5></a></li>
+    </ul>
+</div>
 <div class="main" style="height:100vh;">
-<h1>PETYOU</h1>
     <div class="container">
     
         
@@ -34,30 +40,34 @@
                 }
             }
         ?>
-        <form action="" method="POST" class="form">
-            <div>
-                    <b><label for="fName">First Name:</label></b><br>
-                    <input type="text" name="fName" value="<?php echo $fName; ?>" required>  
-            </div>
-            <div>
-                    <b><label for="lName">Last Name:</label></b><br>
-                    <input type="text" name="lName" value="<?php echo $lName; ?>" required>  
-            </div>
-            <div>
-                   <b><label for="email">Email:</label></b><br>
-                    <input type="text" name="email" value="<?php echo $email; ?>" required>  
-            </div>
-            <div>
-                    <b><label for="phone">Phone Number:</label></b><br>
-                    <input type="text" name="phone" value="<?php echo $phone; ?>" required>  
-            </div>
-            <div>
-                    <b><label for="address">Address:</label></b><br>
-                    <input type="text" name="address" value="<?php echo $address; ?>" required>  
-            </div>
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <button class="button" type="submit" name="submit">Edit Profile</button>
-        </form>
+        
+        <div class="form-container">
+            <form action="" method="POST">
+                <div>
+                        <b><label for="fName">First Name:</label></b><br>
+                        <input type="text" name="fName" value="<?php echo $fName; ?>" required>  
+                </div>
+                <div>
+                        <b><label for="lName">Last Name:</label></b><br>
+                        <input type="text" name="lName" value="<?php echo $lName; ?>" required>  
+                </div>
+                <div>
+                    <b><label for="email">Email:</label></b><br>
+                        <input type="text" name="email" value="<?php echo $email; ?>" required>  
+                </div>
+                <div>
+                        <b><label for="phone">Phone Number:</label></b><br>
+                        <input type="text" name="phone" value="<?php echo $phone; ?>" required>  
+                </div>
+                <div>
+                        <b><label for="address">Address:</label></b><br>
+                        <input type="text" name="address" value="<?php echo $address; ?>" required>  
+                </div>
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <button class="button" type="submit" name="submit">Edit Profile</button>
+            </form>
+        </div>
+        
     </div>
 </div>
 <?php 
