@@ -32,10 +32,10 @@ Refer to `documentation.
 
 ## Contributors
  - BARING, LENEL JOHN N.
- - CODOY
- - CUTANDA
+ - CODOY, ROE ANN
+ - CUTANDA, KITHLEEN
  - LLAMIDO, RYAN B.
- - NARVASA
+ - NARVASA, LOUISE
 
 
 ## Project Status
