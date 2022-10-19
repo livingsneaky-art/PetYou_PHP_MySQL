@@ -60,6 +60,24 @@ button, button:focus {
     background: #FFD289;
 }
 
+.sticky_lej{
+    background-color: white;
+    position: sticky;
+    bottom: 0;
+}
+.prod_price{
+    display: none;
+}
+.prod_btn:hover {
+    background-color: #c1c3c4 !important;
+}
+.prod_btn:hover .prod_price{
+    position: absolute;
+    font-weight: 500;
+    font-size: 40px;
+    color: white;
+    display: block;
+}
 /*  top sale template   */
 #top-sale .owl-carousel .item .product a {
     overflow: hidden;
