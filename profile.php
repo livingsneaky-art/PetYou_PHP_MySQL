@@ -3,10 +3,13 @@
     // include header.php file
     include ('header.php');
 ?>         
+<link rel="stylesheet" type="text/css" href="css/profile.css">
+
 <div class="main" style="height:100vh;">
+<h1>PETYOU</h1>
     <div class="container">
     
-        <h1>PETYOU</h1>
+        
         <?php
             if (isset($_SESSION['update'])){
                 echo $_SESSION['update'];
@@ -32,29 +35,29 @@
             }
         ?>
         <form action="" method="POST" class="form">
-       <div>
-            <label for="fName">First Name</label>
-            <input type="text" name="fName" value="<?php echo $fName; ?>" required>  
-       </div>
-       <div>
-            <label for="lName">Last Name</label>
-            <input type="text" name="lName" value="<?php echo $lName; ?>" required>  
-       </div>
-       <div>
-            <label for="email">Email</label>
-            <input type="text" name="email" value="<?php echo $email; ?>" required>  
-       </div>
-       <div>
-            <label for="phone">Phone Number</label>
-            <input type="text" name="phone" value="<?php echo $phone; ?>" required>  
-       </div>
-       <div>
-            <label for="address">Address</label>
-            <input type="text" name="address" value="<?php echo $address; ?>" required>  
-       </div>
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
-       <button class="button" type="submit" name="submit">Edit Profile</button>
-   </form>
+            <div>
+                    <b><label for="fName">First Name:</label></b><br>
+                    <input type="text" name="fName" value="<?php echo $fName; ?>" required>  
+            </div>
+            <div>
+                    <b><label for="lName">Last Name:</label></b><br>
+                    <input type="text" name="lName" value="<?php echo $lName; ?>" required>  
+            </div>
+            <div>
+                   <b><label for="email">Email:</label></b><br>
+                    <input type="text" name="email" value="<?php echo $email; ?>" required>  
+            </div>
+            <div>
+                    <b><label for="phone">Phone Number:</label></b><br>
+                    <input type="text" name="phone" value="<?php echo $phone; ?>" required>  
+            </div>
+            <div>
+                    <b><label for="address">Address:</label></b><br>
+                    <input type="text" name="address" value="<?php echo $address; ?>" required>  
+            </div>
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <button class="button" type="submit" name="submit">Edit Profile</button>
+        </form>
     </div>
 </div>
 <?php 
