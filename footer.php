@@ -1,8 +1,19 @@
 </main>
 <!-- !start #main-site -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</head>
+<body>
 
 <!-- start #footer -->
-<footer id="footer" class="bg-dark text-white py-5 mt-5">
+<footer id="footer" class="text-white bg-dark py-5 mt-1">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-12">
@@ -11,8 +22,8 @@
             </div>
             <div class="col-lg-4 col-12">
                 <h4 class="font-rubik font-size-20">Newslatter</h4>
-                <form class="form-row">
-                    <div class="col">
+                <form class="row">
+                    <div class="col-md-6">
                         <input type="text" class="form-control" placeholder="Email *">
                     </div>
                     <div class="col">
@@ -23,28 +34,28 @@
             <div class="col-lg-2 col-12">
                 <h4 class="font-rubik font-size-20">Information</h4>
                 <div class="d-flex flex-column flex-wrap">
-                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1">About Us</a>
-                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Delivery Information</a>
-                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Privacy Policy</a>
-                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Terms & Conditions</a>
+                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">About Us</a>
+                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">Delivery Information</a>
+                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">Privacy Policy</a>
+                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">Terms & Conditions</a>
                 </div>
             </div>
             <div class="col-lg-2 col-12">
                 <h4 class="font-rubik font-size-20">Account</h4>
                 <div class="d-flex flex-column flex-wrap">
-                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1">My Account</a>
-                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Order History</a>
-                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Wish List</a>
-                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1">Newslatters</a>
+                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">My Account</a>
+                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">Order History</a>
+                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">Wish List</a>
+                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">Newslatters</a>
                 </div>
             </div>
         </div>
     </div>
 </footer>
 <div class="copyright text-center bg-dark text-white py-2">
-    <p class="font-rale font-size-14">&copy; Copyrights 2022. Design By <a href="#" class="color-second">LKR</a></p>
+    <p class="font-rale font-size-14">&copy; Copyrights 2022. Design By <a href="#" class="color-second text-decoration-none">LKR</a></p>
 </div>
-<!-- !start #footer -->
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -28,42 +28,49 @@
 </head>
 <body>
  
-<div class="main container-wrapper">
-    <div class="container ">
+<div class="login-bg h-100 w-100 ">
+<!-- <div class="container h-100"> -->
+    <div class="d-flex h-100 align-items-center">
+        <div class="w-100">
+    
         <!---------- CARD FOR FORM ----------> 
         <div class="p-3 text-center login_petyou">PETYOU</div>
 
-            <div class="mt-4 container border-0 card" style="width: 30rem;">
-                <form class="login_card_bg container border-0  round"  method = "POST">
-                    <div class="row align-items-center px-3 ">
+            <div class="mt-4 border-0 card round col-6 mx-auto" style="width: 30rem;">
+                <form class="login_card_bg container round"  method = "POST">
+                    <div class="row align-items-center px-3 d-flex justify-content-center ">
 
                         <!---------- USERNAME ---------->
-                        <div class="mt-4 form-group w-75 ms-5">
+                        <div class="mt-4 form-group w-75">
                             <label for="name" class="mt-2 form-label login_font fw-bold">USERNAME</label>
                             <input type="text" class="form-control border border-secondary" id="username" name="username" required>
                         </div>
 
                         <!---------- PASSWORD ---------->
-                        <div class="mt-4 form-group w-75 ms-5">
+                        <div class="mt-4 form-group w-75 ">
                             <label for="name" class="mt-2 form-label fw-bold">PASSWORD</label>
                             <input type="password" class="form-control border border-secondary"  id="upassword" name="password" required>
                         </div>
 
                         <!---------- LOGIN BUTTON ---------->
-                        <div class="mt-3 text-center">
-                            <button class="mt-3 px-3 py-2 btn btn-light fw-bold">LOGIN</button>
+                        <div class="mt-3 text-center mt-4">
+                            <button class="mt-3 px-3 py-2 btn btn-light fw-bold" name="submit">LOGIN</button>
                         </div>
 
-                        <div class>
+                        <div class="mb-3">
                             <p class="mt-4 text-center fs-6">Don't have an account? <a href="signUp-page.php" class="fw-bold text-dark">SIGN UP HERE</a></p>
                         </div>
 
                     </div>
                 </form>
             </div>
-    </div>
-</div>
+        </div>
 
+        </div>
+    </div>
+
+</div>
+</div>
 
 
             <!-- <div class="card container">
@@ -138,8 +145,11 @@
             header('location:'.SITEURL.'home-page.php');
         }
     } else {
-        $_SESSION['login'] = "<h5 class='failed'>USERNAME OR PASSWORD DID NOT MATCH</h5>";
+        // $_SESSION['login'] = "<h5 class='failed'>USERNAME OR PASSWORD DID NOT MATCH</h5>";
+        // alert
+        $_SESSION['login'] =  "<script> alert('USERNAME OR PASSWORD DID NOT MATCH'); </script>";
         header("location:".SITEURL."login-page.php");
+        // header('Location: "login-page.php"');
     }
 }else {
     session_unset();
