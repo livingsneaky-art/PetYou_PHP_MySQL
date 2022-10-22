@@ -3,7 +3,7 @@
     session_start();
 
     define('SITEURL', 'http://localhost/PetYou_PHP_MySQL/');
-    // define('SITEURL', 'http://localhost/petyou/');
+    //define('SITEURL', 'http://localhost/petyou/');
     define('LOCALHOST', 'localhost');
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', '');

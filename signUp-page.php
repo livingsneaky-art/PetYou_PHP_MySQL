@@ -11,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-</head>
-<body>
+
+
     <link rel="stylesheet" type="text/css" href="./css/login.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -20,18 +20,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-</body>
-</html>
+</head>
+<body>
 
 <!-- Section: Design Block -->
-<center>
-    <section class="h-100">
+
+    <section class="h-100" >
     
         <div class="px-4 py-5 px-md-5 text-center text-lg-start h-100 login-bg" style="background-color: hsl(0, 0%, 96%)">
             <center>
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <!--<a style="text-decoration: none; color: #BFD8BD;" class="login_petyou" href="index.php">PETYOU</a>-->
-                    <h1 class="login_petyou"> PETYOU</h1>
+                    <a style="text-decoration: none; color: #BFD8BD; font-size: 100px;" class="login_petyou" href="index.php">PETYOU</a>
+                    <!--<h1 class="login_petyou"> PETYOU</h1>-->
                 </div>
             </center>
             <div class="container ">
@@ -114,7 +114,7 @@
             </div>
         </div>        
     </section>
-</center>
+
 <?php
     //TO ADD VALUES TO USER TABLE
 

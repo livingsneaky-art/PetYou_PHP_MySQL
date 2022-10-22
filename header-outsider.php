@@ -28,19 +28,11 @@
 
 </head>
 <body>
-
 <!-- start #header -->
 <header id="header">
-    
-
     <!-- Primary Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark color-second-bg">
-        <a class="navbar-brand" href="index.php">PetYou</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav m-auto font-rubik">
+            <ul class="navbar-nav m-auto font-rubik" style="padding-left: 60px;">
                 <li class="nav-item active">
                     <a class="nav-link" href="index.php">HOME</a>
                 </li>
@@ -51,12 +43,26 @@
                     <a class="nav-link" href="aboutUs.php">ABOUT US </a>
                 </li>
             </ul>
-            <div>
-                <a style="text-decoration: none; color: black; padding-right: 30px; font-weight: bold;" href="login-page.php">LOGIN</a>
-            </div>
-            <div>
-                <a style="text-decoration: none; color: black; font-weight: bold;" href="signUp-page.php">SIGN UP</a>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav m-auto font-rubik">
+                <li >
+                    
+                </li>
+                <li >
+                    
+                </li>
+                <li >
+                   
+                </li>
+            </ul>
+            <ul class="navbar-nav font-rubik">
+                <li class="nav-item">
+                    <a class="nav-link" style="padding-right: 30px;" href="login-page.php">LOGIN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="padding-right: 30px;" href="signUp-page.php">SIGN UP</a>
+                </li>
+            </ul>
         </div>
         
     </nav>
