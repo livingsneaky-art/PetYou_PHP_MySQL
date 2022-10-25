@@ -1,6 +1,7 @@
 <?php
-// include header.php file
-include ('header-customer.php');
+ob_start();
+    // include header.php file
+    include ('header-customer.php');
 ?>
 
 <?php
@@ -10,7 +11,7 @@ include ('header-customer.php');
     /*  include products */
 
     /*  include top sale section */
-    include ('Template/_top-sale.php');
+    include ('Template/_avail_products.php');
     /*  include top sale section */
 
 ?>

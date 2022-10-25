@@ -37,7 +37,7 @@
                     <a class="nav-link" href="index.php">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="product-view_general.php">PRODUCT</a>
+                    <a class="nav-link" href="header-general_product.php">PRODUCT</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="aboutUs_general.php">ABOUT US </a>

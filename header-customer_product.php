@@ -65,7 +65,7 @@
             <form style="padding-right: 30px;" action="#" class="font-size-14 font-rale">
                 <a href="cart.php" class="py-2 rounded-pill color-primary-bg">
                     <span class="font-size-16 px-2 text-white"><i class="fas fa-shopping-cart"></i></span>
-                    <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php echo count($product->getData('bridge')); ?></span>
+                    <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php if(isset($_SESSION['count'])){echo $_SESSION['count'];} ?></span>
                 </a>
             </form>
             <div>
@@ -83,20 +83,20 @@
 
 <!-- start #main-site -->
 <main>
-</main>
-<body>
 <div >
     <div class="container-fluid w-100 bg-white text-center d-flex justify-content-center align-items-center" style="min-height:40vh;">
         <h2 style="color: #BFD8BD;font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 7vw; color: #BFD8BD; text-shadow: 4px 4px 4px #000; ">PRODUCTS</h2>
     </div>
-    <div style="padding-left: 250px;">
+    <div style="padding-left: 250px; padding-top: 50px;">
         <input  type="text" name="search_text" id="search_text" placeholder="Search"  />
     </div>
     
     <div id="result"></div>
     <div style="clear:both"></div>
         
-	</body>
+	
+</main>
+</body>
 </html>
 <script>
 $(document).ready(function(){

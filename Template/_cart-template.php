@@ -21,6 +21,7 @@
                 $sql = "SELECT * FROM product p, bridge b WHERE p.productID = b.productID AND b.userID = $id"; 
                 $res = mysqli_query($conn, $sql);
                 $count = mysqli_num_rows($res);
+                $_SESSION['count'] = $count;
                 while($row = $res->fetch_assoc()){
                     
             ?>
@@ -41,16 +42,7 @@
                        
                         <small>by <?php echo $item ?? "LKR"; ?></small>
                         <!-- product rating -->
-                        <div class="d-flex">
-                            <div class="rating text-warning font-size-12">
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="far fa-star"></i></span>
-                            </div>
-                            <a href="#" class="px-2 font-rale font-size-14">20,534 ratings</a>
-                        </div>
+                        
                         <!--  !product rating-->
 
                         <!-- product qty -->

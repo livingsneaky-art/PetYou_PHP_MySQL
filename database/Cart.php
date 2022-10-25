@@ -43,7 +43,7 @@ class Cart
             $result = $this->insertIntoCart($params);
             if ($result){
                 // Reload Page
-                header("Location: " . $_SERVER['PHP_SELF']);
+               // header("Location: " . $_SERVER['PHP_SELF']);
             }
         }
     }

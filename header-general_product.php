@@ -18,6 +18,9 @@
     <!-- font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
     <!-- Custom CSS file -->
     <link rel="stylesheet" href="style.css">
 
@@ -37,7 +40,7 @@
                     <a class="nav-link" href="index.php">HOME</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="product-view_general.php">PRODUCT</a>
+                    <a class="nav-link" href="header-general_product.php">PRODUCT</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="aboutUs_general.php">ABOUT US </a>
@@ -73,3 +76,50 @@
 
 <!-- start #main-site -->
 <main>
+<div >
+    <div class="container-fluid w-100 bg-white text-center d-flex justify-content-center align-items-center" style="min-height:40vh;">
+        <h2 style="color: #BFD8BD;font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 7vw; color: #BFD8BD; text-shadow: 4px 4px 4px #000; ">PRODUCTS</h2>
+    </div>
+    <div style="padding-left: 250px; padding-top: 50px;">
+        <input  type="text" name="search_text" id="search_text" placeholder="Search"  />
+    </div>
+    
+    <div id="result"></div>
+    <div style="clear:both"></div>
+        
+	
+</main>
+</body>
+</html>
+<script>
+$(document).ready(function(){
+	load_data();
+	function load_data(query)
+	{
+		$.ajax({
+			url:"fetch.php",
+			method:"post",
+			data:{query:query},
+			success:function(data)
+			{
+				$('#result').html(data);
+			}
+		});
+	}
+	
+	$('#search_text').keyup(function(){
+		var search = $(this).val();
+		if(search != '')
+		{
+			load_data(search);
+		}
+		else
+		{
+			load_data();			
+		}
+	});
+});
+</script>
+<?php
+    include ('footer.php');
+?>

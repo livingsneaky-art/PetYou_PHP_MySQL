@@ -19,9 +19,6 @@
 /*  include available product section */
 ?>
 
-</main>
-</body>
-</html>
 <?php
     include ('footer.php');
 ?>

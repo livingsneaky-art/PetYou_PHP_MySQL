@@ -181,12 +181,11 @@
         <div class="row">
             <div class="col-sm-6">
                 <img src="<?php echo SITEURL; ?>images/product/<?php echo $item['image']; ?>" alt=""  class="img-fluid">
-                <form action="" method="POST">   
+                <form action="product.php" method="POST">   
               
                 <div class="form-row pt-4 font-size-16 font-baloo">
-                
-                    
                     <div class="col">
+                    <input type="hidden" name="productID" value="<?php echo $item['productID'] ?? '1'; ?>">
                         <?php
                         if (in_array($item['productID'], $Cart->getCartId($product->getData('bridge')) ?? [])){
                             echo '<button type="submit" disabled class="btn btn-success font-size-16 form-control">In the Cart</button>';

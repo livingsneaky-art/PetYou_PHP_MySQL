@@ -3,9 +3,19 @@
         <div class="row mt-5">
 
 <?php
+	
+
     ob_start();
-    // include header.php file
     include('./configs/constants.php');
+	require ('functions.php');
+	if($_SERVER['REQUEST_METHOD'] == "POST"){
+        if (isset($_POST['top_sale_submit'])){
+			// call method addToCart
+			$Cart->addToCart($_SESSION['id'], $_POST['productID']);
+		}
+    }else{
+		header('location:'.SITEURL.'header-customer_product.php');
+	}
 ?>  
 <!---main section--->
 
@@ -35,31 +45,26 @@ if(mysqli_num_rows($result) > 0)
 		$image = $row['image'];
 	
 ?>
- <button type="button" class="p-0 m-2 btn card d-flex justify-content-center align-items-center prod_btn bg-green" style="width:15vw; background-color: #98C9A3;" data-toggle="modal" data-target="#exampleModalCenter<?php echo $id?>">
-	<img style="padding-top: 30px; height: 15vw;" src="<?php echo SITEURL; ?>images/product/<?php echo $image; ?>" alt="" width="200px">
+<div  class="p-0 m-2 btn card d-flex justify-content-center align-items-center prod_btn bg-green" style="width:15vw; background-color: #98C9A3;" >
+	<a href="<?php printf('%s?productID=%s', 'product.php',  $row['productID']); ?>"><img src="<?php echo SITEURL; ?>images/product/<?php echo $row['image']; ?>" style="padding-top: 20px;" alt="" width="200px" height="200px"></a>
 	<div class="text-center"> <?php echo $title; ?> </div>
-	<div class="text-center prod_price" > ₱<?php echo $price?> </div>
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter<?php echo $id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle"><?php echo $title; ?></h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<?php echo $description ?>
-			</div>
-			<div class="modal-footer">
-				<!-- DIRI I BUTANG RYAN TUNG PARA ADD TO CART -->
-			</div>
-		</div>
-	</div>
-</div>      
+	<div class="text-center"> <?php echo $price; ?> </div>
+	
+	<form action="fetch.php" method="POST">
+	<input type="hidden" name="productID" value="<?php echo $row['productID'] ?? '1'; ?>">
+		<?php
+		if(isset($_POST['top_sale_submit'])){
+			header('location:'.SITEURL.'fetch.php');
+		}
+		
+		if (in_array($row['productID'], $Cart->getCartId($product->getData('bridge')) ?? [])){
+			echo '<button type="submit" disabled class="btn btn-success font-size-12">In the Cart</button>';
+		}else{
+			echo '<button type="submit" name="top_sale_submit" class="btn btn-warning font-size-12">Add to Cart</button>';
+		}
+		?>
+	</form>
+</div>
 <?php
 }
 
