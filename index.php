@@ -96,38 +96,24 @@
 
     }            
     ob_start();
-    // include header.php file
-    include ('header-outsider.php');
+    include ('header-general.php');
 ?>
+
 <?php
 
     /*  include banner area  */
         include ('Template/_banner-area.php');
     /*  include banner area  */
 
-    /*  include top sale section */
-        //include ('Template/_top-sale2.php');
-    /*  include top sale section */
-
-    /*  include special price section  */
-     //    include ('Template/_special-price.php');
-    /*  include special price section  */
-
-    /*  include banner ads  */
-     //   include ('Template/_banner-ads.php');
-    /*  include banner ads  */
-
     /*  include new products section  */
         include ('Template/_new-products.php');
-    /*  include new phones section  */
-
-    /*  include blog area  */
-         //include ('Template/_blogs.php');
-    /*  include blog area  */
+    /*  include new products section  */
 
 ?>
+
 </main>
 </body>
+
 <?php
 // include footer.php file
 include ('footer.php');

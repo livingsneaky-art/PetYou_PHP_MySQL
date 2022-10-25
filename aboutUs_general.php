@@ -1,7 +1,7 @@
 <?php
     ob_start();
     // include header.php file
-    include ('header-aboutUs.php');
+    include ('header-general_aboutUs.php');
 ?>         
 <?php 
     /*  include banner area  */

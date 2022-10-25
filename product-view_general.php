@@ -1,7 +1,7 @@
 <?php
     ob_start();
     // include header.php file
-    include ('header-product.php');
+    include ('header-general_product.php');
 ?>         
  <!---main section--->
  <div class="main" style="height:100%; padding-bottom:15em;">

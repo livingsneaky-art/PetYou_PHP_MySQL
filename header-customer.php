@@ -34,30 +34,28 @@
 
     <!-- Primary Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark color-second-bg">
-        <a class="navbar-brand" href="home-page.php">PetYou</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav m-auto font-rubik">
+    <ul class="navbar-nav m-auto font-rubik" style="padding-left: 60px;">
                 <li class="nav-item active">
                     <a class="nav-link" href="home-page.php">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="product-view.php">PRODUCT</a>
+                    <a class="nav-link" href="product-view_customer.php">PRODUCT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="aboutUs.php">ABOUT US </a>
+                    <a class="nav-link" href="aboutUs_customer.php">ABOUT US </a>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link" href="#">ADOPTION</a>
+            </ul>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav m-auto font-rubik">
+                <li>
+
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">CATEGORY <i class="fas fa-chevron-down"></i></a>
+                <li >
+
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Coming Soon</a>
-                </li>-->
+                <li>
+
+                </li>
             </ul>
             <a style="text-decoration: none; color: black; padding-right: 30px; font-weight: bold;" class='btn btn-warmomg' href='payment.php'>Check your order</a>
             <form style="padding-right: 30px;" action="#" class="font-size-14 font-rale">
@@ -70,7 +68,7 @@
                 <a style="text-decoration: none; color: black; padding-right: 30px; font-weight: bold;" href="<?php echo SITEURL; ?>profile.php">PROFILE</a>
             </div>
             <div>
-                <a style="text-decoration: none; color: black; font-weight: bold;" href="<?php echo SITEURL; ?>logout.php">LOGOUT</a>
+                <a style="text-decoration: none; color: black; font-weight: bold; padding-right: 30px;" href="<?php echo SITEURL; ?>logout.php">LOGOUT</a>
             </div>
         </div>
     </nav>

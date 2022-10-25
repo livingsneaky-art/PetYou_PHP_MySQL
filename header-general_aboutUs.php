@@ -28,10 +28,8 @@
 
 </head>
 <body id="main-site">
-
 <!-- start #header -->
 <header id="header">
-
     <!-- Primary Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark color-second-bg">
             <ul class="navbar-nav m-auto font-rubik" style="padding-left: 60px;">
@@ -39,10 +37,10 @@
                     <a class="nav-link" href="index.php">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="product-view.php">PRODUCT</a>
+                    <a class="nav-link" href="product-view_general.php">PRODUCT</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="aboutUs.php">ABOUT US </a>
+                    <a class="nav-link" href="aboutUs_general.php">ABOUT US </a>
                 </li>
             </ul>
         <div class="collapse navbar-collapse" id="navbarNav">
