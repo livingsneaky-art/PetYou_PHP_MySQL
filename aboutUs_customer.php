@@ -39,7 +39,8 @@
                 <h1>About Us</h1>
             <h3>
             Lorem ipsum dolor sit amet. Sed Quis ipsa non recusandae laudantium qui voluptas obcaecati. Cum voluptatem eligendi ut asperiores rerum non dolor itaque in deleniti labore. <br><br> Ut repudiandae cupiditate est maxime quis et expedita vero et maxime aspernatur ut sapiente minima et nostrum delectus. Qui quia nemo id tempora velit aut autem molestiae id ipsum beatae id accusantium optio ut nisi sint a expedita neque.
-
+            <br>
+            Ut repudiandae cupiditate est maxime quis et expedita vero et maxime aspernatur ut sapiente minima et nostrum delectus. Qui quia nemo id tempora velit aut autem molestiae id ipsum beatae id accusantium optio ut nisi sint a expedita neque.
 
             </h3>
         </div>

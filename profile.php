@@ -1,7 +1,7 @@
 <?php
     ob_start();
     // include header.php file
-    include ('header.php');
+    include ('header-customer_Cart,Check&Profile.php');
 ?>         
 <link rel="stylesheet" type="text/css" href="css/profile.css">
 <div class="sidebar">
