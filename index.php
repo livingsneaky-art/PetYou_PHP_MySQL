@@ -99,7 +99,6 @@
     // include header.php file
     include ('header-outsider.php');
 ?>
-
 <?php
 
     /*  include banner area  */
@@ -107,7 +106,7 @@
     /*  include banner area  */
 
     /*  include top sale section */
-        include ('Template/_top-sale2.php');
+        //include ('Template/_top-sale2.php');
     /*  include top sale section */
 
     /*  include special price section  */
@@ -119,16 +118,16 @@
     /*  include banner ads  */
 
     /*  include new products section  */
-     //   include ('Template/_new-products.php');
+        include ('Template/_new-products.php');
     /*  include new phones section  */
 
     /*  include blog area  */
-         include ('Template/_blogs.php');
+         //include ('Template/_blogs.php');
     /*  include blog area  */
 
 ?>
-
-
+</main>
+</body>
 <?php
 // include footer.php file
 include ('footer.php');

@@ -27,7 +27,7 @@
     ?>
 
 </head>
-<body>
+<body id="main-site">
 
 <!-- start #header -->
 <header id="header">
@@ -80,4 +80,4 @@
 <!-- !start #header -->
 
 <!-- start #main-site -->
-<main id="main-site">
+<main>
