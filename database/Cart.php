@@ -38,12 +38,22 @@ class Cart
                 "userID" => $userid,
                 "productID" => $itemid
             );
-
-            // insert data into cart
-            $result = $this->insertIntoCart($params);
-            if ($result){
-                // Reload Page
-               // header("Location: " . $_SERVER['PHP_SELF']);
+            $sql = "SELECT * FROM bridge WHERE userID = $userid AND productID = $itemid";
+            $res = $this->db->con->query($sql);
+            $count = mysqli_num_rows($res);
+            while($row = $res->fetch_assoc()){
+                $productID = $row['productID'];
+            }
+            if($count == 0){
+                // insert data into cart
+                $result = $this->insertIntoCart($params);
+                if ($result){
+                    // reload page
+                    //header("Location:" . $_SERVER['PHP_SELF']);
+                }
+            }else{
+                echo "<script>alert('Product is already in the cart!')</script>";
+                echo "<script>window.location = 'header-customer_product.php'</script>";
             }
         }
     }
