@@ -84,7 +84,7 @@
         <input  type="text" name="search_text" id="search_text" placeholder="Search"  />
     </div>
     
-    <div id="result"></div>
+    <div id="result1"></div>
     <div style="clear:both"></div>
         
 	
@@ -97,12 +97,12 @@ $(document).ready(function(){
 	function load_data(query)
 	{
 		$.ajax({
-			url:"fetch.php",
+			url:"fetch-general.php",
 			method:"post",
 			data:{query:query},
 			success:function(data)
 			{
-				$('#result').html(data);
+				$('#result1').html(data);
 			}
 		});
 	}
