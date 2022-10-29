@@ -29,8 +29,17 @@
                             <input type="hidden" name="productID" value="<?php echo $item['productID'] ?? '1'; ?>">
                             
                             <?php
-                            if (in_array($item['productID'], $Cart->getCartId($product->getData('bridge')) ?? [])){
-                                echo '<button type="submit" disabled class="btn btn-success font-size-12">In the Cart</button>';
+                            $id = $item['productID'];
+                            if (in_array($item['productID'], $Cart->getCartId($product->getData('bridge')) ?? []) ){
+						
+                                $sql = "SELECT * FROM bridge WHERE productID = '$id' AND userID = '$_SESSION[id]'";
+                                $res = $conn->query($sql);
+                                $count = mysqli_num_rows($res);
+                                if($count == 0){
+                                    echo '<button type="submit" name="top_sale_submit" class="btn btn-warning font-size-12">Add to Cart</button>';
+                                }else{
+                                    echo '<button type="submit" disabled class="btn btn-success font-size-12">In the Cart</button>';
+                                }
                             }else{
                                 echo '<button type="submit" name="top_sale_submit" class="btn btn-warning font-size-12">Add to Cart</button>';
                             }
