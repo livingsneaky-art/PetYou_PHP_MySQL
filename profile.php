@@ -45,7 +45,7 @@
             <form action="" method="POST">
                 <div>
                         <b><label for="fName">First Name:</label></b><br>
-                        <input type="text" name="fName" value="<?php echo  $_POST['subtotal'];?>">  
+                        <input type="text" name="fName" value="<?php echo  $fName;?>">  
                 </div>
                 <div>
                         <b><label for="lName">Last Name:</label></b><br>

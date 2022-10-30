@@ -15,7 +15,7 @@
                 <div class="product font-rale">
                     <a><img src="<?php echo SITEURL; ?>images/product/<?php echo $item['image']; ?>" alt="" class="img-fluid"></a>
                     <div class="text-center">
-                        <h6><?php echo  $item['description'] ?? "Unknown";  ?></h6>
+                        <h6><?php echo  $item['title'] ?? "Unknown";  ?></h6>
                         <div class="rating text-warning font-size-12">
                             <span><i class="fas fa-star"></i></span>
                             <span><i class="fas fa-star"></i></span>

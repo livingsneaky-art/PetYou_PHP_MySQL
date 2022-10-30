@@ -21,7 +21,7 @@
                 <div class="product font-rale">
                     <a href="<?php printf('%s?productID=%s', 'product.php',  $item['productID']); ?>"><img src="<?php echo SITEURL; ?>images/product/<?php echo $item['image']; ?>" alt="" class="img-fluid"></a>
                     <div class="text-center">
-                        <h6><?php echo  $item['description'] ?? "Unknown";  ?></h6>
+                        <h6><?php echo  $item['title'] ?? "Unknown";  ?></h6>
                         <div class="price py-2">
                             <span>$<?php echo $item['price'] ?? '0' ; ?></span>
                         </div>
