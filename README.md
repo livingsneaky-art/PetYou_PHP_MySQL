@@ -1,5 +1,5 @@
 # Ecommerce System
-A fully dynamic functional ecommerce, pet food inventory system created with HTML5_CSS3 & BOOTSTRAP_AJAX_JS_OOP-PHP_MYSQL.
+A fully dynamic functional ecommerce, pet food inventory system created with HTML5_CSS3 & BOOTSTRAP4.4.1_AJAX_JQUERY_JS_OOP-PHP_MYSQL.
 
 ## Features
 #### For admin
