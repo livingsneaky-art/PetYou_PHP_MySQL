@@ -23,8 +23,32 @@
                 $sql = "SELECT * FROM product p, bridge b WHERE p.productID = b.productID AND b.userID = $id"; 
                 $res = mysqli_query($conn, $sql);
                 $count = mysqli_num_rows($res);
+            
+                if($count == 0){
+            ?>   
+                <section id="cart" class="py-3 mb-5">
+                    <div class="container-fluid w-75">
+                        <!--  shopping cart items   -->
+                        <div class="row">
+                            <div class="col">
+                                <!-- Empty Cart -->
+                                    <div class="row py-3 mt-3">
+                                        <div class="col-sm-12 text-center py-2">
+                                            <img src="./assets/blog/empty_cart.png" alt="Empty Cart" class="img-fluid" style="height: 200px;">
+                                            <p class="font-baloo font-size-16 text-black-50">Empty Cart</p>
+                                        </div>
+                                    </div>
+                                <!-- .Empty Cart -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <?php
+                }
+                
                 $_SESSION['count'] = $count;
                 while($row = $res->fetch_assoc()){
+                    
                     
             ?>
             <div class="col-sm-5 card m-2" style="background-color:#98C9A3;"> 
