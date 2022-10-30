@@ -19,7 +19,7 @@
             <?php foreach ($product_shuffle as $item) { ?>
             <div class="item py-2 mr-5">
                 <div class="product font-rale">
-                    <a href="<?php printf('%s?productID=%s', 'product.php',  $item['productID']); ?>"><img src="<?php echo SITEURL; ?>images/product/<?php echo $item['image']; ?>" alt="" class="img-fluid"></a>
+                    <a href="<?php printf('%s?productID=%s', 'product.php',  $item['productID']); ?>"><img src="<?php echo SITEURL; ?>images/product/<?php echo $item['image']; ?>" alt="" width="500" height="600" class="img-fluid"></a>
                     <div class="text-center">
                         <h6><?php echo  $item['title'] ?? "Unknown";  ?></h6>
                         <div class="price py-2">
