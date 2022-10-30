@@ -9,7 +9,7 @@
     <img src="images/defaultUserImage.png" alt="...">
     <ul>
         <br><li><a href="#"><h5>Profile</h5></a></li><br>
-        <li><a href="#"><h5>Purchase History</h5></a></li>
+        <li><a href="purchaseHistory.php"><h5>Purchase History</h5></a></li>
     </ul>
 </div>
 <div class="main" style="height:100vh;">

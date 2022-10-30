@@ -78,6 +78,15 @@ button, button:focus {
     color: white;
     display: block;
 }
+.ph_item{
+    background-color: #98C9A3;
+}
+.ph_sub{
+    background-color: #FFFFE9;
+    border: none;
+    font-weight: 700;
+}
+
 /*  top sale template   */
 #top-sale .owl-carousel .item .product a {
     overflow: hidden;
