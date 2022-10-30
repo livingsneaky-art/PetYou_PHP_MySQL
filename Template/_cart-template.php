@@ -17,6 +17,8 @@
         <div class="row">
             <?php
                 $subTotal = 0;
+                $quantity = 0;
+                $qty=0;
                 $id = $_SESSION['id'];
                 $sql = "SELECT * FROM product p, bridge b WHERE p.productID = b.productID AND b.userID = $id"; 
                 $res = mysqli_query($conn, $sql);
@@ -27,7 +29,7 @@
             ?>
             <div class="col-sm-5 card m-2" style="background-color:#98C9A3;"> 
                 
-               
+            
                 <!-- cart item -->
                 <div class="row py-3 mt-3">
                     <div class="col-sm-5">
@@ -49,23 +51,22 @@
                         <div class="qty d-flex pt-2">
                             <div class="d-flex font-rale w-15">
                                 <button class="qty-up border-0 bg-white" data-id="<?php echo $row['productID'] ?? '0'; ?>"><img src="./assets/blog/plus.png" alt="plus Cart"></button> 
-                                <input type="text" data-id="<?php echo $row['productID'] ?? '0'; ?>" class="qty_input border px-3 w-50 bg-white text-center" disabled value="1" placeholder="1">
+                                <input type="text" data-id="<?php echo $row['productID'] ?? '0'; ?>" name="product_qty" class="qty_input border px-3 w-50 bg-white text-center" disabled value="1" placeholder="1">  
                                 <button data-id="<?php echo $row['productID'] ?? '0'; ?>" class="qty-down border-0 bg-white"> <img src="./assets/blog/minus.png" alt="minus Cart"></button> 
                             </div>
-
+                                
                             <form method="post">
                                 <input type="hidden" value="<?php echo $row['productID'] ?? 0; ?>" name="productID">
                                 <button type="submit" name="delete-cart-submit" class="btn font-baloo text-danger px-3 border bg-white">Delete</button>
-                            </form>
+                            </form>   
                             
                         </div>
                         <br>
-                        <div class="border">
-                        
-                        </div>
                         <div style="padding-top: 10px;" class="font-size-20 text-danger font-baloo">
-                            Subtotal: ₱<span class="product_price" data-id="<?php echo $row['productID'] ?? '0'; ?>"><?php echo $row['price'] ?? 0; ?></span>
+                            Subtotal: ₱<span class="product_price" data-id="<?php echo $row['productID'] ?? '0'; ?>"><?php echo $row['price'] ?? 0;?></span>
                         </div>
+                        
+                       
                     </div> 
                 </div>
             </div>
@@ -74,17 +75,24 @@
                 }
             ?>
         </div>
+        
     </div>
+    
     <!-- subtotal section-->
     <div class="container-fluid w-100 px-0 sticky_lej" style="background-color: #FFFFE9;">
         <div class="sub-total border text-center mt-2">
             <h6 class="font-size-12 font-rale text-success py-3"><i class="fas fa-check"></i>Your order is eligible for FREE Delivery.</h6>
             <div class="border-top py-4">
-                <h5 class="font-baloo font-size-20">Subtotal ( <?php echo isset($subTotal) ? $count : 0; ?> item):&nbsp; <span class="text-danger">₱<span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $subTotal : 0; ?></span> </span> </h5>
-                <button type="submit" class="btn btn-warning mt-3">Checkout</button>
+                <h5 class="font-baloo font-size-20">Subtotal ( <?php echo isset($subTotal) ? $count : 0; ?> item):&nbsp; <span class="text-danger">₱<span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $subTotal : 0;?></span> </span> </h5>
+                <form action="payment.php">
+                    <button type="submit" name="submit" class="btn btn-warning mt-3">Checkout</button>
+                </form>
+                
             </div>
         </div>
     </div>
+    
 </section>
+
 
 

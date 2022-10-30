@@ -19,309 +19,266 @@ include ('header-customer_Cart,Check&Profile.php');
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/login.css">
 </head>
+
 <body>
 
 <div class="container" style="min-height:100vh">
-<!-- FROM HERE (commented) -->
-    <!-- <div style="min-height:100vh;> -->
+<?php
+    $id = $_SESSION['id'];
+   
+    $sql = "SELECT * FROM user WHERE userID=$id";
+    $res = $conn->query($sql) or die(mysqli_error($conn));;
+    if($res == TRUE){
+        $count = mysqli_num_rows($res);
+
+        if($count == 1){
+            $row = mysqli_fetch_assoc($res);
+            $fName = $row['fName'];
+            $lName = $row['lName'];
+            $customer_number = $row['customer_contact_no'];
+            $customer_email = $row['customer_email'];
+            //$delivery_start = $row['delivery_start'];
+            //$delivery_end = $row['delivery_end'];
+            $Address = $row['deliveryAddress'];
+        }
+    }
+    $_POST['fName'] = $fName;
+    $_POST['lName'] = $lName;
+    $_POST['customer_name'] = $fName." ".$lName;
+    $_POST['customer_number'] = $customer_number;
+    $_POST['customer_email'] = $customer_email;
+    $_POST['delivery_address'] = $Address;
+    
+   
+    if(isset($_POST['submit'])){
+        //assign values
+        $customer_name = $_POST['customer_name'];
+        $customer_number = $_POST['customer_number'];
+        $customer_email = $_POST['customer_email'];
+        $delivery_type = $_POST['delivery'];
+        //$start = mysqli_real_escape_string($conn, $_POST['delivery_start']);
+        //$end = mysqli_real_escape_string($conn, $_POST['delivery_end']);
+        $address =  $_POST['delivery_address'];
+        $product_qty = $_POST['product_qty'];
+        //$product_qty = 1;
+        $cart_id = rand(000, 999);
+        $delivery_id = rand(000, 999);
+        $payment_id = rand(000, 999);
         
-                
-            <!-- <?php
-            //$_POST['cart_id'] = 17;
-               if(isset($_SESSION['cart_id'])){
-                    $cart =  mysqli_real_escape_string($conn, $_SESSION['cart_id']);  
-                    if($cart){
-                    
-                        $order = "SELECT * FROM cart WHERE id = ?;";
-                        $stmt_order = $conn->prepare($order);
-                        $stmt_order->bind_param("i", $cart);
-                        $stmt_order->execute();
+     
 
-                        $res_order = $stmt_order->get_result();
-                        
-                        if (!$stmt_order){
+    
+         ////for storing delivery details to delivery_details table
+        $query = "INSERT INTO delivery_details
+            SET id = ?,
+            deliveryID = ?,
+            deliveryAddress = ?,
+            delivery_type = (
+                SELECT id 
+                FROM type_delivery
+                WHERE id = ?);";
+    
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("iisi",$delivery_id, $delivery_id, $address, $delivery_type);
+        $res_delivery = $stmt->execute();
+    
+        if (!$res_delivery){
+            echo $conn->error;
+        }
+    
+        //create cart record
+        $query_2 = "INSERT INTO cart
+            SET id = ?,
+            customer_name = ?,
+            customer_contact_no = ?,
+            customer_email = ?,
+            deliveryID = (
+                SELECT id
+                FROM delivery_details
+                WHERE id = ?);";
+    
+        $stmt_2 = $conn->prepare($query_2);
+        $stmt_2->bind_param("isssi", $cart_id, $customer_name, $customer_number, $customer_email, $delivery_id);
+        $res_book = $stmt_2->execute();
+        
+        if (!$res_book){
+            echo $conn->error;
+        }
+        
+        //create product record
+     
+        if (!empty($_POST['product'])){
+          $products = $_POST['product'];
+            
+            $product_query = "INSERT INTO product_carts
+                SET
+                quantity = ?,
+                cartID = (
+                    SELECT id
+                    FROM cart
+                    WHERE id = ?),
+                type = (
+                    SELECT productID
+                    FROM product
+                    WHERE productID = ?);";
+    
+            $product_stmt = $conn->prepare($product_query);
+            $product_stmt->bind_param("iii", $p_qty, $cart_id, $product);
 
-                            echo "<h2 class='failed'>NOT FOUND!</h2>";
-                              
-                        } else {
-                            while($rows_order = $res_order->fetch_assoc()){
-                                $delivery = $rows_order['deliveryID'];
-                                $customer_name = $rows_order['customer_name'];
-                                $customer_contact_no = $rows_order['customer_contact_no'];
-                                $customer_email = $rows_order['customer_email'];  
-                        ?>
+            foreach ($products as $product){
+              $p_qty = $product_qty[$product];
+              $res_product = $product_stmt->execute();
+          }
+           
+            if(!$res_product){
+                echo $conn->error;
+            }
+        }
+        
+        //create payment record
+    
+        //calculate fees
+        $product_sql = "SELECT SUM(mt.price * mb.quantity) as 'product total'
+        FROM product mt, product_carts mb
+        WHERE mt.productID = mb.type
+        AND mb.cartID = ?;";
+    
+        $stmt_product = $conn->prepare($product_sql);
+        $stmt_product->bind_param("i", $cart_id);
+        $stmt_product->execute();
+        $result_product = $stmt_product->get_result();
+        $row_product = $result_product->fetch_assoc();
+        $product_total = $row_product['product total'];
+    
+    
+        $total = $product_total;
+        $min = $total * .50;
+    
+        //create payment details
+        $query_pay = "INSERT INTO payment_details
+            SET id = ?,
+            products_total = ?,
+            total = ?,
+            balance = ?,
+            minPayment = ?;
+          ";
+    
+        $stmt_pay = $conn->prepare($query_pay);
+        $stmt_pay->bind_param("iiiii", $payment_id, $product_total, $total, $total, $min);
+        $res_pay = $stmt_pay->execute();
+    
+        if(!$res_pay){
+            echo $conn->error;
+        } 
+    
+        //add receipt to cart record
+        $query_cart = "UPDATE cart
+            SET receiptID = (
+                SELECT id 
+                FROM payment_details
+                WHERE id = ?)
+            WHERE id = ?;
+          ";
+    
+        $stmt_carts = $conn->prepare($query_cart);
+        $stmt_carts->bind_param("ii", $payment_id, $cart_id);
+        $res_carts = $stmt_carts->execute();
+       
+        if ($res_carts){
+            $_SESSION['cart_id'] = $cart_id;
+           echo " <center><h2 class='success'>TRANSACT SUCCESSFUL.</h2> </center>";
+          header("Location: gcash.php");
+           //echo "<a class='btn btn-blue' href='payment.php'>Check your order.</a>" ;
+         
+            
+        }else {
+           echo "<h2 class='failed'>cart FAILED</h2>";
+        }
+    }
+            
+          
 
-                        <br>
-                            <div>
-                                    <h4>Customer Name:</h4>
-                                    <p><?php echo $customer_name; ?></p> 
-                            </div>
-                            <div>
-                                    <h4>Customer Number:</h4>
-                                    <p><?php echo $customer_contact_no; ?></p> 
-                            </div>
-                            <div>
-                                    <h4>Customer Email:</h4>
-                                    <p><?php echo $customer_email; ?></p>
-                            </div>
-                            <?php
-                                $delivery_query = "SELECT * FROM delivery_details WHERE id = ?;";
-    
-                                $delivery_stmt = $conn->prepare($delivery_query);
-                                $delivery_stmt->bind_param("i", $delivery);
-                                $delivery_stmt->execute();
-                                $res_delivery = $delivery_stmt->get_result();
-                                $row_delivery = $res_delivery->fetch_assoc();
-                                
-                                $id = $row_delivery['id'];
-                                $delivery_get = $row_delivery['delivery_type'];
-                                $start = $row_delivery['startTime'];
-                                $end = $row_delivery['endTime'];
-                                $deliveryAddress = $row_delivery['deliveryAddress'];
-                
-                                $sql_2 = "SELECT * FROM type_delivery WHERE id = ?;";
-                
-                                $stmt_2 = $conn->prepare($sql_2);
-                                $stmt_2->bind_param("i", $delivery_get);
-                                $stmt_2->execute();
-                                $res_2 = $stmt_2->get_result();
-                                $row_2 = $res_2->fetch_assoc();
-                                $delivery_id = $row_2['id'];
-                                $delivery_title = $row_2['title'];
-                        ?>
-                        <br>
-                        <div>
-                                <h4>delivery Type:</h4>
-                                <p><?php echo $delivery_title; ?></p>
-                        </div>
-                        <div>
-                                <h4>Time Start:</h4>
-                                <p><?php echo $start; ?></p>
-                                
-                        </div>
-                        <div>
-                                <h4>Time End:</h4>
-                                <p><?php echo $end; ?></p>
-                                
-                        </div>
-                        <div>
-                                <h4>Address:</h4>
-                                <p><?php echo $deliveryAddress; ?></p> 
-                        </div>
-    
-                        <table class="tbl-full" style="height:auto; table-layout: auto; width: 100%;">
-                        <br>
-                            <h3>PRODUCT</h3>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                </tr>
-                                <?php
-                                    //TO GET DATA
-                                    $query_product = "SELECT mt.productID, mt.title, mt.description, mt.price, mb.quantity FROM product mt, product_carts mb
-                                    WHERE mt.productID = mb.type
-                                    AND mb.cartID = ?;";  
-                                    
-                                    $stmt_product = $conn->prepare($query_product);
-                                    $stmt_product->bind_param("i", $cart);
-                                    $stmt_product->execute();
-                                    $res_product = $stmt_product->get_result();
-                                
-                                            //Loop through data
-                                        while($rows_product = $res_product->fetch_assoc()){
-                                            $product_id = $rows_product['productID'];
-                                            $product_title = $rows_product['title'];
-                                            $product_desc = $rows_product['description'];
-                                            $product_price = $rows_product['price'];
-                                            $product_qty = $rows_product['quantity'];
-                                            ?>
-    
-                                            <tr>
-                                                <td><?php echo $product_title; ?></td>
-                                                <td><?php echo $product_desc; ?></td>
-                                                <td><?php echo $product_price; ?></td>
-                                                <td><?php echo $product_qty; ?></td>
-                                                
-                                            </tr>
-    
-                                            <?php
-                                            }
-                                ?>
-                               
-                            </table>
-                            <table class="tbl-full" style="height:auto; table-layout: auto;width: 100%;">
-                                <tr>
-                                    
-                                    <th>Total</th>
-                                    <th>product Total</th>
-                                    <th>Minimum Payment</th>
-                                    <th>Paid</th>
-                                    <th>Balance</th>
-                                    <th>Status</th>
-                                    <th></th>
-                                </tr>
-    
-                                <?php
-                                    //TO GET DATA
-                                    $sql = "SELECT * FROM payment_details
-                                    WHERE id = (
-                                        SELECT receiptID
-                                        FROM cart
-                                        WHERE id = $cart);";
-                                    //CATCHER
-                                    $res = mysqli_query($conn, $sql);
-    
-                                    if ($res == TRUE){
-                                        // PRESENT ROWS
-                                        $count = mysqli_num_rows($res);
-    
-                                        if ($count > 0){
-                                            //Loop through data
-                                            while($rows = mysqli_fetch_assoc($res)){
-                                                $id = $rows['id'];
-                                                $product = $rows['products_total'];
-                                                $min = $rows['minPayment'];
-                                                $paid = $rows['paid'];
-                                                $balance = $rows['balance'];
-                                                $total = $rows['total'];
-                                                $status = $rows['status'];
-    
-                                                ?>
-    
-                                                <tr>
-                                                    
-                                                    <td><?php echo $total; ?></td>
-                                                    <td><?php echo $product; ?></td>
-                                                    <td><?php echo $min; ?></td>
-                                                    <td><?php echo $paid; ?></td>
-                                                    <td><?php echo $balance; ?></td>
-                                                    <?php
-                                            }
-                                        }
-                                    }
-                                    //TO GET DATA
-                                    $sql = "SELECT * FROM carts
-                                    WHERE id =  $cart;";
-                                    //CATCHER
-                                    $res = mysqli_query($conn, $sql);
-    
-                                    if ($res == TRUE){
-                                        // PRESENT ROWS
-                                        $count = mysqli_num_rows($res);
-    
-                                        if ($count > 0){
-                                            //Loop through data
-                                            while($rows = mysqli_fetch_assoc($res)){
-                                                $transaction = $rows['transaction_status'];
-                                                $status = $rows['status'];
-    
-                                                ?>
-                                                    <td><?php echo $status; ?></td>
-                                                    <td><?php echo $transaction; ?></td>
-                                                </tr>
-    
-                                            <?php
-                                            }
-                                        }
-                                    } else {
-    
-                                    }
-                                    ?>
-                                    </table>
-                                    <?php
-                                    if ($status == 'Pending'){
-                                        ?>
-                                        <br>
-                                        <h3>Please wait for your order to be confirmed before paying.</h3>
-                                        <?php
-                                    }
-                        }
-                            ?>
+       
+           
+?>
 
-                            <?php
-                        }
-                    }
-               }
-
-                            ?>
-
-                     <div>
-                        <h2>We Accept Payment:</h2>
-                        <div>
-                            <h4>GCash</h4>
-                            <ul>
-                                <li>Go to GCash app and select "Send Money". Pick "Express Send".</li>
-                                <li>Send to: 09326426458.</li>
-                                <li>Enter amount.</li>
-                                <li>Enter your name and given code as Message.</li>
-                                <li>Example:</li>
-                                <img src="images/pay.jpg" style="width:400px;">
-                            </ul>
-                        </div>
-                        <br>
-                        <div>
-                            <h4>Cash Payment</h4>
-                            <ul>
-                                <li>Visit our office at Poblacion, Jagna, Bohol.</li>
-                            </ul>
-                        </div>
-                    </div>  -->
-<!-- TO HERE -->
-<!-- vv FRONT END STARTS HERE vv -->
 <div class="p-3 text-center login_petyou" ><a style="text-decoration: none; color: #BFD8BD;" href="index.php">CHECKOUT</a></div>
-<section style="background-color: #98C9A3;">
+<form method="post">
+<section id="product" style="background-color: #98C9A3;">
   <div class="container py-5">
-    <div class="card ">
+    <div class="card">
       <div class="card-body">
         <div class="row d-flex justify-content-center pb-5">
           <div class="col-md-7 col-xl-5 mb-4 mb-md-0">
             <div class="py-4 d-flex flex-row">
-              <h5><span class="far fa-check-square pe-2"></span><b>Review Payment and Delivery Details</b></h5>
+              <h5><span ></span><b>Review Payment and Delivery Details</b></h5>
               <!-- <span class="ps-2">Pay</span> -->
             </div>
-
+            
             <!-- DELIVERY DETAILS INPUT -->
+            
             <h4 class="text-success">Delivery Details</h4>
             <div class="row pt-2 ">
                 <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                  <h3 type="text" class="form-control"> <?php echo $_POST['fName']?></h3>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Ndsdse">
+                  <h3 type="text" class="form-control"> <?php echo $_POST['lName']?></h3>
                 </div>
             </div>
             
             <div class="rounded">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                  <h3 type="text" class="form-control"> <?php echo $_POST['delivery_address']?></h3>
                 </div>
             </div>
             <div class="rounded ">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                  <h3 type="text" class="form-control"> <?php echo $_POST['customer_email']?></h3>
                 </div>
             </div>
             <div class="rounded ">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                  <h3 type="text" class="form-control"> <?php echo $_POST['customer_number']?></h3>
                 </div>
             </div>
             <hr />
+            <p>
+              <b>Delivery Mode </b><br>
+            </p>
+           
+            <select name="delivery" id="">
+              <?php
+                  //to get data from database
+                  $sql = "SELECT * FROM type_delivery;";
+                  //execute the query
+                  $res = mysqli_query($conn, $sql);
+                  //count rows
+                  $count = mysqli_num_rows($res);
 
+                  if($count > 0){
+                      while($row = mysqli_fetch_assoc($res)){
+                          $title = $row['title'];
+                          $DeliverID = $row['id'];
+              ?>
+                  <option value="<?php echo $DeliverID; ?>"><?php echo $title; ?></option>
+                  <?php 
+                      }
+                  } 
+              ?>
+          </select>
             <!-- PAYMENT MODE -->
             <div class="pt-2">
               <div class="d-flex pb-2">
                 <div>
                   <p>
-                    <b>Paayment Mode </b>
+                    <b>Payment Mode </b>
                   </p>
                 </div>
               </div>
               
-              <form class="pb-3">
+             
                 <div class="d-flex flex-row pb-3">
                   
                   <div class="rounded border d-flex w-100 p-3 align-items-center">
@@ -335,9 +292,11 @@ include ('header-customer_Cart,Check&Profile.php');
                 </div>
 
              
-              </form>
+              
               <!-- PAYMENT BUTTON -->
-              <input type="button" value="Proceed to payment" class="btn btn-primary btn-block btn-lg" />
+              
+              <input type="submit" name="submit" value="Proceed to payment" class="btn btn-primary btn-block btn-lg" />
+             
             </div>
           </div>
             
@@ -345,70 +304,69 @@ include ('header-customer_Cart,Check&Profile.php');
             <div class="py-4 d-flex justify-content-end">
               <!-- <h6><a href="#!">Back</a></h6> -->
             </div>
-            
+            <?php
+            $subTotal = 0;
+            $id = $_SESSION['id'];
+            $sql = "SELECT * FROM product p, bridge b WHERE p.productID = b.productID AND b.userID = $id"; 
+            $res = mysqli_query($conn, $sql);
+            $count = mysqli_num_rows($res);
+            $_SESSION['count'] = $count;
+            ?>
             <!-- CART -->
             <div class="container h-75 overflow-auto">
               <div class="rounded d-flex flex-column p-2" style="background-color: #f8f9fa;">
                 <div class="p-2 me-3 d-flex" style="display:flex;">
                   <h4  style="flex:1;">YOUR CART</h4>
                   
-                  <p class="badge" >3</p>
+                  <p class="badge" ><?php echo isset($subTotal) ? $count : 0; ?></p>
                 </div>
               </div>
-
-              <div class="p-2 d-flex">
-                <div class="col-8 align-items-center">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/transactions/gcash.png" alt="product 1"  class="round" style="width: 12vh; height: 10vh;">
-                        <p class="ms-5">sdsdsd</p>
-                    </div>
-                </div>
-                <p class="ms-auto align-items-center d-flex">₱186.76</p>
-              </div>
-
-              <div class="p-2 d-flex">
-                <div class="col-8 align-items-center">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/transactions/gcash.png" alt="product 1"  class="round" style="width: 12vh; height: 10vh;">
-                        <p class="ms-5">sdsdsd</p>
-                    </div>
-                </div>
-                <p class="ms-auto align-items-center d-flex">₱186.76</p>
-              </div>
-
-              <div class="p-2 d-flex " >
-                <div class="col-8 align-items-center">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/transactions/gcash.png" alt="product 1"  class="round" style="width: 12vh; height: 10vh;">
-                        <p class="ms-5">sdsdsd</p>
-                    </div>
-                </div>
-                <p class="ms-auto align-items-center d-flex">₱186.76</p>
-              </div>
-
-              <div class="p-2 d-flex " >
-                <div class="col-8 align-items-center">
-                    <div class="d-flex align-items-center">
-                        <img src="./assets/transactions/gcash.png" alt="product 1"  class="round" style="width: 12vh; height: 10vh;">
-                        <p class="ms-5">sdsdsd</p>
-                    </div>
-                </div>
-                <p class="ms-auto align-items-center d-flex">₱186.76</p>
-              </div>
-
-              
-            </div>
+              <?php
+                if($count > 0){
+                while($row = $res->fetch_assoc()){
+                 // $prodID = $row['productID'];
+                    
+            ?>
             
+              <div class="p-2 d-flex">
+              <input type="checkbox" name="product[]" value="<?php echo $row['productID']; ?>">
+                <div class="col-8 align-items-center">
+                    <div class="d-flex align-items-center">
+                    
+                    <img src="<?php echo SITEURL; ?>images/product/<?php echo $row['image']; ?>" alt="" class="round" style="width: 12vh; height: 10vh;">
+                    <input type="hidden" name="productID" value="<?php echo $row['productID'] ?? '1'; ?>">
+                    
+                    <h5 class="ms-5"><?php echo $row['title'] ?? "Unknown"; ?></h5>
+                    
+                    </div>
+                </div>
+                  <span class="product_price text-success ms-auto align-items-center d-flex" data-id="<?php echo $row['productID'] ?? '0'; ?>">₱<?php echo $row['price'] ?? 0; ?></span>
+                  
+              </div>
+              
+              <div class="qty d-flex pt-2">
+              <div class="d-flex font-rale w-15">
+                <input type="text" name="product_qty[<?php echo $row['productID']; ?>]" data-id="<?php echo $row['productID'] ?? '0'; ?>" class="qty_input qty-up border px-3 w-50 bg-white text-center"  value="1" placeholder="1">  
+  
+              </div> 
+               
+              </div>
+              
+              <?php
+                 $subTotal += $row['price'];
+              }
+            }
+               ?> 
+            </div>
+           
             <!-- TOTAL -->
             <div class="px-2 mx-2 w-75 border-top"></div>
               <div class="p-2 d-flex pt-3">
-                <div class="col-8"><b>Total</b></div>
-                <div class="ms-auto"><b class="text-success">₱85.00</b></div>
+                <div class="col-8"><b>Subtotal ( <?php echo isset($subTotal) ? $count : 0; ?> item):&nbsp;</b></div>
+                <span class="text-danger">₱<span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $subTotal : 0;?></span>
               </div>
             </div>
             </div>
-            
-
 
 
           </div>
@@ -417,10 +375,10 @@ include ('header-customer_Cart,Check&Profile.php');
     </div>
   </div>
 </section>
-          
+</form>
     </div>
-</div>
     
+
 
 <?php
 // include footer.php file
