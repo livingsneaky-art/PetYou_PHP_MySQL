@@ -1,11 +1,6 @@
 /*PROFILE CSS - LOISE NARVASA*/
 
-body {
-    margin: 0;
-    zoom: 100%;
-    height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-}
+
 .main {
     background-color: #FFFFE9;
 }
@@ -28,11 +23,7 @@ body {
     color: #6CAE7F;
 }
 
-.sidebar img {
-    border-radius: 50px;
-    width: 200px;
-    height: auto;
-}
+
 
 .form-container {
     background-color: rgb(152, 201, 163, 0.5);
@@ -158,3 +149,4 @@ body {
         font-size: 18px;
     }
 }
+

@@ -6,7 +6,7 @@
 <html>
 <body>
     <div class="d-flex align-items-center">
-        <a href="profile.php"><img src="./assets/blog/Arrow_Right_XL.png" alt="back_button"></a>
+        <a href="profile-edit.php"><img src="./assets/blog/Arrow_Right_XL.png" alt="back_button"></a>
         <h4 style="color:#6CAE7F;">Purchase History</h4>
     </div>
 <div class="my-5">

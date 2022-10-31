@@ -4,19 +4,7 @@
     include ('header-customer_Cart,Check&Profile.php');
 ?>         
 <link rel="stylesheet" type="text/css" href="css/profile.css">
-<div class="sidebar">
-    <h1>PETYOU</h1><br><br>
-    <img src="images/defaultUserImage.png" alt="...">
-    <ul>
-        <br><li><a href="#"><h5>Profile</h5></a></li><br>
-        <li><a href="purchaseHistory.php"><h5>Purchase History</h5></a></li>
-    </ul>
-</div>
-<div class="main" style="height:100vh;">
-    <div class="container">
-    
-        
-        <?php
+<?php
             if (isset($_SESSION['update'])){
                 echo $_SESSION['update'];
                 unset($_SESSION['update']);
@@ -40,6 +28,25 @@
                 }
             }
         ?>
+<div class="sidebar">
+    <div class="container-fluid w-100 text-center d-flex justify-content-center align-items-center" style="padding-bottom: 30px;">
+        <a href="home-page.php" style="color: #BFD8BD;font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 4vw; color: #BFD8BD; text-shadow: 4px 4px 4px #000; text-decoration: none;">PETYOU</a>
+    </div>
+   
+    <ul style="padding-top: 300px;">
+        <br><li><a href="profile-edit.php" class="text-success"><h5>Profile</h5></a></li><br>
+        <li><a href="purchaseHistory.php"><h5>Purchase History</h5></a></li>
+    </ul>
+</div>
+<div style="padding-left: 60px; padding-top: 130px;">
+    <img src="images/defaultUserImage.png" alt="" width="300" height="300" />
+    </div>
+    
+<div class="main" style="height:100vh;">
+    <div class="container">
+    
+        
+        
         
         <div class="form-container">
             <form action="" method="POST">
@@ -63,13 +70,18 @@
                         <b><label for="address">Address:</label></b><br>
                         <input type="text" name="address" value="<?php echo $address; ?>" required>  
                 </div>
-                    <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <button class="button" type="submit" name="submit">Edit Profile</button>
-            </form>
+                    
+            
         </div>
         
     </div>
+    <div style="padding-left: 1500px; padding-top: 100px" >
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <button style="background-color: #98C9A380; color: white; width: 100px;" class="btn border" type="submit" name="submit">Save</button>
+    </div>
+    
 </div>
+</form>
 <?php 
 if(isset($_POST['submit'])){
     $id = $_POST['id'];
@@ -93,10 +105,10 @@ if(isset($_POST['submit'])){
     
     if ($res == TRUE){
         $_SESSION['update'] = "<center><h2 class='success'>UPDATE SUCCESSFUL</h2></center>";
-        header("location:".SITEURL."profile.php");
+        header("location:".SITEURL."profile-save.php");
     } else {
         $_SESSION['update'] = "<center><h2 class='failed'>UPDATE FAILED</h2></center>";
-        header("location:".SITEURL."profile.php");
+        header("location:".SITEURL."profile-save.php");
     }
     
 }
