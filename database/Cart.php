@@ -51,9 +51,6 @@ class Cart
                     // reload page
                     //header("Location:" . $_SERVER['PHP_SELF']);
                 }
-            }else{
-                echo "<script>alert('Product is already in the cart!')</script>";
-                echo "<script>window.location = 'header-customer_product.php'</script>";
             }
         }
     }
