@@ -32,7 +32,7 @@
 				
 			?>
 			<div  class="p-0 m-2 btn card d-flex justify-content-center align-items-center prod_btn bg-green" style="width:15vw; background-color: #98C9A3;" >
-				<a href="<?php printf('%s?productID=%s', 'product.php',  $row['productID']); ?>"><img src="<?php echo SITEURL; ?>images/product/<?php echo $row['image']; ?>" style="padding-top: 20px;" alt="" width="200px" height="200px"></a>
+				<p href=""><img src="<?php echo SITEURL; ?>images/product/<?php echo $row['image']; ?>" style="padding-top: 20px;" alt="" width="200px" height="200px"></p>
 				<div class="text-center"> <?php echo $title; ?> </div>
 				<div class="text-center"> <?php echo $price; ?> </div>
 				

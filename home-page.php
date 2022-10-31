@@ -2,8 +2,8 @@
     ob_start();
     // include header.php file
     include ('header-customer.php');
+    include('login.check.php');
 ?>
-
 <?php
 
 /*  include banner area  */

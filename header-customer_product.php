@@ -1,5 +1,6 @@
 <?php
     include('./configs/constants.php');
+    include('login.check.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,10 +82,11 @@
 <!-- !start #header -->
 
 <!-- start #main-site -->
+
 <main>
 <div >
     <div class="container-fluid w-100 bg-white text-center d-flex justify-content-center align-items-center" style="min-height:40vh;">
-        <h2 style="color: #BFD8BD;font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 7vw; color: #BFD8BD; text-shadow: 4px 4px 4px #000; ">PRODUCTS</h2>
+        <h2 style="color: #BFD8BD;font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 7vw; color: #BFD8BD; text-shadow: 4px 4px 4px #000; "><a style="text-decoration: none; color: #BFD8BD;" href="header-customer_product.php">PRODUCTS</a></h2>
     </div>
     <div style="padding-left: 250px; padding-top: 50px;">
         <input  type="text" name="search_text" id="search_text" placeholder="Search"  />

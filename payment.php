@@ -2,6 +2,7 @@
 ob_start();
 // include header.php file
 include ('header-customer_Cart,Check&Profile.php');
+include('login.check.php');
 ?>
 
 <!DOCTYPE html>
@@ -209,7 +210,7 @@ include ('header-customer_Cart,Check&Profile.php');
            
 ?>
 
-<div class="p-3 text-center login_petyou" ><a style="text-decoration: none; color: #BFD8BD;" href="index.php">CHECKOUT</a></div>
+<div class="p-3 text-center login_petyou" ><a style="text-decoration: none; color: #BFD8BD;" href="payment.php">CHECKOUT</a></div>
 <form method="post">
 <section id="product" style="background-color: #98C9A3;">
   <div class="container py-5">

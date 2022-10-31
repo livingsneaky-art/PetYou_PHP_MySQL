@@ -2,6 +2,7 @@
     ob_start();
     // include header.php file
     include ('header-customer_Cart,Check&Profile.php');
+    include('login.check.php');
 ?>         
 <link rel="stylesheet" type="text/css" href="css/profile.css">
 <?php

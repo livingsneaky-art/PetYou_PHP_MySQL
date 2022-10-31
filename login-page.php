@@ -22,6 +22,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
+<?php
+                    if (isset($_SESSION['no-login-message'])){
+                        echo $_SESSION['no-login-message'];
+                        unset($_SESSION['no-login-message']);
+                    }
+                ?>
 <section class="h-100">
     <div class="px-4 py-5 px-md-5 text-center text-lg-start h-100 login-bg" style="background-color: hsl(0, 0%, 96%)">
     <!-- <div class="container h-100"> -->
