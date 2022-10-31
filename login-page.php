@@ -64,6 +64,17 @@
     </div>
 </section>
 <?php
+$sql4= "SELECT * FROM type_delivery WHERE title = 'LBC'";
+$res4 = mysqli_query($conn, $sql4);
+$count1 = mysqli_num_rows($res4);
+if($count1 == 0){
+    $sql2 = "INSERT INTO type_delivery(title, image_name) VALUES('LBC', 'NULL'), ('Grab', 'NULL'), ('Lalamove', 'NULL');";
+    $res2 = $conn->query($sql2);
+}else{
+    echo " ";
+}
+
+
  if(isset($_POST['submit'])){
 
     //get data from form

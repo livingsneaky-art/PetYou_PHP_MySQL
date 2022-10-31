@@ -238,11 +238,6 @@ include ('header-customer_Cart,Check&Profile.php');
                   <h3 type="text" class="form-control"> <?php echo $_POST['customer_email']?></h3>
                 </div>
             </div>
-            <div class="rounded ">
-                <div class="form-group">
-                  <h3 type="text" class="form-control"> <?php echo $_POST['customer_number']?></h3>
-                </div>
-            </div>
             <hr />
             <p>
               <b>Delivery Mode </b><br>
@@ -286,7 +281,7 @@ include ('header-customer_Cart,Check&Profile.php');
                         <img src="./assets/transactions/gcash.png" alt="gcash" style="width=80vh"; height="50vh">
                       <i class="text-primary pe-2"></i>Gcash
                     </p>
-                    <div class="ms-auto">Talamban, Cebu City</div>
+                    <div class="ms-auto"><?php echo $_POST['customer_number']?></div>
                     
                   </div>
                 </div>
@@ -346,7 +341,9 @@ include ('header-customer_Cart,Check&Profile.php');
               
               <div class="qty d-flex pt-2">
               <div class="d-flex font-rale w-15">
-                <input type="text" name="product_qty[<?php echo $row['productID']; ?>]" data-id="<?php echo $row['productID'] ?? '0'; ?>" class="qty_input qty-up border px-3 w-50 bg-white text-center"  value="1" placeholder="1">  
+              
+                <input type="text" name="product_qty[<?php echo $row['productID']; ?>]" data-id="<?php echo $row['productID'] ?? '0'; ?>" class="qty_input qty-up border px-3 w-50 bg-white text-center"  value="1" placeholder="1" >  
+                
   
               </div> 
                
@@ -357,6 +354,9 @@ include ('header-customer_Cart,Check&Profile.php');
               }
             }
                ?> 
+               <div style="padding-top: 40px;">
+                <button data-id="<?php echo $row['productID'] ?? '0'; ?>" class="qty-down border-0 bg-white text-success"> <p style="font-weight: bold;">Reset</p></button> 
+               </div>  
             </div>
            
             <!-- TOTAL -->
@@ -375,6 +375,7 @@ include ('header-customer_Cart,Check&Profile.php');
     </div>
   </div>
 </section>
+
 </form>
     </div>
     
