@@ -41,6 +41,15 @@
             CONSTRAINT pk_product PRIMARY KEY(productID)
         )");
 
+        $conn->query("CREATE TABLE pet(
+            petID INT NOT NULL AUTO_INCREMENT,
+            petname VARCHAR(100) NOT NULL,
+            petdescription VARCHAR(255) NOT NULL,
+            price DECIMAL(11, 2) NOT NULL,
+            image VARCHAR(255) NOT NULL,
+            CONSTRAINT pk_pet PRIMARY KEY(petID)
+        )");
+
         $conn->query("CREATE TABLE payment_details(
              id INT NOT NULL AUTO_INCREMENT,
             products_total DECIMAL(11, 2),

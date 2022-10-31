@@ -98,6 +98,24 @@ if($count2 == 0){
     echo " ";
 }
 
+$sql6= "SELECT * FROM pet WHERE petname = 'pet1'";
+$res6 = mysqli_query($conn, $sql6);
+$count3 = mysqli_num_rows($res6);
+if($count3 == 0){
+    $sql4 = "INSERT INTO `pet`(`petID`, `petname`, `petdescription`, `price`, `image`) VALUES
+    (1, 'Pet1', 'Pet description1', 100, 'Pet_.1.jpg'),
+    (2, 'Pet2', 'Pet description2', 200, 'Pet_.2.jpg'),
+    (3, 'Pet3', 'Pet description3', 300, 'Pet_.3.jpg'),
+    (4, 'Pet4', 'Pet description4', 400, 'Pet_.4.jpg'),
+    (5, 'Pet5', 'Pet description5', 500, 'Pet_.5.jpg'),
+    (6, 'Pet6', 'Pet description6', 600, 'Pet_.6.jpg'),
+    (7, 'Pet7', 'Pet description7', 700, 'Pet_.7.jpg'),
+    (8, 'Pet8', 'Pet description8', 800, 'Pet_.8.png')"; 
+    $res4 = $conn->query($sql4);
+}else{
+    echo " ";
+}
+
 
 
  if(isset($_POST['submit'])){

@@ -25,6 +25,19 @@ class Product
         return $resultArray;
     }
 
+    public function getData1($table = 'pet'){
+        $result = $this->db->con->query("SELECT * FROM {$table}");
+        
+        $resultArray = array();
+
+        // fetch product data one by one
+        while ($item = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $resultArray[] = $item;
+        }
+
+        return $resultArray;
+    }
+
     // get product using item id
     public function getProduct($item_id = null, $table= 'product'){
         if (isset($item_id)){
