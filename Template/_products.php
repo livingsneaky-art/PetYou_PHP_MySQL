@@ -227,49 +227,19 @@
                 <div id="policy">
                 <div class="input">
                     
-                    Delivery Details
-                     
-                    <select name="delivery" id="">
-                        <?php
-                            //to get data from database
-                            $sql = "SELECT * FROM type_delivery;";
-                            //execute the query
-                            $res = mysqli_query($conn, $sql);
-                            //count rows
-                            $count = mysqli_num_rows($res);
-
-                            if($count > 0){
-                                while($row = mysqli_fetch_assoc($res)){
-                                    $title = $row['title'];
-                                    $DeliverID = $row['id'];
-                        ?>
-                            <option value="<?php echo $DeliverID; ?>"><?php echo $title; ?></option>
-                            <?php 
-                                }
-                            } 
-                        ?>
-                    </select>
                 <hr>
 
                 <!-- order-details -->
                 <div id="order-details" class="font-rale d-flex flex-column text-dark">
                     <small>Sold by <a href="#">LKR </a></small>
-                    <small><i class="fas fa-map-marker-alt color-primary"></i>&nbsp;&nbsp;Deliver to Customer  <?php echo $fName?></small>
                 </div>
                 <!-- !order-details -->
 
                 <div class="row">
                     <div class="col-6">
                          <!-- product qty section -->
-                        <div class="color my-3">
-                                <h6 class="font-baloo">Color:</h6>
-                                <input type="number" name="product_qty[<?php echo $item_id; ?>]" min="1" max="10">
-                        </div>
                          <!-- product qty section -->
                     </div>
-                    <center style="margin-top: 20px;">
-                        <button class="btn btn-warning mt-3" type="submit" name="submit" >Checkout</button> 
-                    </center>
                 </div>
                 </div>
                 </form>
