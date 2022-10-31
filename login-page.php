@@ -74,6 +74,25 @@ if($count1 == 0){
     echo " ";
 }
 
+$sql5= "SELECT * FROM product WHERE title = 'product1'";
+$res5 = mysqli_query($conn, $sql5);
+$count2 = mysqli_num_rows($res5);
+if($count2 == 0){
+    $sql3 = "INSERT INTO `product`(`productID`, `title`, `description`, `price`, `image`) VALUES
+    (1, 'product1', 'description1', 100, 'Product_.1.JPG'),
+    (2, 'product2', 'description2', 200, 'Product_.2.JPG'),
+    (3, 'product3', 'description3', 300, 'Product_.3.JPG'),
+    (4, 'product4', 'description4', 400, 'Product_.4.JPG'),
+    (5, 'product5', 'description5', 500, 'Product_.5.JPG'),
+    (6, 'product6', 'description6', 600, 'Product_.6.JPG'),
+    (7, 'product7', 'description7', 700, 'Product_.7.PNG'),
+    (8, 'product8', 'description8', 800, 'Product_.8.PNG');"; 
+    $res3 = $conn->query($sql3);
+}else{
+    echo " ";
+}
+
+
 
  if(isset($_POST['submit'])){
 
