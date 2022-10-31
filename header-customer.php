@@ -64,7 +64,7 @@
                 </a>
             </form>
             <div>
-                <a style="text-decoration: none; color: black; padding-right: 30px; font-weight: bold;" href="<?php echo SITEURL; ?>profile.php">PROFILE</a>
+                <a style="text-decoration: none; color: black; padding-right: 30px; font-weight: bold;" href="<?php echo SITEURL; ?>profile-edit.php">PROFILE</a>
             </div>
             <div>
                 <a style="text-decoration: none; color: black; font-weight: bold; padding-right: 30px;" href="<?php echo SITEURL; ?>logout.php">LOGOUT</a>

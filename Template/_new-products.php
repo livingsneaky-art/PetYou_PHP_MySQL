@@ -16,13 +16,6 @@
                     <a><img src="<?php echo SITEURL; ?>images/product/<?php echo $item['image']; ?>" alt="" width="200" height="300"></a>
                     <div class="text-center">
                         <h6><?php echo  $item['title'] ?? "Unknown";  ?></h6>
-                        <div class="rating text-warning font-size-12">
-                            <span><i class="fas fa-star"></i></span>
-                            <span><i class="fas fa-star"></i></span>
-                            <span><i class="fas fa-star"></i></span>
-                            <span><i class="fas fa-star"></i></span>
-                            <span><i class="far fa-star"></i></span>
-                        </div>
                         <div class="price py-2">
                             <span>$<?php echo $item['price'] ?? '0' ; ?></span>
                         </div>

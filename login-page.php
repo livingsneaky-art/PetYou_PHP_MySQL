@@ -80,6 +80,7 @@
         $_SESSION['id'] = $row['userID'];
         $_SESSION['fName'] = $row['fName'];
         $_SESSION['user_type'] = $row['user_type'];
+        $_SESSION['customer_email'] = $row['customer_email'];
     }
 
     //execute the the query

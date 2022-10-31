@@ -73,11 +73,6 @@
 
                         <!-- product qty -->
                         <div class="qty d-flex pt-2">
-                            <div class="d-flex font-rale w-15">
-                                <button class="qty-up border-0 bg-white" data-id="<?php echo $row['productID'] ?? '0'; ?>"><img src="./assets/blog/plus.png" alt="plus Cart"></button> 
-                                <input type="text" data-id="<?php echo $row['productID'] ?? '0'; ?>" name="product_qty" class="qty_input border px-3 w-50 bg-white text-center" disabled value="1" placeholder="1">  
-                                <button data-id="<?php echo $row['productID'] ?? '0'; ?>" class="qty-down border-0 bg-white"> <img src="./assets/blog/minus.png" alt="minus Cart"></button> 
-                            </div>
                                 
                             <form method="post">
                                 <input type="hidden" value="<?php echo $row['productID'] ?? 0; ?>" name="productID">
@@ -86,9 +81,6 @@
                             
                         </div>
                         <br>
-                        <div style="padding-top: 10px;" class="font-size-20 text-danger font-baloo">
-                            Subtotal: ₱<span class="product_price" data-id="<?php echo $row['productID'] ?? '0'; ?>"><?php echo $row['price'] ?? 0;?></span>
-                        </div>
                         
                        
                     </div> 
@@ -109,7 +101,7 @@
             <div class="border-top py-4">
                 <h5 class="font-baloo font-size-20">Subtotal ( <?php echo isset($subTotal) ? $count : 0; ?> item):&nbsp; <span class="text-danger">₱<span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $subTotal : 0;?></span> </span> </h5>
                 <form action="payment.php">
-                    <button type="submit" name="submit" class="btn btn-warning mt-3">Checkout</button>
+                    <button type="submit" name="submit" class="btn btn-warning mt-3">Proceed to Payment</button>
                 </form>
                 
             </div>

@@ -295,7 +295,7 @@ include ('header-customer_Cart,Check&Profile.php');
               
               <!-- PAYMENT BUTTON -->
               
-              <input type="submit" name="submit" value="Proceed to payment" class="btn btn-primary btn-block btn-lg" />
+              <input type="submit" name="submit" value="Checkout" class="btn btn-primary btn-block btn-lg" />
              
             </div>
           </div>

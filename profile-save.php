@@ -75,7 +75,7 @@
         </div>
         
     </div>
-    <div style="padding-left: 1500px; padding-top: 100px" >
+    <div style="padding-left: 1100px; padding-top: 100px" >
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <button style="background-color: #98C9A380; color: white; width: 100px;" class="btn border" type="submit" name="submit">Save</button>
     </div>
