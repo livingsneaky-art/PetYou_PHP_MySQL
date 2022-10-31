@@ -39,5 +39,6 @@ Refer to `documentation.
 
 
 ## Project Status
-Ongoing - 30/10/2022
+Complete(Module_1) - 31/10/2022
+Ongoing(Module_2) - 01/10/2022 
 
