@@ -50,7 +50,7 @@ include ('header-customer_Cart,Check&Profile.php');
     $_POST['delivery_address'] = $Address;
     
    
-    if(isset($_POST['submit'])){
+    if(isset($_POST['submit']) && isset($_POST['product'])){
         //assign values
         $customer_name = $_POST['customer_name'];
         $customer_number = $_POST['customer_number'];
@@ -186,7 +186,6 @@ include ('header-customer_Cart,Check&Profile.php');
        
         if ($res_carts){
             $_SESSION['cart_id'] = $cart_id;
-           echo " <center><h2 class='success'>TRANSACT SUCCESSFUL.</h2> </center>";
           header("Location: gcash.php");
            //echo "<a class='btn btn-blue' href='payment.php'>Check your order.</a>" ;
          
@@ -194,6 +193,14 @@ include ('header-customer_Cart,Check&Profile.php');
         }else {
            echo "<h2 class='failed'>cart FAILED</h2>";
         }
+    }else{
+      if(!isset($_POST['product'])){
+        if(isset($_POST['submit'])){
+          echo  "<script> alert('PLEASE SELECT PRODUCT'); </script>";
+        }
+        
+      }
+      
     }
             
           
