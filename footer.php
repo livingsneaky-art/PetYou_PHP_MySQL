@@ -21,7 +21,7 @@
                 <p class="font-size-14 font-rale text-white-50">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, deserunt.</p>
             </div>
             <div class="col-lg-4 col-12">
-                <h4 class="font-rubik font-size-20">Newslatter</h4>
+                <h4 class="font-rubik font-size-20">Newsletter</h4>
                 <form class="row">
                     <div class="col-md-6">
                         <input type="text" class="form-control" placeholder="Email *">
@@ -45,8 +45,7 @@
                 <div class="d-flex flex-column flex-wrap">
                     <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">My Account</a>
                     <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">Order History</a>
-                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">Wish List</a>
-                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">Newslatters</a>
+                    <a href="#" class="font-rale font-size-14 text-white-50 pb-1 text-decoration-none">Newsletters</a>
                 </div>
             </div>
         </div>
