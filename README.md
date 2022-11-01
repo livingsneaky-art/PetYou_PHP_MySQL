@@ -3,21 +3,21 @@ A fully dynamic functional ecommerce, pet food inventory system created with HTM
 
 ## Features
 #### For admin
- - Manage admin
- - Manage cart
- - Manage products
- - Manage pets
+ - Manage admin (pending)
+ - Manage cart (pending)
+ - Manage products (pending)
+ - Manage pets (pending)
  - Issue customer adoption ticket (pending)
 #### For customer
  - View products
  - View specific products
- - Buy products
  - Add to cart products
+ - Select products 
  - Pay products
  - Adopt pet (pending)
 ## Login Information
-Username: admin<br>
-Password: admin<br>
+Username: <br>
+Password: <br>
 > Note: //
 
 ## Debug //
@@ -39,6 +39,6 @@ Refer to `documentation.
 
 
 ## Project Status
-Complete(Module_1) - 31/10/2022
-Ongoing(Module_2) - 01/10/2022 
+Complete(Module_1) - 31/10/2022<br>
+Ongoing(Module_2) - 01/10/2022<br>
 
