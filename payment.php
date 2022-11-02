@@ -298,7 +298,7 @@ include('login.check.php');
               
               <!-- PAYMENT BUTTON -->
               
-              <input type="submit" name="submit" value="Checkout" class="btn btn-primary btn-block btn-lg" />
+              <input type="submit" name="submit" value="Proceed to Payment" class="btn btn-primary btn-block btn-lg" />
              
             </div>
           </div>

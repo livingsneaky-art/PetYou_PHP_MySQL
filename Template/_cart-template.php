@@ -101,7 +101,7 @@
             <div class="border-top py-4">
                 <h5 class="font-baloo font-size-20">Subtotal ( <?php echo isset($subTotal) ? $count : 0; ?> item):&nbsp; <span class="text-danger">₱<span class="text-danger" id="deal-price"><?php echo isset($subTotal) ? $subTotal : 0;?></span> </span> </h5>
                 <form action="payment.php">
-                    <button type="submit" name="submit" class="btn btn-warning mt-3">Proceed to Payment</button>
+                    <button type="submit" name="submit" class="btn btn-warning mt-3">Proceed to Checkout</button>
                 </form>
                 
             </div>
