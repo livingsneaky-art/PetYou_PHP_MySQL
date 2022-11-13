@@ -40,5 +40,5 @@ Refer to `documentation.
 
 ## Project Status
 Complete(Module_1) - 31/10/2022<br>
-Ongoing(Module_2) - 11/11/2022<br>
+Ongoing(Module_2) - 13/11/2022<br>
 
