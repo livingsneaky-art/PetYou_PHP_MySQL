@@ -88,3 +88,12 @@
             CONSTRAINT fk_delivery_details FOREIGN KEY(delivery_type) REFERENCES type_delivery(id),
             CONSTRAINT pk_delivery_details PRIMARY KEY(id)
         );
+
+    CREATE TABLE pet(
+            petID INT NOT NULL AUTO_INCREMENT,
+            petname VARCHAR(100) NOT NULL,
+            petdescription VARCHAR(255) NOT NULL,
+            price DECIMAL(11, 2) NOT NULL,
+            image VARCHAR(255) NOT NULL,
+            CONSTRAINT pk_pet PRIMARY KEY(petID)
+        );
