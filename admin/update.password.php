@@ -5,32 +5,50 @@
 ?>
     <!---main section--->
     <div class="main" style="height:100vh;">
-        <div class="container">
-           <h1>CHANGE PASSWORD</h1>
+        <div class="container"> 
 
            <?php
                 $id = $_GET['id'];
             ?>
-           <form action="" method="POST" class="form">
-               <div>
-                    <label for="currentpass">Current Password</label>
-                    <input type="password" name="currentpass">  
-               </div>
-               <div>
-                    <label for="newpass">New Password</label>
-                    <input type="password" name="newpass">  
-               </div>
-               <div>
-                    <label for="confirmpass">Confirm Password</label>
-                    <input type="password" name="confirmpass">  
-               </div>
-               <input type="hidden" name="id" value="<?php echo $id; ?>">
-               <button class="button" type="submit" name="submit">Submit</button>
-           </form>
 
+            <!-- FORM TO CHANGE PASSWORD -->
+            <div class=" align-items-center d-flex justify-content-center container">
+                <form action="" method="POST" class="form card mt-4 bg-light border border-outline-light px-3 py-3" style="width: 20rem;">
+                    <div class="card-header bg-light h4 text-center fw-bold ">Change Password</div>
+                        <div class="row">
+
+                            <!-- CURRENT PASSWORD -->
+                            <div class="mt-4">
+                                <label for="currentpass" class="form-label">Current Password</label>
+                                <input type="password" name="currentpass" class="form-control">  
+                            </div>
+
+                            <!-- NEW PASSWORD -->
+                            <div class="mt-4" class="form-label">
+                                <label for="newpass">New Password</label>
+                                <input type="password" name="newpass" class="form-control">  
+                            </div>
+
+                            <!-- CONFIRM PASSWORD -->
+                            <div class="mt-4">
+                                <label for="confirmpass" class="form-label">Confirm Password</label>
+                                <input type="password" name="confirmpass" class="form-control">  
+                            </div>
+
+                            <!-- CHANGE PASSWORD BUTTON -->
+                            <div class="mt-4 text-center">
+                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                <button class="btn btn-dark btn-outline-dark" type="submit" name="submit">Submit</button>
+                            </div>
+                        
+                        </div>
+                    </div>  
+                </form>
+            </div>
         </div>
-        
     </div>
+
+
 
 <?php 
     if (isset($_POST['submit'])){

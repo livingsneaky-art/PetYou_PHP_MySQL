@@ -6,7 +6,7 @@
  <!---main section--->
  <div class="main" style="height:100vh;">
         <div class="container">
-            <h2>MANAGE ADMIN</h2>
+            <h2 class="mb-5">MANAGE ADMIN</h2>
 
             <?php
                 if (isset($_SESSION['add'])){
@@ -40,15 +40,22 @@
                 }
             ?>
 
-            <a href="add.admin.php" class="button">ADD ADMIN</a>
+            <a href="add.admin.php" class="button"><i class="fa fa-plus" aria-hidden="true"></i> ADD ADMIN</a>
 
-            <table class="tbl-full" style="height:auto;">
+            <table class="tbl-full table mt-4" style="height:auto;">
+                <thead class="thead-light">
                 <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col"></th>
+                    <!-- <th scope="col"></th>
+                    <th scope="col"></th> -->
                 </tr>
+                </thead>
+
+                <tbody>
 
                 <?php
                     //TO GET DATA
@@ -71,14 +78,14 @@
                                 ?>
 
                                 <tr>
-                                    <td><?php echo $id; ?></td>
-                                    <td><?php echo $fName; ?></td>
-                                    <td><?php echo $lName; ?></td>
-                                    <td><?php echo $username; ?></td>
-                                    <td class="btn-st">
-                                        <a href="<?php echo SITEURL; ?>admin/update.password.php?id=<?php echo $id; ?>" class="btn-blue btn">Change Password</a>
-                                        <a href="<?php echo SITEURL; ?>admin/update.admin.php?id=<?php echo $id; ?>" class="btn-green btn">Update Admin</a>
-                                        <a href="<?php echo SITEURL; ?>admin/delete.admin.php?id=<?php echo $id; ?>" class="btn-red btn">Delete Admin</a>
+                                    <td scope="row"><?php echo $id; ?></td>
+                                    <td scope="row"><?php echo $fName; ?></td>
+                                    <td scope="row"><?php echo $lName; ?></td>
+                                    <td scope="row"><?php echo $username; ?></td>
+                                    <td scope="row" class="btn-st">
+                                        <a href="<?php echo SITEURL; ?>admin/update.password.php?id=<?php echo $id; ?>" class=""><img src="../assets/admin/password.png" alt="Change password" style="width: 35px;" class="mr-3"></a>
+                                        <a href="<?php echo SITEURL; ?>admin/update.admin.php?id=<?php echo $id; ?>" class=""><img src="../assets/admin/edit.png" alt="Edit user" style="width: 35px;" class="mr-3"></a>
+                                        <a href="<?php echo SITEURL; ?>admin/delete.admin.php?id=<?php echo $id; ?>" class=""><img src="../assets/admin/delete.png" alt="Delete user" style="width: 35px;" class="mr-3"></a>
                                     </td>
                                 </tr>
 
@@ -90,6 +97,7 @@
                     }
 
                 ?>
+
             </table>
 
         </div>
