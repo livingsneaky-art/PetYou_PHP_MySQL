@@ -286,7 +286,7 @@ include('login.check.php');
                   
                   <div class="rounded border d-flex w-100 p-3 align-items-center">
                     <p class="mb-0">
-                        <img src="./assets/transactions/gcash.png" alt="gcash" style="width=80vh"; height="50vh">
+                        <img src="./assets/transactions/gcash.png" alt="gcash" style="width:80vh; height:50vh">
                       <i class="text-primary pe-2"></i>Gcash
                     </p>
                     <div class="ms-auto"><?php echo $_POST['customer_number']?></div>
