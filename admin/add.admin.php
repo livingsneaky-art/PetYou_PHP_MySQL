@@ -4,35 +4,49 @@
     include ('partials/header.php');
 ?>
   <!---main section--->
-  <div class="main">
-        <div class="add-body" style="height:57.6vh">
+    <div class="main">
+        <!-- <div class="add-body" style="height:57.6vh"> -->
             <div class="container">
-                <h1>ADD ADMIN</h1>
+                <!-- <h1>ADD ADMIN</h1> -->
 
-                <form action="" method="POST" class="form">
-                    <div>
-                            <label for="first-name">First Name</label>
-                            <input type="text" name="first-name" required>  
-                    </div>
-                    <div>
-                            <label for="last-name">Last Name</label>
-                            <input type="text" name="last-name" required>  
-                    </div>
-                    <div>
-                            <label for="username">Username</label>
-                            <input type="text" name="username" required>  
-                    </div>
-                    <div>
-                            <label for="password">Password</label>
-                            <input type="password" name="password" required>  
-                    </div>
-                    <button class="button" type="submit" name="submit">Submit</button>
-                </form>
-
+                <!-- FORM TO ADD USER-->
+                <div class=" align-items-center d-flex justify-content-center container">
+                    <form action="" method="POST" class="form card mt-4 bg-light border border-outline-light px-3 py-3" style="width: 20rem;">
+                        <div class="card-header bg-light h4 text-center fw-bold ">Add Admin</div>
+                            <div class="row">
+                                <!-- FIRST NAME -->
+                                <div class="mt-4">
+                                    <label for="first-name" class="form-label">First Name</label>
+                                    <input type="text" name="first-name" class="form-control" required>  
+                                </div>
+                                <!-- LAST NAME -->
+                                <div class="mt-4">
+                                    <label for="last-name" class="form-label">Last Name</label>
+                                    <input type="text" name="last-name" class="form-control" required>  
+                                </div>
+                                <!-- USERNAME -->
+                                <div class="mt-4">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" name="username" class="form-control" required>  
+                                </div>
+                                <!-- PASSWORD -->
+                                <div class="mt-4">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" name="password" class="form-control" required>  
+                                </div>
+                                <!--ADD ADMIN BUTTON -->
+                                <div class="mt-4 text-center">
+                                    <button class="btn btn-primary btn-outline-secondary" type="submit" name="submit">Add</button>
+                                    <a href="manage.admin.php" class="btn btn-dark btn-outline-dark">Cancel</a>
+                                </div>                  
+                            </div>
+                        </div>  
+                    </form>
+                </div>
             </div>
-        </div>
     </div>
 
+    
 <?php
     include('partials/footer.php');
 ?>

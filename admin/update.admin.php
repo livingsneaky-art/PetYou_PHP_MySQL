@@ -6,7 +6,7 @@
     <div class="main" style="height:100vh;">
 
 <div class="container">
-    <h1>UPDATE ADMIN</h1>
+    <!-- <h1>UPDATE ADMIN</h1> -->
 
     <?php
         //Get id of admin to be edit
@@ -31,24 +31,39 @@
         }
     ?>
 
-    <form action="" method="POST" class="form">
-       <div>
-            <label for="fName">First Name</label>
-            <input type="text" name="fName" value="<?php echo $fName; ?>" required>  
-       </div>
-       <div>
-            <label for="lName">Last Name</label>
-            <input type="text" name="lName" value="<?php echo $lName; ?>" required>  
-       </div>
-       <div>
-            <label for="uName">Username</label>
-            <input type="text" name="uName" value="<?php echo $uName; ?>" required>  
-       </div>
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
-       <button class="button" type="submit" name="submit">Submit</button>
-   </form>
-</div>
-</div>
+     <!-- FORM TO UPDATE USER -->
+     <div class=" align-items-center d-flex justify-content-center container">
+                <form action="" method="POST" class="form card mt-4 bg-light border border-outline-light px-3 py-3" style="width: 20rem;">
+                    <div class="card-header bg-light h4 text-center fw-bold ">Update User</div>
+                        <div class="row">
+                            <!-- FIRST NAME -->
+                            <div class="mt-4">
+                                    <label for="fName" class="form-label">First Name</label>
+                                    <input type="text" name="fName" class="form-control" value="<?php echo $fName; ?>" required>  
+                            </div>
+                            <!-- LAST NAME -->
+                            <div class="mt-4">
+                                    <label for="lName" class="form-label">Last Name</label>
+                                    <input type="text" name="lName" class="form-control" value="<?php echo $lName; ?>" required>  
+                            </div>
+                            <!-- USERNAME -->
+                            <div class="mt-4">
+                                    <label for="uName" class="form-label">Username</label>
+                                    <input type="text" name="uName" class="form-control" value="<?php echo $uName; ?>" required>  
+                            </div>
+                            <!-- UPDATE USER BUTTON -->
+                            <div class="mt-4 text-center">
+                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                <button class="btn btn-primary btn-outline-secondary" type="submit" name="submit">Update</button>
+                                <a href="manage.admin.php" class="btn btn-dark btn-outline-dark">Cancel</a>
+                            </div>
+                        
+                        </div>
+                    </div>  
+                </form>
+            </div>
+        </div>
+    </div>
 
 <?php
 

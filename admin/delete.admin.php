@@ -14,7 +14,9 @@
 
     if ($res == TRUE){
         //creating session 
-        $_SESSION['delete'] = "<h2 class='success'>DELETED SUCCESSFULLY</h2>";
+       
+        // $_SESSION['delete'] = "<h2 class='success'>DELETED SUCCESSFULLY</h2>";
+        $_SESSION['delete'] =  '<script>alert("Deleted Successfully")</script>';
         //redirect to manage admin page
         header('location:'.SITEURL.'admin/manage.admin.php');
     } else {

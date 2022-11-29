@@ -13,7 +13,7 @@
 
             <!-- FORM TO CHANGE PASSWORD -->
             <div class=" align-items-center d-flex justify-content-center container">
-                <form action="" method="POST" class="form card mt-4 bg-light border border-outline-light px-3 py-3" style="width: 20rem;">
+                <form action="" method="POST" class="form card mt-4 bg-light shadow border border-outline-light px-3 py-3" style="width: 20rem;">
                     <div class="card-header bg-light h4 text-center fw-bold ">Change Password</div>
                         <div class="row">
 
@@ -24,8 +24,8 @@
                             </div>
 
                             <!-- NEW PASSWORD -->
-                            <div class="mt-4" class="form-label">
-                                <label for="newpass">New Password</label>
+                            <div class="mt-4">
+                                <label for="newpass" class="form-label">New Password</label>
                                 <input type="password" name="newpass" class="form-control">  
                             </div>
 
@@ -38,7 +38,8 @@
                             <!-- CHANGE PASSWORD BUTTON -->
                             <div class="mt-4 text-center">
                                 <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                <button class="btn btn-dark btn-outline-dark" type="submit" name="submit">Submit</button>
+                                <button class="btn btn-primary btn-outline-secondary" type="submit" name="submit">Submit</button>
+                                <a href="manage.admin.php" class="btn btn-dark btn-outline-dark">Cancel</a>
                             </div>
                         
                         </div>
