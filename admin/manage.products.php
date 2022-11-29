@@ -33,18 +33,19 @@
                     unset($_SESSION['upload']);
                 }
             ?>
-            <a href="add.product.php" class="button">ADD PRODUCTS</a>
-
-            
-
-            <table class="tbl-full">
-                <tr>
-                    <th>ID</th>
+           
+            <a href="add.product.php" class="button shadow "><i class="fa fa-plus" aria-hidden="true"></i>ADD PRODUCTS</a>
+            <table class="tbl-full table mt-4">
+                <thead class="thead-light">
+                <tr class="text-center">
+                    <th class="p-3">Image</th>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>Price</th>
-                    <th>Image</th>
+                    <th>Price</th>         
+                    <th></th>                              
                 </tr>
+                </thead>
+
                 <?php
                     //TO GET DATA
                     $sql = "SELECT * FROM product;";
@@ -64,21 +65,38 @@
                                 $price = $rows['price'];
                                 $image = $rows['image'];
 
-                                ?>
-
-                                <tr>
-                                    <td><?php echo $id; ?></td>
-                                    <td><?php echo $title; ?></td>
-                                    <td><?php echo $description; ?></td>
-                                    <td><?php echo $price; ?></td>
-                                    <td><img src="<?php echo SITEURL; ?>images/product/<?php echo $image; ?>" alt="" width="100px"></td>
-                                    <td class="btn-st">
-                                        <div><a href="<?php echo SITEURL; ?>admin/update.products.php?id=<?php echo $id; ?>&image=<?php echo $image; ?>" class="btn-green btn">Update</a></div>
-                                        <div><a href="<?php echo SITEURL; ?>admin/delete.products.php?id=<?php echo $id; ?>&image=<?php echo $image; ?>" class="btn-red btn">Delete</a></div>
-                                        
-                                    </td>
-                                </tr>
-
+                            ?>
+                              
+                            <tr class="text-center align-middle">
+                                <td class="p-5"><img src="<?php echo SITEURL; ?>images/product/<?php echo $image; ?>" alt="" width="100px"></td>
+                                <td class="align-middle"><?php echo $title; ?></td>
+                                <td class="align-middle"><?php echo $description; ?></td>
+                                <td class="align-middle"><?php echo $price; ?></td>
+                                <td class="text-center align-middle" >
+                                    <a href="<?php echo SITEURL; ?>admin/update.products.php?id=<?php echo $id; ?>&image=<?php echo $image; ?>" ><img src="../assets/admin/edit.png" alt="Edit product" style="width: 35px;" class="mr-3"></a>
+                                    <a href="<?php echo SITEURL; ?>admin/delete.products.php?id=<?php echo $id; ?>&image=<?php echo $image; ?>" data-bs-toggle="modal" data-bs-target="#exampleModal_<?php echo $id;?>"><img src="../assets/admin/delete.png" alt="Delete product" style="width: 35px;" class="mr-3"></a>
+                                </td>
+                            </tr>
+                                
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal_<?php echo $id;?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Delete</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Are you sure you want to delete <?php echo $title ?>?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <a href="<?php echo SITEURL; ?>admin/delete.products.php?id=<?php echo $id; ?>&image=<?php echo $image; ?>" class="btn btn-danger">Delete</a>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <?php
                             }
                         }
@@ -90,6 +108,8 @@
             </table>
         </div>
     </div>
+                            
+    
 <?php
     include ('partials/footer.php');
 ?>

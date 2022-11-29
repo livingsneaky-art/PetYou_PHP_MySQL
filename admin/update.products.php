@@ -31,36 +31,38 @@
             }
         }
     ?>
-
-    <form action="" method="POST" enctype="multipart/form-data">
-    <div>
-            <label for="title">Menu Name:</label>
-            <input type="text" name="title" value="<?php echo $title; ?>">  
-       </div>
-       <div>
-            <label for="description"><Menu></Menu> Description:</label>
-            <input type="text" name="description" value="<?php echo $description; ?>">  
-       </div>
-       <div>
-            <label for="price">Price:</label>
-            <input type="text" name="price" value="<?php echo $price; ?>">  
-       </div>
-       <div>
-            Current Image:
-            <?php
-                if ($current_image != ""){
-                    ?>
-                    <img src="<?php echo SITEURL; ?>images/product/<?php echo $current_image; ?>" alt="" width="100px">
-                  
-       </div>
-       <div>
-            <label for="image">New Image:</label>
-            <input type="file" name="image">  
-       </div>
-       <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
-       <input type="hidden" name="id" value="<?php echo $id; ?>">
-       <button class="button" type="submit" name="submit">Submit</button>
-   </form>
+    <div class="d-flex justify-content-center container">
+        <form action="" method="POST" enctype="multipart/form-data" class="form shadow card mt-4 bg-light border border-outline-light px-3 py-3">
+            <div>
+                    <label for="title" class="form-label">Menu Name:</label>
+                    <input type="text" name="title" class="form-control" value="<?php echo $title; ?>">  
+            </div>
+            <div>
+                    <label for="description" class="form-label"><Menu></Menu> Description:</label>
+                    <input type="text" name="description" class="form-control" value="<?php echo $description; ?>">  
+            </div>
+            <div>
+                    <label for="price" class="form-label">Price:</label>
+                    <input type="text" name="price" class="form-control" value="<?php echo $price; ?>">  
+            </div>
+            <div class="my-4">
+                    Current Image:
+                    <?php
+                        if ($current_image != ""){
+                            ?>
+                            <img src="<?php echo SITEURL; ?>images/product/<?php echo $current_image; ?>" alt="" width="100px">
+                        
+            </div>
+            <div>
+                    <label for="image" class="form-label">New Image:</label>
+                    <input type="file" class="form-control" name="image">  
+            </div>
+            <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <button class="button my-3" type="submit" name="submit">Submit</button>
+            <a href="manage.products.php" class="btn btn-dark btn-outline-dark round">Cancel</a>
+        </form>
+    </div>
 </div>
 </div>
 

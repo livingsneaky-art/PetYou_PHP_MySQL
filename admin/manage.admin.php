@@ -85,10 +85,29 @@
                                     <td scope="row" class="btn-st">
                                         <a href="<?php echo SITEURL; ?>admin/update.password.php?id=<?php echo $id; ?>" class=""><img src="../assets/admin/password.png" alt="Change password" style="width: 35px;" class="mr-3"></a>
                                         <a href="<?php echo SITEURL; ?>admin/update.admin.php?id=<?php echo $id; ?>" class=""><img src="../assets/admin/edit.png" alt="Edit user" style="width: 35px;" class="mr-3"></a>
-                                        <a href="<?php echo SITEURL; ?>admin/delete.admin.php?id=<?php echo $id; ?>" class="" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="../assets/admin/delete.png" alt="Delete user" style="width: 35px;" class="mr-3"></a>
+                                        <a href="<?php echo SITEURL; ?>admin/delete.admin.php?id=<?php echo $id; ?>" class="" data-bs-toggle="modal" data-bs-target="#exampleModal_<?php echo $id; ?>"><img src="../assets/admin/delete.png" alt="Delete user" style="width: 35px;" class="mr-3"></a>
                                     </td>
                                 </tr>
-
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal_<?php echo $id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Delete</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                        Are you sure you want to delete this user?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <!-- <button type="button" class="btn btn-danger">Delete</button> -->
+                                            <a href="<?php echo SITEURL; ?>admin/delete.admin.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php
                             }
                         }
@@ -104,25 +123,6 @@
         
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Delete</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            Are you sure you want to delete this user?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <!-- <button type="button" class="btn btn-danger">Delete</button> -->
-                <a href="<?php echo SITEURL; ?>admin/delete.admin.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>
-            </div>
-            </div>
-        </div>
-        </div>
 <?php
     include ('partials/footer.php');
 ?>

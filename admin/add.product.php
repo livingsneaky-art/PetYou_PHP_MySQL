@@ -7,40 +7,42 @@
     <!---main section--->
 
     <div class="main">
-        <div class="add-body" style="height:57.6vh">
+        <div class="add-body" style="height:70vh">
             <div class="container">
                 <h1>ADD PRODUCTS</h1>
 
-            <?php
+                <?php
                     if (isset($_SESSION['upload'])){
                         echo $_SESSION['upload'];
                         unset($_SESSION['upload']);
                     }
                 ?>
-
-                <form action="" method="POST" class="form" enctype="multipart/form-data">
-                    <div>
-                            <label for="title">Menu Name:</label>
-                            <input type="text" name="title">  
-                    </div>
-                    <div>
-                            <label for="description"><Menu></Menu> Description:</label>
-                            <input type="text" name="description">  
-                    </div>
-                    <div>
-                            <label for="price">Price:</label>
-                            <input type="text" name="price">  
-                    </div>
-                    <div>
-                            <label for="image">Image:</label>
-                            <input type="file" name="image">  
-                    </div>
-                    
-                    <button class="button" type="submit" name="submit">Submit</button>
-                 </form>
+                <div class="d-flex justify-content-center container ">
+                    <form action="" method="POST" class="form shadow card bg-light border border-outline-light px-3 py-3" enctype="multipart/form-data">
+                        <div>
+                                <label for="title" class="form-label">Menu Name:</label>
+                                <input type="text" class="form-control" name="title">  
+                        </div>
+                        <div>
+                                <label for="description" class="form-label"><Menu></Menu> Description:</label>
+                                <input type="text" class="form-control" name="description">  
+                        </div>
+                        <div>
+                                <label for="price" class="form-label">Price:</label>
+                                <input type="text" class="form-control" name="price">  
+                        </div>
+                        <div>
+                                <label for="image" class="form-label">Image:</label>
+                                <input type="file" class="form-control" name="image">  
+                        </div>
+                        
+                        <button class="button my-3 mx-4" type="submit" name="submit">Submit</button>
+                        <a href="manage.products.php" class="btn btn-dark btn-outline-dark round mx-4">Cancel</a>
+                    </form>
+                </div>  
             </div>
         </div>
-
+        <div class="mt-4"></div>           
     </div>
 <?php
 
@@ -91,7 +93,7 @@
     }
 
 ?>
-
+    
 <?php
     include('partials/footer.php');
 ?>
