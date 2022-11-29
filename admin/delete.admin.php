@@ -20,6 +20,7 @@
         //redirect to manage admin page
         header('location:'.SITEURL.'admin/manage.admin.php');
     } else {
-        $_SESSION['delete'] = "<h2 class='failed'>DELETE FAILED</h2>";
+        // $_SESSION['delete'] = "<h2 class='failed'>DELETE FAILED</h2>";
+        $_SESSION['delete'] =  '<script>alert("Delete Failed")</script>';
         header('location:'.SITEURL.'admin/manage.admin.php');
     }
