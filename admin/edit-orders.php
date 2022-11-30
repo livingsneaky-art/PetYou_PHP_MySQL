@@ -19,9 +19,9 @@ if(isset($_POST['submit'])){
                 FROM cart
                 WHERE id = ?),
             type = (
-                SELECT id
+                SELECT productID
                 FROM product
-                WHERE id = ?);";
+                WHERE productID = ?);";
 
         $product_stmt = $conn->prepare($product_query);
         $product_stmt->bind_param("iii", $m_qty, $cart, $product);
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
     //calculate fees
     $product_sql = "SELECT SUM(mt.price * mb.quantity) as 'product total'
     FROM product mt, product_carts mb
-    WHERE mt.id = mb.type
+    WHERE mt.productID = mb.type
     AND mb.cartID = ?;";
 
     $stmt_product = $conn->prepare($product_sql);
@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
 
     if ($res_pay){
         
-       echo "<h2 class='success'>BOOKED SUCCESSFULLY.</h2>";
+       echo "<h2 class='success'>SUCCESSFULLY ADDED.</h2>";
 
        echo "<a class='btn btn-blue' href='update.orders.php?cart=$cart'>Back to orders.</a>" ;
         

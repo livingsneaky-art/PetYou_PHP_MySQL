@@ -16,7 +16,7 @@
 
     $product_sql = "SELECT SUM(mt.price) as 'product total'
         FROM product mt, product_carts mb
-        WHERE mt.id = mb.type
+        WHERE mt.productID = mb.type
         AND mb.cartID = ?;";
     $stmt_product2 = $conn->prepare($product_sql);
     $stmt_product2->bind_param("i", $cart);

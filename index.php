@@ -103,6 +103,15 @@
             CONSTRAINT pk_delivery_details PRIMARY KEY(id)
         )");
 
+        $conn->query("CREATE TABLE discount(
+            discountID INT NOT NULL,
+            discountA INT NOT NULL,
+            discountB INT NOT NULL,
+            discountC INT NOT NULL,
+            discountD INT NOT NULL,
+            CONSTRAINT pk_discount PRIMARY KEY(discountID)
+        )");
+
     }            
     ob_start();
     include ('header-general.php');

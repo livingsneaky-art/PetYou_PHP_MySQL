@@ -7,7 +7,7 @@
 <!---main section--->
 <div class="main" style="height:100%; padding-bottom: 5em;">
         <div class="container">
-            <h2>MANAGE ADOPTION</h2>
+            <h2>MANAGE PET</h2>
             <?php
                 if (isset($_SESSION['add'])){
                     echo $_SESSION['add'];

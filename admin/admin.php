@@ -11,8 +11,9 @@
         <li><a href="<?php echo SITEURL; ?>admin/manage.admin.php" class="button">MANAGE ADMIN</a></li>
         <li><a href="<?php echo SITEURL; ?>admin/manage.carts.php" class="button">MANAGE CARTS</a></li>
         <li><a href="<?php echo SITEURL; ?>admin/manage.products.php" class="button">MANAGE PRODUCTS</a></li>
-        <li><a href="<?php echo SITEURL; ?>admin/manage.adoption.php" class="button">MANAGE ADOPTION</a></li>
-        <li><a href="<?php echo SITEURL; ?>admin/manage.delivery.php" class="button">MANAGE DELIVERY</a></li>
+        <li><a href="<?php echo SITEURL; ?>admin/manage.adoption.php" class="button">MANAGE PET</a></li>
+        <li><a href="<?php echo SITEURL; ?>admin/manage.purchase.php" class="button">MANAGE PURCHASE</a></li>
+        <li><a href="<?php echo SITEURL; ?>admin/manage.discounts.php" class="button">DISCOUNTS</a></li>
     </ul>
 </div>
 </div>

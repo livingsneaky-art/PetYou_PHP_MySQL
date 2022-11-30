@@ -5,7 +5,7 @@
 ?>
 <div class="main" style="height:100vh;">
         <div class="container">
-            <h2>MANAGE PAYMENT DETAILS</h2>
+            <h2>PAYMENT DETAILS</h2>
             
 
             <?php
@@ -29,13 +29,9 @@
 
             <a href="<?php echo SITEURL; ?>admin/update.carts.php?id=<?php echo $cart; ?>" class="btn-blue btn">Back to cart details</a>
                 <tr>
-                    
-                    <th>Total</th>
-                    <th>product Total</th>
-                    <th>Minimum Payment</th>
-                    <th>Paid</th>
+                    <th>Product Total</th>
                     <th>Balance</th>
-                    <th>Status</th>
+                    <th>Paid</th>
                    
                 </tr>
                     <?php
@@ -69,17 +65,11 @@
 
                                 <tr>
                                     
-                                    <td><?php echo $total; ?></td>
                                     <td><?php echo $product; ?></td>
-                                    <td><?php echo $min; ?></td>
-                                    <td><?php echo $paid; ?></td>
                                     <td><?php echo $balance; ?></td>
                                     <td><?php echo $status; ?></td>
                                     
-                                    <td class="btn-st">
-                                        <a href="<?php echo SITEURL; ?>admin/update.payment.php?id=<?php echo $cart; ?>" class="btn-green btn">Update</a>
-                                       
-                                    </td>
+                                  
                                 </tr>
 
                             <?php

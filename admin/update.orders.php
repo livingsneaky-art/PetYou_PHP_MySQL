@@ -1,5 +1,15 @@
+<?php
+   ob_start();
+    // include header.php file
+    include ('partials/header.php');
+?>
+
+    <div class="main" style="height:100vh;">
+
+        
 
         <div class="container">
+            <h1>UPDATE ORDER DETAILS</h1>
 
             <?php
             if (isset($_SESSION['delete'])){
@@ -19,24 +29,24 @@
                 //SQL query to get data 
                
             ?>
-            <table class="tbl-full table mt-4" style="height:auto;">
-                <thead class="thead-light">
-                <tr style = "text-align:center; vertical-align:middle;">
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <!-- <th scope="col"></th>
-                    <th scope="col"></th> -->
+
+            <table class="tbl-full" style="height:auto; table-layout: auto;
+    width: 100%;">
+            <a href="<?php echo SITEURL; ?>admin/update.carts.php?id=<?php echo $cart; ?>" class="btn-blue btn">Back to cart details</a>
+            <br><br>
+            <a href="<?php echo SITEURL; ?>admin/add-orders.php?id=<?php echo $cart; ?>" class="btn-blue btn">Add Product</a>
+            <br><br>
+            <h2>Customer Product</h2>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
                 </tr>
-                </thead>
-
-                <tbody>
-
                 <?php
                     //TO GET DATA
-                    $query_product = "SELECT mt.id, mt.title, mt.description, mt.price, mb.quantity FROM product mt, product_carts mb
-                    WHERE mt.id = mb.type
+                    $query_product = "SELECT mt.productID, mt.title, mt.description, mt.price, mb.quantity FROM product mt, product_carts mb
+                    WHERE mt.productID = mb.type
                     AND mb.cartID = ?;";  
                     
                     $stmt_product = $conn->prepare($query_product);
@@ -46,7 +56,7 @@
                    
                             //Loop through data
                         while($rows_product = $res_product->fetch_assoc()){
-                            $product_id = $rows_product['id'];
+                            $product_id = $rows_product['productID'];
                             $product_title = $rows_product['title'];
                             $product_desc = $rows_product['description'];
                             $product_price = $rows_product['price'];
@@ -70,7 +80,7 @@
             </table>
         </div>
     </div>
-    <?php
-    include ('partials/footer.php');
-?>
 
+<?php
+    include('partials/footer.php');
+?>

@@ -97,3 +97,12 @@
             image VARCHAR(255) NOT NULL,
             CONSTRAINT pk_pet PRIMARY KEY(petID)
         );
+
+        CREATE TABLE discount(
+            discountID INT NOT NULL,
+            discountA INT NOT NULL,
+            discountB INT NOT NULL,
+            discountC INT NOT NULL,
+            discountD INT NOT NULL,
+            CONSTRAINT pk_discount PRIMARY KEY(discountID)
+        );

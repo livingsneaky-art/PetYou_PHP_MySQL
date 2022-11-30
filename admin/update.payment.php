@@ -7,8 +7,9 @@
     <div class="main" style="height:100vh;">
 
         <div class="container">
-            <h1>UPDATE PAYMENT DETAILS</h1>
-
+            <h1>UPDATE PAYMENT</h1>
+            <a href="<?php echo SITEURL; ?>admin/manage.men-pay-details.php?cart=<?php echo $cart; ?>" class="btn-blue btn">Back</a>
+            <br><br>
             <?php
                 //Get id to be edit
                 $cart = $_GET['id'];
@@ -33,7 +34,6 @@
                                 $min = $rows['minPayment'];
                                 $paid = $rows['paid'];
                                 $balance = $rows['balance'];
-                                $status = $rows['status'];
                                 $total = $rows['total'];
 
                                 ?>
@@ -41,21 +41,12 @@
             <form action="" method="POST" class="form">
                <div>
                     <p>Total: <?php echo $total; ?></p>
-                    <p>Minimum Payment: <?php echo $min; ?></p>
                     <p>Paid: <?php echo $paid; ?></p>
                     <p>Balance: <?php echo $balance; ?></p>
                </div>
                <div>
                     <label for="paid">Enter payment amount:</label>
                     <input type="number" name="payment" value="<?php echo $payment; ?>">  
-               </div>
-               <div>
-                   <label for="status">Update status:</label>
-                   <select name="status">
-                        <option value="Unpaid">Unpaid</option>
-                        <option value="Partially paid">Partially paid</option>
-                        <option value="Fully paid">Fully Paid</option>
-                    </select>
                </div>
                 <input type="hidden" name="id" value="<?php echo $cart; ?>">
                 <input type="hidden" name="balance" value="<?php echo $balance; ?>">
@@ -80,7 +71,6 @@
     if (isset($_POST['submit'])){
         $cart = $_POST['id'];
         $balance = $_POST['balance'];
-        $status = $_POST['status'];
         $paid = $_POST['paid'];  
 
         if ($_POST['payment']){
@@ -93,8 +83,7 @@
         $sql = "UPDATE payment_details
             SET 
             paid = $amount,
-            balance = ($balance - $payment),
-            status = '$status'
+            balance = ($balance - $payment)
             WHERE id = (
                 SELECT receiptID
                 FROM cart

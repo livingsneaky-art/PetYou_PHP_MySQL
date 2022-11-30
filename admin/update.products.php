@@ -6,7 +6,7 @@
    <div class="main" style="height:100vh;">
 
 <div class="container">
-    <h1>UPDATE PRODUCTS</h1>
+    <center><h1>UPDATE PRODUCTS</h1></center>
 
     <?php
         //Get id to be edit

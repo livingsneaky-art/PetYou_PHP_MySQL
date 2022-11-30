@@ -118,10 +118,10 @@
         $res = $conn->query($sql);
 
         if ($res == TRUE){
-            $_SESSION['update-delivery'] = "<h2 class='success'>UPDATE delivery SUCCESSFUL</h2>";
+            $_SESSION['update-delivery'] = "<h2 class='success'>UPDATE SUCCESSFUL</h2>";
             header("location:".SITEURL."admin/manage.carts.php");
         } else {
-            $_SESSION['update-delivery'] = "<h2 class='failed'>UPDATE delivery FAILED</h2>";
+            $_SESSION['update-delivery'] = "<h2 class='failed'>UPDATE FAILED</h2>";
             header("location:".SITEURL."admin/manage.carts.php");
         }
     }

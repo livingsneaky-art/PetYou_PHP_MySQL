@@ -70,6 +70,17 @@
     </div>
 </section>
 <?php
+$discount_id = 1;
+$forDiscount = "SELECT * FROM discount WHERE discountID = $discount_id";
+$discount = mysqli_query($conn, $forDiscount);
+$countDiscount = mysqli_num_rows($discount);
+if($countDiscount == 0){
+    $sqlDiscount = "INSERT INTO discount(discountA, discountB, discountC, discountD) VALUES(10,20,30,40);";
+    $resDiscount = $conn->query($sqlDiscount);
+}else {
+        echo " ";
+}
+
 $sql4= "SELECT * FROM type_delivery WHERE title = 'LBC'";
 $res4 = mysqli_query($conn, $sql4);
 $count1 = mysqli_num_rows($res4);

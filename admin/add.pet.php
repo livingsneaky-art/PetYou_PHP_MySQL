@@ -9,7 +9,7 @@
     <div class="main">
         <div class="add-body" style="height:57.6vh">
             <div class="container">
-                <h1>ADD PET</h1>
+                <center><h1>ADD PET</h1></center>
 
             <?php
                     if (isset($_SESSION['upload'])){
@@ -22,19 +22,19 @@
                     <form action="" method="POST" class="form shadow card bg-light border border-outline-light px-3 py-3" enctype="multipart/form-data">
                         <div>
                                 <label for="petName" class="form-label">Pet Name:</label>
-                                <input type="text" name="petName" class="form-control">  
+                                <input type="text" name="petName" class="form-control" required>  
                         </div>
                         <div>
                                 <label for="description" class="form-label"><Menu></Menu> Description:</label>
-                                <input type="text" name="description" class="form-control">  
+                                <input type="text" name="description" class="form-control" required>  
                         </div>
                         <div>
                                 <label for="price" class="form-label">Price:</label>
-                                <input type="text" name="price" class="form-control">  
+                                <input type="text" name="price" class="form-control" required>  
                         </div>
                         <div>
                                 <label for="image" class="form-label">Image:</label>
-                                <input type="file" name="image" class="form-control">  
+                                <input type="file" name="image" class="form-control" required>  
                         </div>
                         
                         <button class="button my-3 mx-4" type="submit" name="submit">Add</button>

@@ -16,8 +16,8 @@ A fully dynamic functional (but not yet responsive) ecommerce, pets food and pet
  - Pay products
  - Adopt pet (pending)
 ## Login Information
-Username: <br>
-Password: <br>
+Username: Admin<br>
+Password: 123<br>
 > Note: //
 
 ## Debug //

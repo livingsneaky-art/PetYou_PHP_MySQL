@@ -5,8 +5,9 @@
 ?>
 <div class="main">
 <div class="container">
-    <h1>UPDATE ORDER</h1>
-    <br>
+    <h1>UPDATE CART</h1>
+    <a href="<?php echo SITEURL; ?>admin/manage.carts.php" class="btn-blue btn">Back to Carts</a>
+    <br><br>
     <?php
         //Get id to be edit
         $id = $_GET['id'];
@@ -41,53 +42,40 @@
        </div>
        <div style="display:flex;">
             <label for="name">Customer Name: &nbsp;</label>
-            <p><?php echo $customer_name; ?><p>
+            <p><input type="text" name="name" value="<?php echo $customer_name; ?>">  <p>
        </div>
        <div style="display:flex;">
             <label for="number">Customer Number: &nbsp;</label>
-            <p><?php echo $customer_contact_no; ?><p>  
+            <p><input type="text" name="number" value="<?php echo $customer_contact_no; ?>">  <p>  
        </div>
        <div style="display:flex;">
             <label for="email">Customer Email: &nbsp;</label>
-            <p><?php echo $customer_email; ?></p>  
-       </div>
-       <div style="display:flex;">
-            <label for="email">Delivery Address: &nbsp;</label>
-            <p><?php echo $customer_email; ?></p>  
+            <p><input type="email" name="email" value="<?php echo $customer_email; ?>"> </p>  
        </div>
        <div style="display:flex;">
             <label for="receipt">Receipt ID: &nbsp;</label>
             <p><?php echo $receipt; ?></p>  
        </div>
-       <div style="display:flex;">
-            <label for="receipt">Product Total: &nbsp;</label>
-            <p><?php echo $receipt;?></p>  
-       </div>
        <div>
-            <label for="status">Order Status:</label>
+            <label for="status">Cart Status:</label>
             <select name="status">
-                <option value="Processing">Processing</option>
-                <option value="Successful">Successful</option>
+                <option value="Confirmed">Confirmed</option>
                 <option value="Cancelled">Cancelled</option>
             </select>
        </div>
        <div>
             <label for="delivery_status">Delivery Status:</label>
             <select name="delivery_status">
-                <option value="To Be Shipped">To Be Shipped</option>
-                <option value="Shipped">Shipped</option>
-                <option value="Delivered">Delivered</option>
+                <option value="To Be Held">To Be Held</option>
+                <option value="Finished">Finished</option>
             </select>
        </div>
        <div>
-            <label for="delivery_status">Estimated Date of Delivery:</label>
-            <input type="datetime-local" name="deliverydate" value="<?php echo $delviery; ?>">
-       </div>
-       <div>
             <label for="payment">Payment Status:</label>
-            <select name="payment">
-                <option value="Paid">Paid</option>
-                <option value="Refunded">Refunded</option>
+            <select name="transaction">
+                <option value="Processing">Processing</option>
+                <option value="Successful">Successful</option>
+                <option value="Failed">Failed</option>
             </select>
        </div>
        <br>
@@ -97,11 +85,13 @@
         <button class="btn btn-primary btn-outline-secondary" type="submit" name="submit">Update</button>
         <a href="<?php echo SITEURL; ?>admin/manage.carts.php" class="btn btn-dark btn-outline-dark">Cancel</a>
        <br><br>
-    
+       <a href="<?php echo SITEURL; ?>admin/update.delivery-details.php?id=<?php echo $delivery; ?>&cart=<?php echo $id; ?>" class="btn-blue btn">Go to delivery details</a>
+       <br><br>
+       <a href="<?php echo SITEURL; ?>admin/update.orders.php?cart=<?php echo $id; ?>" class="btn-blue btn">Go to order details</a>
+       <br><br>
+       <a href="<?php echo SITEURL; ?>admin/manage.men-pay-details.php?cart=<?php echo $id; ?>" class="btn-blue btn">Go to payment details</a>
    </form>
-   <?php
-        include ('update.orders.php');
-   ?>
+ 
 </div>
     </div>
 
@@ -115,7 +105,7 @@ $customer_name = $_POST['name'];
 $customer_contact_no = $_POST['number'];
 $customer_email = $_POST['email'];
 $status = $_POST['status'];
-$payment_status = $_POST['payment_status'];
+$transaction = $_POST['transaction'];
 $delivery_status = $_POST['delivery_status'];
 
 
@@ -126,7 +116,7 @@ $sql = "UPDATE cart
     customer_email = '$customer_email',
     status = '$status',
     delivery_status = '$delivery_status',
-    payment_status = '$payment_status'
+    transaction_status = '$transaction'
     WHERE id = '$id;'";
 
 //to execute the query
@@ -143,4 +133,6 @@ if ($res == TRUE){
 }
 
 ?>
-
+<?php
+    include ('partials/footer.php');
+?>

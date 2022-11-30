@@ -66,9 +66,20 @@ include('login.check.php');
         $delivery_id = rand(000, 999);
         $payment_id = rand(000, 999);
         
-     
+        $_POST['status'] = 'Confirmed';
+        $_POST['delivery_status'] = 'To Be Held';
+        $_POST['transaction_status'] = 'Processing';
 
-    
+        $status =  $_POST['status'];
+        $delivery_status = $_POST['delivery_status'];
+        $transaction_status = $_POST['transaction_status'];
+
+        $_POST['date'] = "Nov 30, 2022";
+        $data = $_POST['date'];
+        $newdate = date("Y-m-d", strtotime($data));
+        $newtime = date("Y-m-d", strtotime("+7 day", strtotime($data)));
+
+
          ////for storing delivery details to delivery_details table
         $query = "INSERT INTO delivery_details
             SET id = ?,
@@ -86,7 +97,10 @@ include('login.check.php');
         if (!$res_delivery){
             echo $conn->error;
         }
-    
+        
+        $forDelivery = "Update delivery_details SET startTime = '$newdate', endTime = '$newtime' WHERE id = '$delivery_id'";
+        $res_delivery = $conn->query($forDelivery) or die(mysqli_error($conn));
+
         //create cart record
         $query_2 = "INSERT INTO cart
             SET id = ?,
@@ -105,6 +119,9 @@ include('login.check.php');
         if (!$res_book){
             echo $conn->error;
         }
+
+        $forCart = "Update cart SET status = '$status', delivery_status = '$delivery_status', transaction_status = '$transaction_status' WHERE id = $cart_id";
+        $res_forCart = $conn->query($forCart) or die(mysqli_error($conn));;
         
         //create product record
      
@@ -286,7 +303,7 @@ include('login.check.php');
                   
                   <div class="rounded border d-flex w-100 p-3 align-items-center">
                     <p class="mb-0">
-                        <img src="./assets/transactions/gcash.png" alt="gcash" style="width:80vh; height:50vh">
+                      <img src="./assets/transactions/gcash.png" alt="gcash" style="width=80vh"; height="50vh">
                       <i class="text-primary pe-2"></i>Gcash
                     </p>
                     <div class="ms-auto"><?php echo $_POST['customer_number']?></div>
